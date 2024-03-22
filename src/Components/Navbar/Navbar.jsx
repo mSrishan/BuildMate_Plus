@@ -19,7 +19,7 @@ const Navbar = () => {
           <li>English</li>
         </ul>
 
-        <div className='btn'>
+        <div className='navbtn'>
           <button className='signbtn'>Sign in</button>
           <button className='joinbtn'>Join</button> 
         </div>

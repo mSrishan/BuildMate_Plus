@@ -1,0 +1,108 @@
+.home {
+  text-align: center;
+  padding: 50px;
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.wall {
+  width: 100%;
+  filter: brightness(20%);
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.content {
+  margin-top: 200px;
+  font-size: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.ic1 {
+  display: flex;
+  margin-top: -600px;
+  margin-left: -100px;
+  z-index: -1;
+  transform: translateY(50%);
+}
+
+.search-bar-container {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.switch-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45%;
+}
+
+.switch-buttons {
+  display: flex;
+  flex-direction: row;
+
+  margin-bottom: 0px; /* Adjust spacing between switch bar and search bar */
+}
+
+.switch-button {
+  background-color: #868686;
+  color: white;
+  font-size: 16px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-top-right-radius: 10px; /* Rounded corners */
+  border-bottom-right-radius: 10px;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
+  margin-right: -5px; /* Adjust spacing between switch buttons */
+}
+
+.switch-button.active {
+  background-color: white; /* Change background color for active button */
+  color: blue; /* Change text color for active button */
+}
+
+.search-input {
+  flex-grow: 1;
+  width: calc(100% - 150px); /* Take remaining space */
+  padding: 8px;
+  border-radius: 20px;
+  border: 1px solid #868686;
+  margin: 0 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-button {
+  background-color: blue;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 0 20px 20px 0; /* Rounded corners */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+}
+
+.search-button:hover {
+  background-color: darkblue; /* Darken color on hover */
+}

@@ -10,6 +10,7 @@
 }
 .nav-logo{
     display: flex;
+    background-color: rgba(255, 255, 255, 0.233);
     align-items: center;
     gap: 10px;
 }
@@ -24,9 +25,10 @@
     margin-left: 230px;
 }
 .nav-menu li{
-    color: black;
+    color: white;
     display: flex;
     font-size: 15px;
+    font-weight: 500;
     flex-direction: column;
     align-items: right;
     justify-content: center;
@@ -34,18 +36,32 @@
     cursor: pointer;
 
 }
+.navbtn{
+    margin-top: 10px;
+}
 
-.navbar button{
-    width: 100px;
-    background-color: rgb(10, 10, 54);
-    color: white;
-    height: 35px;
-    outline: none;
-    border-radius: 70px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 8px;
+.joinbtn {
+  background-color: rgb(10, 10, 54);
+  color: white;
+  height: 35px;
+  width: 100px;
+  outline: none;
+  border-radius: 70px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.signbtn{
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  font-size: 15px;
+  border-color: rgba(255, 255, 255, 0);
+  height: 35px;
+  outline: none;
+  border-radius: 70px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
 }
 .navbar button:active{
     color: rgb(12, 92, 212);
