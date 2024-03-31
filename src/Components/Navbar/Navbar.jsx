@@ -1,7 +1,8 @@
-import React from 'react'
-import './Navbar.css'
+import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link component
+import './Navbar.css';
+import logo from '../Assets/logo2.png';
 
-import logo from '../Assets/logo2.png'
 const Navbar = () => {
   return (
     <section className='home1'>
@@ -20,13 +21,14 @@ const Navbar = () => {
         </ul>
 
         <div className='navbtn'>
-          <button className='signbtn'>Sign in</button>
+          <Link to="/login">
+            <button className='signbtn'>Sign in</button>
+          </Link>
           <button className='joinbtn'>Join</button> 
         </div>
-    </div>
+      </div>
     </section>
-    
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
