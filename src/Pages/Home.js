@@ -43,7 +43,7 @@ const Home = () => {
             <input
               type="text"
               className="search-input"
-              placeholder={`Search ${searchType.toLowerCase()}`}
+              placeholder={` Search ${searchType.toLowerCase()}`}
               value={searchQuery}
               onChange={handleSearchInputChange}
             />
