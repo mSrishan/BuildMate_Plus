@@ -1,22 +1,21 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './Components/Navbar/Navbar';
-import Home from './Pages/Home';
-import LoginPage from './Pages/Login';
-// Import other pages as needed
+// import './App.css'
+import Home from "./components/Home"
+import Login from "./components/Login"
+import Signup from "./components/Signup"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from 'react';
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Navbar />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={LoginPage} />
-          {/* Add routes for other pages */}
-        </Switch>
-      </div>
-    </Router>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/Pages/" element={<Login/>}/>
+          <Route path="/Pages/signup" element={<Signup/>}/>
+          <Route path="/Pages/home" element={<Home/>}/>
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

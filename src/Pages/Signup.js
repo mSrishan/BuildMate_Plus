@@ -4,7 +4,6 @@ import { useNavigate, Link } from "react-router-dom"
 
 
 function Login() {
-
     const history=useNavigate();
 
     const [email,setEmail]=useState('')
@@ -15,15 +14,15 @@ function Login() {
 
         try{
 
-            await axios.post("http://localhost:8000/",{
+            await axios.post("http://localhost:8000/signup",{
                 email,password
             })
             .then(res=>{
                 if(res.data=="exist"){
-                    history("/home",{state:{id:email}})
+                    alert("User already exists")
                 }
                 else if(res.data=="notexist"){
-                    alert("User have not sign up")
+                    history("/home",{state:{id:email}})
                 }
             })
             .catch(e=>{
@@ -43,20 +42,20 @@ function Login() {
     return (
         <div className="login">
 
-            <h1>Login</h1>
+            <h1>Signup</h1>
 
             <form action="POST">
                 <input type="email" onChange={(e) => { setEmail(e.target.value) }} placeholder="Email"  />
-                <input type="password" onChange={(e) => { setPassword(e.target.value) }} placeholder="Password"  />
+                <input type="password" onChange={(e) => { setPassword(e.target.value) }} placeholder="Password" />
                 <input type="submit" onClick={submit} />
 
             </form>
 
             <br />
-            <p>Or Create new account from here</p>
+            <p>OR</p>
             <br />
 
-            <Link to="/signup">Signup Page</Link>
+            <Link to="/">Login Page</Link>
 
         </div>
     )
