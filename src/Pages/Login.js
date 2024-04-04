@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
-
+import "./Login.css"
 
 function Login() {
 
@@ -19,10 +19,10 @@ function Login() {
                 email,password
             })
             .then(res=>{
-                if(res.data=="exist"){
+                if(res.data == "exist"){
                     history("/home",{state:{id:email}})
                 }
-                else if(res.data=="notexist"){
+                else if(res.data == "notexist"){
                     alert("User have not sign up")
                 }
             })
@@ -56,7 +56,7 @@ function Login() {
             <p>Or Create new account from here</p>
             <br />
 
-            <Link to="/signup">Signup Page</Link>
+            <Link to="Pages/signup">Signup Page</Link>
 
         </div>
     )

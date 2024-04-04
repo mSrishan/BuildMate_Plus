@@ -3,6 +3,7 @@ import './Home.css';
 
 import homeimg from '../Components/Assets/wall1.jpg';
 import ic1 from '../Components/Assets/ic1.png'; 
+import Navbar from '../Components/Navbar/Navbar';
 
 const Home = () => {
   const [searchType, setSearchType] = useState('Expert');
@@ -22,6 +23,8 @@ const Home = () => {
   };
 
   return (
+   <>
+     <Navbar/>
     <div className='home'>
       <img className='wall' src={homeimg} alt='Background' />
       <div className='content'>
@@ -52,6 +55,7 @@ const Home = () => {
         </div>
 
     </div>
+   </>
   );
 }
 

@@ -21,10 +21,14 @@ const Navbar = () => {
         </ul>
 
         <div className='navbtn'>
-          <Link to="/login">
+          <Link to="/Pages/login">
             <button className='signbtn'>Sign in</button>
           </Link>
-          <button className='joinbtn'>Join</button> 
+
+         <Link to="/Pages/signup">
+            <button className='joinbtn'>Join</button> 
+         </Link>
+         
         </div>
       </div>
     </section>
