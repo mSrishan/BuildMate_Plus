@@ -31,6 +31,23 @@ app.post("/signup", async (req, res) => {
     }
 });
 
+// GET method to retrieve user information
+app.get("/user/:email", async (req, res) => {
+    const userEmail = req.params.email;
+
+    try {
+        const user = await collection.findOne({ email: userEmail });
+
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(404).json({ message: "User not found" });
+        }
+    } catch (e) {
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
 app.listen(8000, () => {
     console.log("Server running on port 8000");
 });
