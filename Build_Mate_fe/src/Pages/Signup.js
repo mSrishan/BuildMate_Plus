@@ -14,6 +14,8 @@ function Signup() {
     async function submit(e) {
         e.preventDefault();
 
+       
+
         try {
             const response = await axios.post("http://localhost:8000/signup", {
                 email,
@@ -25,13 +27,8 @@ function Signup() {
 
             const responseData = response.data;
 
-            if (responseData === "exist") {
-                alert("User already exists");
-            } else if (responseData === "notexist") {
-                history("/home", { state: { id: email } });
-            } else {
-                alert("An unexpected error occurred");
-            }
+            console.log(responseData)
+
         } catch (error) {
             alert("An error occurred while processing your request");
             console.error("Error:", error);

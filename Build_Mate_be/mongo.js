@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/react-login-tut", {
+mongoose.connect("mongodb://localhost:27017/Build_Mate_Signin", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

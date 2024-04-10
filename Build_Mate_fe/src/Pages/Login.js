@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link ,Navigate} from "react-router-dom"
 import "./Login.css"
 
 function Login() {
@@ -13,29 +13,25 @@ function Login() {
     async function submit(e){
         e.preventDefault();
 
-        try{
+        try {
+            const response = await axios.post("http://localhost:8000/login", {
+                email,
+                password,
+                
+        
+            });
 
-            await axios.post("http://localhost:8000/",{
-                email,password
-            })
-            .then(res=>{
-                if(res.data == "exist"){
-                    history("/home",{state:{id:email}})
-                }
-                else if(res.data == "notexist"){
-                    alert("User have not sign up")
-                }
-            })
-            .catch(e=>{
-                alert("wrong details")
-                console.log(e);
-            })
+            const responseData = response.data;
 
+            console.log(responseData)
+
+        } catch (error) {
+            // alert("An error occurred while processing your request");
+            console.error("Error:", error);
         }
-        catch(e){
-            console.log(e);
 
-        }
+        
+       
 
     }
 

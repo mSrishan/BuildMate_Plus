@@ -6,11 +6,9 @@
 
 .navbar img{
     width: 150px;
-    border-color: wheat;
 }
 .nav-logo{
     display: flex;
-    background-color: rgba(255, 255, 255, 0.233);
     align-items: center;
     gap: 10px;
 }

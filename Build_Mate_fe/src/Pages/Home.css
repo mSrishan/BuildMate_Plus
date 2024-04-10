@@ -24,7 +24,7 @@
   z-index: 1;
 }
 
-.ic1 {
+.ic1 { /*icon image*/
   display: flex;
   margin-top: -600px;
   margin-left: -100px;
@@ -56,7 +56,6 @@
 .switch-buttons {
   display: flex;
   flex-direction: row;
-
   margin-bottom: 0px; /* Adjust spacing between switch bar and search bar */
 }
 
