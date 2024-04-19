@@ -1,0 +1,25 @@
+.home {
+    text-align: center;
+    padding: 50px ;
+    background-size: cover;
+    background-position: center;
+    color: white;
+  }
+  
+  .wall {
+    filter: brightness(35%);
+    height: 670px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 0 0 0 155px ;
+  }
+
+  .topic{
+    font-family: "Poppins", sans-serif;
+    font-size: 150px;
+    margin-top: -35px;
+    
+  }

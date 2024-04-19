@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link component
 import './Navbar.css';
-import logo from '../Assets/logo2.png';
+import logo from '../Assets/Logo_version2.0.png';
 
 const Navbar = () => {
   return (
@@ -12,24 +12,24 @@ const Navbar = () => {
         </div>
 
         <ul className='nav-menu'>
-          <li>Home</li>
-          <li>About</li>
-          <li>Projects</li>
-          <li>Blogs</li>
-          <li>Contact</li>
+          <li><Link to='/Pages/Home'>Home</Link></li>
+          <li><Link to='/Pages/About'>About</Link></li>
+          <li><Link to='/Pages/Projects'>Projects</Link></li>
+          <li><Link to='/Pages/BlogPage'>Blogs</Link></li>
+          <li><Link to='/Pages/Contact'>Contact</Link></li>
           <li>English</li>
-        </ul>
+        
 
         <div className='navbtn'>
-          <Link to="/Pages/login">
+          <li><Link to="/Pages/login">
             <button className='signbtn'>Sign in</button>
-          </Link>
-
-         <Link to="/Pages/signup">
+          </Link></li></div>
+          <div className='navbtn'>
+         <li><Link to="/Pages/signup">
             <button className='joinbtn'>Join</button> 
-         </Link>
+         </Link></li>
          
-        </div>
+        </div></ul>
       </div>
     </section>
   );
