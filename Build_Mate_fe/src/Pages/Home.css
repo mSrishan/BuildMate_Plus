@@ -29,9 +29,10 @@
 .ic1 { /*icon image*/
   display: flex;
   margin-top: -600px;
-  margin-left: -100px;
+  margin-left: 30px;
   z-index: 1;
   transform: translateY(50%);
+  height: 500px;
 }
 
 .search-bar-container {
@@ -302,14 +303,15 @@
 }
 
 .ic2{
-  display: inline;
-  margin-top: 100px;
-  margin-left: 800px;
+  margin-top: 60px;
+  filter: blur(0.7px);
+  margin-right: -820px;
 }
 
 .wel-h{
   color: black;
   margin-top: -550px;
+  text-align: center;
 }
 
 .wel-p{
@@ -318,4 +320,153 @@
   margin-left: 500px;
   margin-right: 500px;
 }
+
+/* styles.css */
+
+.wel1 {
+  position: relative;
+  width:auto;
+  display:flex;
+  margin-left: 150px;
+
+  
+}
+
+
+.we-h {
+  font-size: 18px; /* Adjust as needed */
+  margin-bottom: 10px; /* Adjust as needed */
+  color: black;
+}
+
+.we-p{
+  font-size: 14px; /* Adjust as needed */
+  text-align: center;
+  color:black;
+}
+
+.we-c{
+  margin: 10px; /* Adjust as needed */
+}
+
+.re-con{
+  background-color: #d9d9d9;
+  position: absolute;
+  margin-top: 220px;
+  width: 1473px;
+  margin-left: -100px;
+  height: 500px;
+}
+
+.re-h{
+  color: black;
+  text-align: center;
+  margin-left: 500px;
+  margin-right: 500px;
+}
+
+.con-1{
+  background-color: white;
+  width: 328px;
+  height: 210px;
+  margin-left: 250px;
+  margin-top: 105px;
+  color: #0D113E;
+  border-radius: 31px;
+}
+
+.con-2{
+  background-color: white;
+  width: 328px;
+  height: 210px;
+  margin-left: 621px;
+  margin-top: -205px;
+  color: #0D113E;
+  border-radius: 31px;
+}
+
+.con-3{
+  background-color: white;
+  width: 328px;
+  height: 210px;
+  margin-left: 992px;
+  margin-top: -232px;
+  color: #0D113E;
+  border-radius: 31px;
+}
+
+.re{
+  font-size: 12px;
+}
+
+.line-re{
+font-weight:1000;
+}
+
+.re-name{
+  font-size: 13px;
+  margin-top: -16px;
+  font-weight: 700;
+  margin-left: -202px;
+}
+
+.re-po{
+  font-size: 12px;
+  margin-top: -16px;
+  font-weight: 200;
+  margin-left: -218px;
+  
+}
+
+.round-con-1 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; 
+  overflow: hidden; 
+  border: 8px solid black; 
+  margin-left: 130px;
+
+}
+
+.round-con-1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.round-con-2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; 
+  overflow: hidden; 
+  border: 8px solid black; 
+  margin-left: 130px;
+  margin-top: -54px;
+  
+}
+
+.round-con-2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.round-con-3 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; 
+  overflow: hidden; 
+  border: 8px solid black; 
+  margin-left: 130px;
+  margin-top: 22px;
+
+}
+
+.round-con-3 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+
 

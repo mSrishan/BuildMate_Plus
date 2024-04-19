@@ -6,8 +6,8 @@ import ic1 from '../Components/Assets/ic1.png';
 import Navbar from '../Components/Navbar/Navbar';
 import h1 from '../Components/Assets/h1.png';
 import h2 from '../Components/Assets/h2.png';
-import ic2 from '../Components/Assets/ic2.png'
-
+import ic2 from '../Components/Assets/ic2.png';
+import pic1 from '../Components/Assets/pic1.jpg';
 const Home = () => {
   const [searchType, setSearchType] = useState('Expert');
   const [searchQuery, setSearchQuery] = useState('');
@@ -100,6 +100,71 @@ const Home = () => {
              <h1 className='wel-h'>Welcome to BuildMate+</h1>
              <p className='wel-p'>Choose BuildMate+ for your construction needs and unlock a world of possibilities. Join our thriving community of builders, designers, and dreamers, and let's build the future together.</p>
              </div>
+
+             <div className="wel1">
+             <div className='we-c'>
+             <h2 className="we-h">Dream Project Matchmaking</h2>
+             <p className="we-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
+             </div>
+             <div className="wel1">
+             <div className='we-c'>
+             <h2 className="we-h">Streamlined Communication</h2>
+             <p className="we-p">Seamlessly communicate and collaborate with your team or clients, ensuring everyone is on the same page from start to finish.</p>
+             </div>
+             </div>
+
+             <div className="wel1">
+             <div className='we-c'>
+             <h2 className="we-h">Seamless 3D Design Integration</h2>
+             <p className="we-p">Visualize your dream construction projects with our advanced 3D modeling tools, ensuring your vision comes to life exactly as you imagine.</p>
+             </div>
+             </div>
+
+             <div className="wel1">
+             <div className='we-c'>
+             <h2 className="we-h">Transparent Progress Tracking</h2>
+             <p className="we-p">Stay updated on your project's progress with real-time tracking and reporting features, giving you peace of mind and control.</p>
+             </div>
+             </div>
+
+             <div className='re-con'>
+             <h1 className='re-h'>We care about our customer experience too </h1>
+             <div className="con-1">
+             <div className="round-con-1">
+             <img src={pic1} alt="Image" />
+             </div>
+                <p className='re'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed.</p>
+                <p className='line-re'>______________________________________________</p>
+                <p className='re-name'>John Walker</p>
+                <p className='re-po'>Architecture</p>
+              </div>
+              
+
+              <div className='con-2'>
+              <div className="round-con-2">
+              <img src={pic1} alt="Image" />
+              </div>
+              <p className='re'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed.</p>
+              <p className='line-re'>______________________________________________</p>
+              <p className='re-name'>John Walker</p>
+              <p className='re-po'>Architecture</p>
+              </div>
+
+              <div className='con-3'>
+              <div className="round-con-3">
+              <img src={pic1} alt="Image" />
+              </div>
+              <p className='re'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed.</p>
+              <p className='line-re'>______________________________________________</p>
+              <p className='re-name'>John Walker</p>
+              <p className='re-po'>Architecture</p>
+              </div>
+
+            
+             </div>    
+                    
+
+    </div>
                   
         
       </div>

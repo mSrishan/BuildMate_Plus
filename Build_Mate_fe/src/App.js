@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import Home from "./Pages/Home.js";
+import Connect from  "./Pages/Connect.js";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/Pages/home" element={<Home/>}/>
           <Route path="/Pages/login" element={<Login/>}/>
           <Route path="/Pages/signup" element={<Signup/>}/>
+          <Route path="/Pages/Connect" element={<Connect/>}/>
         </Routes>
       </Router>
     </div>
