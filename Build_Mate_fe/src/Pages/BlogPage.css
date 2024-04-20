@@ -1,14 +1,15 @@
 .home {
-    text-align: center;
+    font-family: "Poppins",sans-serif;
     padding: 50px ;
     background-size: cover;
     background-position: center;
     color: white;
   }
   
-  .wall {
+  .wall1 {
     filter: brightness(35%);
     height: 670px;
+    width: 100%;
     object-fit: cover;
     position: absolute;
     top: 0;
@@ -16,10 +17,31 @@
     z-index: -1;
     border-radius: 0 0 0 155px ;
   }
-
   .topic{
     font-family: "Poppins", sans-serif;
     font-size: 150px;
-    margin-top: -35px;
+    margin-top: -75px;
     
+  }
+  .subtopic{
+    font-size: 25px;
+    font-weight: 500;
+    width: 830px;
+    height: 120px;
+    background-color: #0D113E;
+    border-radius: 25px;
+    position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    align-content: center;
+    margin-top: 6.5%;
+  }
+  .topic01{
+    font-family: "Poppins",sans-serif;
+    font-size: 25px;
+    color: black;
+    font-weight: 700;
+    margin-top: 15%;
+    position: absolute;
+  left: 7%;
   }

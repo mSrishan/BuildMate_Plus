@@ -9,12 +9,21 @@ const BlogPage = () => {
         <>
           <Navbar/>
          <div className='home'>
-           <img className='wall' src={blogimg} alt='Background' />
+           <img className='wall1' src={blogimg} alt='Background' />
            <div className='content'>
              <h1 className='topic'>Blogs</h1>
              <p className='subtopic'>Breaking Into Product design :<br></br>Advice from Untitled founder, james</p>
+             <p className='topic01'>Recent Blog Posts</p>
+             <div className='filter'>
+              <ul>
+                <li className='li1'>Filter</li>
+                <li className='li2'>Search</li>
+              </ul>
+              <p className='p1'>Filter</p>
+              <p className='p2'>Search</p>
+             </div>
            </div>
-     
+           
          </div>
         </>
        );
