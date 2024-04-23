@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate, Link ,Navigate} from "react-router-dom"
 import "./Login.css"
-
-import login1 from '../Components/Assets/login1.jpg';
 function Login() {
 
     const history=useNavigate();
@@ -39,8 +37,6 @@ function Login() {
 
     return (
         <div className="login">
-        
-        <img className="login1" src={login1} alt="background" />
 
             <h1>Login</h1>
 
@@ -55,7 +51,7 @@ function Login() {
             <p>Or Create new account from here</p>
             <br />
 
-            <Link to="Pages/signup">Signup Page</Link>
+            <Link to="/Pages/signup">Signup Page</Link>
 
         </div>
     )

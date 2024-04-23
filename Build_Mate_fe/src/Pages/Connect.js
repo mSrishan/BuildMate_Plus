@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import './Connect.css'
 
 import c1 from '../Components/Assets/back12.png';
+import Navbar from '../Components/Navbar/Navbar';
 export default function Connect() {
   return (
     <div>
+
+    <Navbar/>
       <div className="image-container">
       <img src={c1} alt="Background" />
       <div className="white-container">

@@ -8,7 +8,10 @@ import h1 from '../Components/Assets/h1.png';
 import h2 from '../Components/Assets/h2.png';
 import ic2 from '../Components/Assets/ic2.png';
 import pic1 from '../Components/Assets/pic1.jpg';
+import { Route } from 'react-router-dom';
+
 const Home = () => {
+
   const [searchType, setSearchType] = useState('Expert');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -27,7 +30,7 @@ const Home = () => {
 
   return (
    <>
-     <Navbar/>
+   <Navbar/>
     <div className='home'>
       <img className='wall' src={homeimg} alt='Background' />
       <div className='content'>
