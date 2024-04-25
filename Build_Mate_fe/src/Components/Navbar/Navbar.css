@@ -1,11 +1,11 @@
 .navbar{
     display: flex;
     justify-content: space-around;
-    padding: 16px;
+    padding: 5px 16px;
 }
 
 .navbar img{
-    width: 150px;
+    width: 200px;
 }
 .nav-logo{
     display: flex;
@@ -23,9 +23,10 @@
     margin-left: 230px;
 }
 .nav-menu li{
+    font-family: "Poppins", sans-serif;
     color: white;
     display: flex;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
     flex-direction: column;
     align-items: right;
@@ -35,7 +36,8 @@
 
 }
 .navbtn{
-    margin-top: 10px;
+    margin-left: 4px;
+    font-family: "Poppins", sans-serif;
 }
 
 .joinbtn {
@@ -45,9 +47,10 @@
   width: 100px;
   outline: none;
   border-radius: 70px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
 }
 .signbtn{
   background-color: rgba(255, 255, 255, 0);
@@ -57,11 +60,16 @@
   height: 35px;
   outline: none;
   border-radius: 70px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
 }
 .navbar button:active{
     color: rgb(12, 92, 212);
     z-index: 5;
+}
+.navbar a{
+    text-decoration: none;
+    color: white;
 }

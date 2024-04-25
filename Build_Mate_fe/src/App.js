@@ -1,12 +1,13 @@
-// import './App.css'
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from 'react';
+import React from 'react';
+
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
-import Home from "./Pages/Home.js";
-import Connect from  "./Pages/Connect.js";
-import Contact from "./Pages/Contact.js";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Project from "./Pages/Projects"; // Corrected import D:\campus\Sem 4\BuildMate+ Project\BuildMate_Plus\Build_Mate_fe\src\Pages\Projects.js
+import BlogPage from "./Pages/BlogPage";
+import Contact from "./Pages/Contact";
 
 
 function App() {
@@ -14,11 +15,13 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/Pages/home" element={<Home/>}/>
-          <Route path="/Pages/login" element={<Login/>}/>
-          <Route path="/Pages/signup" element={<Signup/>}/>
-          <Route path="/Pages/Connect" element={<Connect/>}/>
-          <Route path="/Pages/Contact" element={<Contact/>}/>
+          <Route path="/Pages/Home" element={<Home />} />
+          <Route path="/Pages/Login" element={<Login />} />
+          <Route path="/Pages/Signup" element={<Signup />} />
+          <Route path="/Pages/About" element={<About />} />
+          <Route path="/Pages/Projects" element={<Project />} />
+          <Route path="/Pages/BlogPage" element={<BlogPage />} />
+          <Route path="/Pages/Contact" element={<Contact />} />
         </Routes>
       </Router>
     </div>
