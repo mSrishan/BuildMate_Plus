@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
-import { HomeRounded, CloseRounded } from "@mui/icons-material";
+import { HomeRounded, CloseRounded, FavoriteRounded ,SearchRounded} from "@mui/icons-material";
 
 const MenuContainer = styled.div`
     width: 125px; /* Set the width to 125px */
@@ -66,14 +66,16 @@ const menuItems = [
      name:"Dashboard",   
      icon:<HomeRounded/>} ,
      
-     {link:"/Pages/Search",
-     name:"Dashboard",   
-     icon:<HomeRounded/>} ,
+     {link:"/search",
+     name:"Search",   
+     icon:<SearchRounded/>} ,
 
-     {link:"/Pages/Favorite",
-     name:"Dashboard",   
-     icon:<HomeRounded/>} ,
+     {link:"/favorite",
+     name:"Favorite",   
+     icon:<FavoriteRounded/>} ,
 ];
+
+
 
 const Sidebar = () => {
     return (
@@ -82,8 +84,8 @@ const Sidebar = () => {
                 <CloseIconContainer>
                     <CloseRounded />
                 </CloseIconContainer>
-                {menuItems.map((item, index) => (
-                    <Link key={index} to={item.link}>
+                {menuItems.map((item) => (
+                    <Link to={item.link}>
                         <Elements>
                             {item.icon}
                             <NavText>{item.name}</NavText>
