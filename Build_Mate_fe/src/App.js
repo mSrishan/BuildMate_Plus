@@ -6,7 +6,6 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import Home from "./Pages/Home.js";
 
-
 function App() {
   return (
     <div className="App">

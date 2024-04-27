@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import './Signup.css';
+
+import si1 from "../Components/Assets/sign-img.jpg";
 
 function Signup() {
     const history = useNavigate();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [fullName, setFullName] = useState("");
-    const [username, setUsername] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastname, setLastname] = useState("");
+    
 
     async function submit(e) {
         e.preventDefault();
@@ -20,9 +23,9 @@ function Signup() {
             const response = await axios.post("http://localhost:8000/signup", {
                 email,
                 password,
-                fullName,
-                username,
-                phoneNumber
+                firstName,
+                lastname
+                
             });
 
             const responseData = response.data;
@@ -37,24 +40,30 @@ function Signup() {
 
     return (
         <div className="signup">
-            <h1>Signup</h1>
+        <img className="sign-img" src={si1} alt="Background"/>
+        <div className="signup-locate">
+        <h1 className="head1">Create New Account</h1>
+        <p className="par1">Please fill in your basic info</p>
             <form onSubmit={submit}>
                 <input
+                    className="signup-Fname"
                     type="text"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder="Full Name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder="First Name"
                     required
                 />
                 <input
                     type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Username"
+                    className="signup-Lname"
+                    value={lastname}
+                    onChange={(e) => setLastname(e.target.value)}
+                    placeholder="Last Name"
                     required
                 />
                 <input
                     type="email"
+                    className="signup-email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
@@ -62,22 +71,18 @@ function Signup() {
                 />
                 <input
                     type="password"
+                    className="signup-password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
                     required
                 />
-                <input
-                    type="tel"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    placeholder="Phone Number"
-                    required
-                />
-                <button type="submit">Signup</button>
+                <button className="btn" type="submit">CREATE ACCOUNT</button>
             </form>
-            <p>OR</p>
-            <Link to="/">Login Page</Link>
+            <p className="par2">Already A Member ?</p>
+            <Link to="/">Log In</Link>
+        </div>
+           
         </div>
     );
 }
