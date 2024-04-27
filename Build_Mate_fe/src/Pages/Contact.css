@@ -69,6 +69,7 @@
   color: #FFFFFF;
   padding-left: 50px;
   padding-top: 10px;
+  
 }
 
 .contact-name-input {
@@ -80,6 +81,8 @@
   background-color: #FFFFFF;
   color: black;
   border: none;
+  position: relative;
+  z-index: 100;
   box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.336);
 }
 

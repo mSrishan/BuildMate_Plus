@@ -1,11 +1,8 @@
-// Contact.js
-
 import React, { useState } from "react";
 import './Contact.css';
-import Axios from 'axios'; // Import Axios library
 import Navbar from '../Components/Navbar/Navbar';
 import conta1 from '../Components/Assets/conta1.jpg';
-
+import axios from "axios";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -19,7 +16,8 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      await Axios.post('/api/contact', formData); // Send form data to backend
+      // Send form data to backend
+      await axios.post('http://localhost:8000/contact', formData);
       alert('Contact form submitted successfully');
       // Clear form fields after submission
       setFormData({
@@ -28,6 +26,7 @@ export default function Contact() {
         subject: "",
         message: ""
       });
+      
     } catch (error) {
       console.error('Error submitting contact form:', error);
       alert('Error submitting contact form. Please try again later.');
@@ -58,7 +57,7 @@ export default function Contact() {
             <div className="contact-subject">Your Subject</div>
             <input type="text" className="contact-subject-input" placeholder="Enter Your Subject" name="subject" value={formData.subject} onChange={handleChange} />
             <div className="contact-message">Your Message</div>
-            <input type="text" className="contact-message-input" placeholder="Enter Your Message" name="message" value={formData.message} onChange={handleChange} />
+            <textarea className="contact-message-input" placeholder="Enter Your Message" name="message" value={formData.message} onChange={handleChange}></textarea>
             <button className="contact-button" onClick={handleSubmit}>Submit</button>
           </div>
 
