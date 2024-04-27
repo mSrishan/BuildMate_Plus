@@ -3,7 +3,6 @@ const { MongoClient } = require("mongodb");
 const cors = require("cors");
 const app = express();
 const PORT = 8000;
-// const bcrypt = require("bcrypt");
 
 // MongoDB connection URI
 const MONGO_URI = "mongodb://localhost:27017";
@@ -91,6 +90,21 @@ app.get("/user/:email", async (req, res) => {
     } catch (error) {
         console.error("Error retrieving user information:", error);
         res.status(500).json({ message: "Error retrieving user information" });
+    }
+});
+
+// Handle contact form submissions
+app.post("/api/contact", async (req, res) => {
+    const { name, email, subject, message } = req.body;
+
+    try {
+        const collection = await connectToMongoDB();
+        const data = { name, email, subject, message };
+        await collection.insertOne(data);
+        res.status(200).json({ message: "Contact form submitted successfully" });
+    } catch (error) {
+        console.error("Error submitting contact form:", error);
+        res.status(500).json({ message: "Error submitting contact form" });
     }
 });
 

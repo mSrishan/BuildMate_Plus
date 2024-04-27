@@ -46,13 +46,11 @@ function Login() {
                 <input type="submit" onClick={submit} />
 
             </form>
-
             <br />
             <p>Or Create new account from here</p>
             <br />
 
             <Link to="/Pages/signup">Signup Page</Link>
-
         </div>
     )
 }
