@@ -30,7 +30,7 @@ async function connectToMongoDB() {
 
 // Handle user sign-up
 app.post("/signup", async (req, res) => {
-    const { email, password, fullName, username, phoneNumber } = req.body;
+    const { email, password, firstName, lastName} = req.body;
 
     try {
         const collection = await connectToMongoDB();
@@ -40,7 +40,7 @@ app.post("/signup", async (req, res) => {
             res.json("exist");
         } else {
             // const hashedPassword = await bcrypt.hash(password, 10);
-            const data = { email, password, fullName, username, phoneNumber };
+            const data = { email, password, firstName, lastName}; // Use hashedPassword
             await collection.insertOne(data);
             res.json("notexist");
         }
