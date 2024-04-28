@@ -19,15 +19,11 @@ const newSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    fullName: {
+    firstName: {
         type: String,
         required: true
     },
     lastName: {
-        type: String,
-        required: true
-    },
-    phoneNumber: {
         type: String,
         required: true
     }
