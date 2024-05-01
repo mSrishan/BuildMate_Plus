@@ -47,7 +47,7 @@ async function connectToMongoDBContact() {
 
 // Handle user sign-up
 app.post("/signup", async (req, res) => {
-    const { email, password, firstName, lastrname} = req.body;
+    const { email, password, firstName, lastname} = req.body;
 
     try {
         const collection = await connectToMongoDB();
@@ -57,7 +57,7 @@ app.post("/signup", async (req, res) => {
             res.json("exist");
         } else {
             // const hashedPassword = await bcrypt.hash(password, 10);
-            const data = { email, password, firstName, lastrname}; // Use hashedPassword
+            const data = { email, password, firstName, lastname}; // Use hashedPassword
             await collection.insertOne(data);
             res.json("notexist");
         }
@@ -122,7 +122,7 @@ app.post("/contact", async (req, res) => {
             
             const data = { name, email, subject, message }; 
             await collection.insertOne(data);
-           
+            res.json({ message: "successfullys signing up" });
         
     } catch (error) {
         console.error("Error signing up:", error);

@@ -64,7 +64,6 @@ function Signup() {
 
     return (
         <div className="signup">
-            <h1>Signup</h1>
             <img className="sign-img" src={si1} alt="Background"/>
             <div className="signup-locate">
             <h1 className="head1">Create New Account</h1>
@@ -84,7 +83,7 @@ function Signup() {
                     type="text"
                     value={lastname}
                     onChange={(e) => setLName(e.target.value)}
-                    placeholder="lastname"
+                    placeholder="Last Name"
                     required
                 />
                 <input
@@ -104,10 +103,10 @@ function Signup() {
                     required
                 />
 
-                <button type="submit">Signup</button>
+                <button type="submit" className="btn">Signup</button>
             </form>
-            <p>OR</p>
-            <Link to="/Pages/Login">Login Page</Link>
+            <p className="signup-para2">Already a member ?</p>
+            <Link to="/Pages/Login" className="signup-log">Login Page</Link>
         </div>
         </div>
     );

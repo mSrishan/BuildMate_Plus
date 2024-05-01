@@ -3,6 +3,7 @@ import './Contact.css';
 import Navbar from '../Components/Navbar/Navbar';
 import conta1 from '../Components/Assets/conta1.jpg';
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -15,10 +16,11 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
+    try{
       // Send form data to backend
       await axios.post('http://localhost:8000/contact', formData);
-      alert('Contact form submitted successfully');
+
+      console.log("656+5")
       // Clear form fields after submission
       setFormData({
         name: "",
@@ -26,7 +28,13 @@ export default function Contact() {
         subject: "",
         message: ""
       });
-      
+      Swal.fire({
+        icon: 'success',
+        title: 'Successful!',
+        text: 'Your Message Sent Successfully...',
+        confirmButtonText: 'OK'
+    })
+
     } catch (error) {
       console.error('Error submitting contact form:', error);
       alert('Error submitting contact form. Please try again later.');
@@ -42,7 +50,7 @@ export default function Contact() {
 
   return (
     <div>
-      <Navbar/>
+    <Navbar/>
       <div className="contact-image-container">
         <img src={conta1} alt="Background" />
 

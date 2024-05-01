@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-around;
     padding: 5px 16px;
+    z-index: 10;
 }
 
 .navbar img{

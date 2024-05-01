@@ -62,6 +62,7 @@
 }
 
 .signup-email {
+    position: relative;
     font-family: Poppins;
     font-size: 17px;
     font-weight: 400;
