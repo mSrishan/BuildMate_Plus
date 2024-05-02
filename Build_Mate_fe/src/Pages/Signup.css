@@ -1,0 +1,100 @@
+.signup {
+    background-color: #0D113E;
+    height: 731.5px;
+    margin-top: -1px;
+}
+
+.sign-img {
+    margin-top: 75px;
+    height: 582.7px;
+    width: 1004.5px;
+    border-radius: 103px;
+    box-shadow: 0 0 10px #000;
+}
+
+.signup-locate {
+    margin-top: -550px;
+    margin-left: 550px;
+}
+
+.head1 {
+    font-family: Poppins, sans-serif;
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 0.5;
+    letter-spacing: 0.07em;
+    text-align: left;
+    
+}
+
+.par1 {
+    font-family: Poppins, sans-serif;
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 0.5;
+    letter-spacing: 0.1em;
+    text-align: left;
+
+}
+
+.signup-Fname {
+    font-family: Poppins;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 25.5px;
+    letter-spacing: 0.12em;
+    text-align: center; 
+    border-radius: 18px;
+    color: #0D113E;   
+    }
+
+.signup-Lname {
+    font-family: Poppins;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 25.5px;
+    letter-spacing: 0.12em;
+    text-align: center; 
+    border-radius: 18px;
+    color: #0D113E;   
+    
+}
+
+.signup-email {
+    position: relative;
+    font-family: Poppins;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 25.5px;
+    letter-spacing: 0.12em;
+    text-align: center; 
+    border-radius: 18px;
+    color: #0D113E;
+}
+
+.signup-password {
+    font-family: Poppins;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 25.5px;
+    letter-spacing: 0.12em;
+    text-align: center; 
+    border-radius: 18px;
+    color: #0D113E;
+}
+
+.btn {
+    color: #0D113E;
+    font-family: Poppins;
+    font-size: 17px;
+}
+
+.par2 {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.27em;
+    text-align: center;
+    color: #0D113E;
+}

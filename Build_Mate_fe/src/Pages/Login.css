@@ -1,109 +1,47 @@
 .login {
-  width: 400px;
+  width: 300px;
   margin: auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #fff;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .login h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.login form {
-  display: flex;
-  flex-direction: column;
+  color: #333;
 }
 
 .login input[type="email"],
 .login input[type="password"] {
   width: 100%;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.login input[type="submit"] {
+.login button {
   width: 100%;
   padding: 10px;
-  border: none;
-  border-radius: 5px;
   background-color: #007bff;
-  color: #fff;
+  color: white;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.login input[type="submit"]:hover {
+.login button:hover {
   background-color: #0056b3;
 }
 
 .login p {
-  text-align: center;
-  margin-top: 20px;
+  color: #666;
+  margin-bottom: 10px;
 }
 
 .login a {
-  display: block;
-  text-align: center;
-}
-
-/*--------------signup------------------------*/
-
-.signup {
-  text-align: center;
-  margin-top: 50px;
-  width: 400px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #fff;
-}
-
-.signup h1 {
-  color: #333;
-}
-
-.signup form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.signup input {
-  width: 300px;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-}
-
-.signup button {
-  width: 300px;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
-}
-
-.signup button:hover {
-  background-color: #0056b3;
-}
-
-.signup p {
-  color: #555;
-}
-
-.signup a {
-  color: #007bff;
+  color: #f90;
   text-decoration: none;
 }

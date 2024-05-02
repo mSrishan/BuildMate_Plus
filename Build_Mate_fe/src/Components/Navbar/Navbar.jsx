@@ -15,7 +15,7 @@ const Navbar = () => {
         <li><Link to="/Pages/home">Home</Link></li>
         <li><Link to="/Pages/about">About</Link></li>
         <li><Link to="/Pages/projects">Projects</Link></li>
-        <li><Link to="/Pages/blogs">Blogs</Link></li>
+        <li><Link to="/Pages/BlogPage">Blogs</Link></li>
         <li><Link to="/Pages/contact">Contact</Link></li>
 
         <div className='navbtn'>
