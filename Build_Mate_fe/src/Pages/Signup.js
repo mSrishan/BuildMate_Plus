@@ -77,7 +77,7 @@ function Signup() {
                 <button type="submit">Signup</button>
             </form>
             <p>OR</p>
-            <Link to="/">Login Page</Link>
+            <Link to="/Pages/Login">Login Page</Link>
         </div>
     );
 }

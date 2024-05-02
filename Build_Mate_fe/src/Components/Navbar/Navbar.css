@@ -67,6 +67,7 @@
 }
 .navbar button:active{
     color: rgb(12, 92, 212);
+    z-index: 5;
 }
 .navbar a{
     text-decoration: none;

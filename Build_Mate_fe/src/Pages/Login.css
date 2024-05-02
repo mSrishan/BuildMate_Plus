@@ -56,6 +56,12 @@
 .signup {
   text-align: center;
   margin-top: 50px;
+  width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
 .signup h1 {

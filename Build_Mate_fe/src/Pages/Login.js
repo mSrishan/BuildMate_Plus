@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate, Link ,Navigate} from "react-router-dom"
 import "./Login.css"
-
 function Login() {
 
     const history=useNavigate();
@@ -52,7 +51,7 @@ function Login() {
             <p>Or Create new account from here</p>
             <br />
 
-            <Link to="Pages/signup">Signup Page</Link>
+            <Link to="/Pages/signup">Signup Page</Link>
 
         </div>
     )
