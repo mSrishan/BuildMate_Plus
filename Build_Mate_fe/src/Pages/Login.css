@@ -1,15 +1,26 @@
-.login {
-  width: 400px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #fff;
+
+.login_page {
+  background-color: #FF6B00;
+  background-size: cover;
+  font-family: "Poppins", sans-serif;
+  height: 100vh; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
 }
 
-.login h1 {
-  text-align: center;
-  margin-bottom: 20px;
+.login {
+  width: 1100px;
+  height: 620px;
+  padding: 20px;
+  border-radius: 100px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1)), url("../Components/Assets/pexels-rezwan-1216589.jpg");
+  background-size: cover;
+  position: relative;
+}
+.login1{
+  width: 480px;
+  margin: 0 10%;
 }
 
 .login form {
@@ -19,26 +30,19 @@
 
 .login input[type="email"],
 .login input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  text-align: center;
+  
 }
 
 .login input[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
+  background-color: #0D113E;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .login input[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #0D113E;
 }
 
 .login p {
@@ -47,57 +51,125 @@
 }
 
 .login a {
-  display: block;
-  text-align: center;
-}
-
-/*--------------signup------------------------*/
-
-.signup {
-  text-align: center;
-  margin-top: 50px;
-}
-
-.signup h1 {
-  color: #333;
-}
-
-.signup form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.signup input {
-  width: 300px;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-}
-
-.signup button {
-  width: 300px;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
-}
-
-.signup button:hover {
-  background-color: #0056b3;
-}
-
-.signup p {
-  color: #555;
-}
-
-.signup a {
-  color: #007bff;
+  color: white; 
   text-decoration: none;
+}
+.login1 h1{
+  text-align: center;
+  font-size: 55px;
+  font-weight: 900;
+  margin-bottom: 0px;
+  
+}
+.login1 h6{
+  text-align: left;
+  font-size: 20px;
+  margin: -19px 0 30px 45px;
+  letter-spacing: 1.5px;
+  font-weight: 300;
+}
+.googleLogin {
+  background-color: #fff;
+  width: 95%;
+  margin: 0 auto 10px auto; /* Center the button horizontally */
+  height: 50px;
+  border: none;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+ .inputs input{
+  background-color: #fff;
+  width: 95%;
+  margin: 0 auto 10px auto;
+  height: 50px;
+  border: none;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  gap: 35px;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+ }
+
+ .inputs label{
+  padding-left: 12px;
+  font-size: 20px;
+ }
+
+ .bracker {
+  display: flex;
+  align-items: center;
+  width: 95%;
+  margin: 20px auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.bracker::before,
+.bracker::after {
+  content: "";
+  flex: 1;
+  border-bottom: 2px solid #000000;
+}
+
+.bracker p {
+  margin: 0 10px;
+  color: #000000;
+  font-weight: bold;
+}
+.input-container {
+  width: 95%;
+  margin: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-container input {
+  padding-right: 30px; /* Space for the image */
+}
+
+.input-container img {
+  position: absolute;
+  top:40%;
+  right: 5%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  align-self: center;
+}
+
+@media (max-width: 768px) {
+  .login {
+    height: auto; /* Allow height to adjust based on content */
+    border-radius: 50px; /* Reduced border radius for smaller screens */
+  }
+
+  .login1{
+    max-width: 90%; /* Adjusted max-width for smaller screens */
+  }
+}
+
+/* Media query for screens smaller than 576px */
+@media (max-width: 576px) {
+  .login_page {
+    padding: 20px; /* Added padding for smaller screens */
+  }
+
+  .login {
+    padding: 10px; /* Reduced padding for smaller screens */
+  }
+
+  .login1 h1{
+    font-size: 40px; /* Reduced font size for smaller screens */
+  }
 }

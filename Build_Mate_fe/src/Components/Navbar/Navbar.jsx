@@ -12,13 +12,12 @@ const Navbar = () => {
         </div>
 
         <ul className='nav-menu'>
-          <li><Link to='/Pages/Home'>Home</Link></li>
-          <li><Link to='/Pages/About'>About</Link></li>
-          <li><Link to='/Pages/Projects'>Projects</Link></li>
-          <li><Link to='/Pages/BlogPage'>Blogs</Link></li>
-          <li><Link to='/Pages/Contact'>Contact</Link></li>
+          <li>Home</li>
+          <li>About</li>
+          <li>Projects</li>
+          <li>Blogs</li>
+          <li>Contact</li>
           <li>English</li>
-        
 
         <div className='navbtn'>
           <li><Link to="/Pages/login">
@@ -29,7 +28,8 @@ const Navbar = () => {
             <button className='joinbtn'>Join</button> 
          </Link></li>
          
-        </div></ul>
+        </div>
+        </ul>
       </div>
     </section>
   );
