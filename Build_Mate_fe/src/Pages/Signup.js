@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import Swal from 'sweetalert2';
-import './Signup.css'
+import './Signup.css';
 import si1 from "../Components/Assets/sign-img.jpg";
 
 function Signup() {
@@ -21,7 +21,7 @@ function Signup() {
                 email,
                 password,
                 firstName,
-                lastName,
+                lastName
             });
 
             const responseData = response.data;
@@ -72,7 +72,6 @@ function Signup() {
             <form onSubmit={submit}>
                 <input
                     className="signup-Fname"
-                    className="signup-Fname"
                     type="text"
                     value={firstName}
                     onChange={(e) => setFName(e.target.value)}
@@ -104,8 +103,6 @@ function Signup() {
                     required
                 />
                 <button className="btn" type="submit">CREATE ACCOUNT</button>
-
-                <button type="submit" className="btn">Signup</button>
             </form>
             <p className="signup-para2">Already a member ?</p>
             <Link to="/Pages/Login" className="signup-log">Login Page</Link>
