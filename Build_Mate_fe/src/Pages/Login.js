@@ -21,7 +21,7 @@ function Login() {
             });
             Swal.fire({
                 icon: 'success',
-                title: 'LSuccess',
+                title: 'Success',
                 text: "You have logged successfully...",
                 confirmButtonText: 'Home'
             });

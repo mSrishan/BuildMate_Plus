@@ -7,9 +7,9 @@ const PORT = 8000;
 
 // MongoDB connection URI
 const MONGO_URI = "mongodb://localhost:27017";
-const DB_NAME = "Build_Mate_Signin";
-const COLLECTION_NAME = "users";
-const COLLECTION_NAME2 = "ContactUs";
+const DB_NAME = "Build_Mate";
+const COLLECTION1= "Users";
+const COLLECTION2 = "ContactUs";
 
 const ContactUs = require("./mongo"); // Import ContactUs model
 
@@ -23,7 +23,7 @@ async function connectToMongoDB() {
         await client.connect();
         console.log("Connected to MongoDB");
         const db = client.db(DB_NAME);
-        const collection = db.collection(COLLECTION_NAME);
+        const collection = db.collection(COLLECTION1);
         return collection;
     } catch (error) {
         console.error("Error connecting to MongoDB:", error);
@@ -37,7 +37,7 @@ async function connectToMongoDBContact() {
         await client.connect();
         console.log("Connected to MongoDB");
         const db = client.db(DB_NAME);
-        const collection = db.collection(COLLECTION_NAME2);
+        const collection = db.collection(COLLECTION2);
         return collection;
     } catch (error) {
         console.error("Error connecting to MongoDB:", error);
@@ -122,11 +122,11 @@ app.post("/contact", async (req, res) => {
             
             const data = { name, email, subject, message }; 
             await collection.insertOne(data);
-            res.json({ message: "successfullys signing up" });
+            res.json({ message: "successfully sent message" });
         
     } catch (error) {
         console.error("Error signing up:", error);
-        res.status(500).json({ message: "Error signing up" });
+        res.status(500).json({ message: "Error sending message" });
     }
 });
 

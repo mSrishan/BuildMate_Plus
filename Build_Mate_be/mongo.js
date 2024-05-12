@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/Build_Mate_Signin", {
+mongoose.connect("mongodb://localhost:27017/Build_Mate", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    lastname: {
+    lastName: {
         type: String,
         required: true
     },
@@ -52,7 +52,7 @@ const contactSchema = new mongoose.Schema({
 });
 
 // Create models based on the schemas
-const User = mongoose.model("users", userSchema);
+const User = mongoose.model("Users", userSchema);
 const ContactUs = mongoose.model("ContactUs", contactSchema);
 
 module.exports = { User, ContactUs };
