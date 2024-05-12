@@ -20,7 +20,7 @@ const Navbar = () => {
 
         <div className='navbtn'>
           <li><Link to="/Pages/login">
-            <button className='signbtn'>Sign in</button>
+            <button className='signbtn' style={{border:'none'}}>Sign in</button>
           </Link></li></div>
           <div className='navbtn'>
          <li><Link to="/Pages/signup">

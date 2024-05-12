@@ -1,0 +1,75 @@
+.footer{
+    font-family: "Poppins", sans-serif;
+    background-color: #FF6B00;
+    width: 100%;
+    display: flex;
+    color: white;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 3% 0;
+
+}
+.left-footer{
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+}
+.logoImage{
+    width: 60%;
+}
+.socilMedia{
+    display: flex;
+    justify-content: flex-start;
+     padding-left: 2%;
+     margin-top: 5%;
+
+}
+.mediaImg{
+    width: 35px;
+    filter: invert(100%);
+     margin-right: 8%;
+    cursor: pointer;
+}
+.mediaImg:hover{
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+}
+.middle-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.right-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+}
+.contact-info{
+    display: flex;
+    margin-top: 2%;
+    width: 100%;
+    align-items: stretch;
+}
+.contact-logo{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+.contact-detail{
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
+    justify-content: flex-start;
+
+}
+.c-logo{
+    width: 30px;
+    filter: invert(100%);
+    cursor: pointer;
+}
+.c-logo:hover{
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}
