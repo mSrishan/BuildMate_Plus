@@ -72,6 +72,7 @@ function Signup() {
             <form onSubmit={submit}>
                 <input
                     className="signup-Fname"
+                    className="signup-Fname"
                     type="text"
                     value={firstName}
                     onChange={(e) => setFName(e.target.value)}
@@ -102,6 +103,7 @@ function Signup() {
                     placeholder="Password"
                     required
                 />
+                <button className="btn" type="submit">CREATE ACCOUNT</button>
 
                 <button type="submit" className="btn">Signup</button>
             </form>

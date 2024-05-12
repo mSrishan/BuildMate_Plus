@@ -38,14 +38,15 @@
 }
 
 .signup-Fname {
+    width: 1%;
+    text-align: center;
+    border-radius: 18px;
+    color: #0D113E; 
     font-family: Poppins;
     font-size: 17px;
     font-weight: 400;
     line-height: 25.5px;
     letter-spacing: 0.12em;
-    text-align: center; 
-    border-radius: 18px;
-    color: #0D113E;   
     }
 
 .signup-Lname {
@@ -61,7 +62,6 @@
 }
 
 .signup-email {
-    position: relative;
     font-family: Poppins;
     font-size: 17px;
     font-weight: 400;
