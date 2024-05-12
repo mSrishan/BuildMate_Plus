@@ -12,12 +12,11 @@ const Navbar = () => {
         </div>
 
         <ul className='nav-menu'>
-          <li>Home</li>
-          <li>About</li>
-          <li>Projects</li>
-          <li>Blogs</li>
-          <li>Contact</li>
-          <li>English</li>
+        <li><Link to="/Pages/home">Home</Link></li>
+        <li><Link to="/Pages/about">About</Link></li>
+        <li><Link to="/Pages/projects">Projects</Link></li>
+        <li><Link to="/Pages/BlogPage">Blogs</Link></li>
+        <li><Link to="/Pages/contact">Contact</Link></li>
 
         <div className='navbtn'>
           <li><Link to="/Pages/login">

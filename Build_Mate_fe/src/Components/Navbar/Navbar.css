@@ -11,6 +11,13 @@
   }
   
   .nav-logo {
+    z-index: 10;
+}
+
+.navbar img{
+    width: 200px;
+}
+.nav-logo{
     display: flex;
     align-items: center;
     gap: 10px;

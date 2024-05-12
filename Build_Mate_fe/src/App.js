@@ -9,7 +9,6 @@ import Project from "./Pages/Projects"; // Corrected import D:\campus\Sem 4\Buil
 import BlogPage from "./Pages/BlogPage";
 import Contact from "./Pages/Contact";
 
-
 function App() {
   return (
     <div className="App">

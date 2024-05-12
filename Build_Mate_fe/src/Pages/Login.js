@@ -5,7 +5,7 @@ import "./Login.css";
 import googleimg from '../Components/Assets/pngegg.png';
 import openeye from '../Components/Assets/openeye.png';
 import closeeye from '../Components/Assets/closeeye.png';
-
+import Swal from "sweetalert2";
 
 function Login() {
     const history = useNavigate();
@@ -22,14 +22,25 @@ function Login() {
         try {
             const response = await axios.post("http://localhost:8000/login", {
                 email,
-                password,
+                password,                
+        
+            });
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "You have logged successfully...",
+                confirmButtonText: 'Home'
             });
 
-            const responseData = response.data;
-            console.log(responseData);
+            history("/Pages/Home");
 
         } catch (error) {
-            console.error("Error:", error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "Check Username and Password",
+                confirmButtonText: 'OK'
+            });
         }
     }
 

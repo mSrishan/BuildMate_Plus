@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/Build_Mate_Signin", {
+
+mongoose.connect("mongodb://localhost:27017/Build_Mate", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -10,7 +11,8 @@ mongoose.connect("mongodb://localhost:27017/Build_Mate_Signin", {
     console.error("MongoDB connection error:", err);
 });
 
-const newSchema = new mongoose.Schema({
+// Define the schema for user data
+const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true
@@ -19,20 +21,38 @@ const newSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    fullName: {
+    firstName: {
         type: String,
         required: true
     },
-    username: {
+    lastName: {
         type: String,
         required: true
     },
-    phoneNumber: {
+});
+
+// Define the schema for contact form data
+const contactSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    subject: {
+        type: String,
+        required: true
+    },
+    message: {
         type: String,
         required: true
     }
 });
 
-const collection = mongoose.model("collection", newSchema);
+// Create models based on the schemas
+const User = mongoose.model("Users", userSchema);
+const ContactUs = mongoose.model("ContactUs", contactSchema);
 
-module.exports = collection;
+module.exports = { User, ContactUs };
