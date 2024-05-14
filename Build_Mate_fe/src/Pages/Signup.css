@@ -1,100 +1,135 @@
-.signup {
+.signup{
+    position: absolute;
     background-color: #0D113E;
-    height: 731.5px;
-    margin-top: -1px;
+    background-size: cover;
+    height: 100%;
+}
+
+.sign-img-container {
+    position: relative;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+    width: 80%;
+    height: 600px;
+    border-radius: 100px;
+    box-shadow: 0 0 10px #000;
+    overflow: hidden; /* Hide overflow content (the gradient overlay will cover the entire image) */
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75)); /* Adjust the alpha value (last parameter) to control the opacity */
 }
 
 .sign-img {
-    margin-top: 75px;
-    height: 582.7px;
-    width: 1004.5px;
-    border-radius: 103px;
-    box-shadow: 0 0 10px #000;
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 .signup-locate {
-    margin-top: -550px;
-    margin-left: 550px;
+    position: relative;
+    z-index: 1;
+    text-align: right;
+    padding-right: 15%;
+    margin-top: -40%; /* Move the signup-locate above the sign-img-container */
 }
 
 .head1 {
     font-family: Poppins, sans-serif;
-    font-size: 50px;
+    color: #0D113E;
+    font-size: 45px;
     font-weight: 800;
     line-height: 0.5;
     letter-spacing: 0.07em;
-    text-align: left;
-    
 }
 
 .par1 {
     font-family: Poppins, sans-serif;
     font-size: 19px;
+    color: #0D113E;
     font-weight: 300;
     line-height: 0.5;
     letter-spacing: 0.1em;
-    text-align: left;
-
+    text-align: right;
+    margin-bottom: 5%;
 }
 
-.signup-Fname {
-    width: 1%;
+.signup-Fname,
+.signup-Lname {
+    width: 12%; /* Adjust as needed */
+    display: inline-block; /* Ensure Fname and Lname are on the same line */
     text-align: center;
     border-radius: 18px;
-    color: #0D113E; 
+    border-color: #ffff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    color: #0D113E;
     font-family: Poppins;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 400;
-    line-height: 25.5px;
+    line-height: 40px;
     letter-spacing: 0.12em;
-    }
-
-.signup-Lname {
-    font-family: Poppins;
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 25.5px;
-    letter-spacing: 0.12em;
-    text-align: center; 
+    margin-bottom: 30px; /* Add spacing between fields */
+}
+.signup-Fname{
+    margin-right: 4%;
+}
+.signup-email,
+.signup-password {
+    width: 40%; /* Adjust as needed */
+    display: inline-block; /* Ensure Fname and Lname are on the same line */
+    text-align: center;
     border-radius: 18px;
-    color: #0D113E;   
+    border-color: #ffffff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    color: #0D113E;
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+    margin-left: 70%;
     
 }
-
-.signup-email {
-    font-family: Poppins;
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 25.5px;
-    letter-spacing: 0.12em;
-    text-align: center; 
-    border-radius: 18px;
-    color: #0D113E;
-}
-
-.signup-password {
-    font-family: Poppins;
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 25.5px;
-    letter-spacing: 0.12em;
-    text-align: center; 
-    border-radius: 18px;
-    color: #0D113E;
+.row {
+    display: flex;
+    margin-bottom: 20px;
 }
 
 .btn {
-    color: #0D113E;
+    color: #ffffff;
     font-family: Poppins;
-    font-size: 17px;
+    font-weight: 900;
+    font-size: 15px;
+    letter-spacing: 2px;
+    border-radius: 18px;
+    padding: 10px 20px;
+    background-color:#FF6B00;
+    border: none;
+    cursor: pointer;
+    margin-right: 50px;
+    margin-top: -50px;
 }
 
-.par2 {
+.signup-para2 {
     font-family: Poppins;
     font-size: 16px;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0.27em;
-    text-align: center;
+    text-align: right;
     color: #0D113E;
+    margin-top: 20px;
+}
+
+.signup-log {
+    color: #FF6B00;;
+    text-decoration: none;
+    margin-left: 2%;
 }

@@ -64,10 +64,13 @@ function Signup() {
 
     return (
         <div className="signup">
-            <img className="sign-img" src={si1} alt="Background"/>
+            <div className="sign-img-container">
+                <div className="gradient-overlay"></div>
+                <img className="sign-img" src={si1} alt="Background"/>
+            </div>
             <div className="signup-locate">
             <h1 className="head1">Create New Account</h1>
-        <p className="par1">Please fill in your basic info</p>
+                  <p className="par1">Please fill in your basic info</p>
 
             <form onSubmit={submit}>
                 <input
@@ -86,26 +89,33 @@ function Signup() {
                     placeholder="Last Name"
                     required
                 />
-                <input
-                    className="signup-email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
-                    required
-                />
-                <input
-                    className="signup-password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                    required
-                />
-                <button className="btn" type="submit">CREATE ACCOUNT</button>
+                <div className="row">
+                    <input
+                        className="signup-email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email"
+                        required
+                    />
+                </div>
+                <div className="row">
+                    <input
+                        className="signup-password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        required
+                    />
+                </div>
+                <div className="btn-container">
+                    <button className="btn" type="submit">CREATE ACCOUNT</button>
+                </div>
             </form>
-            <p className="signup-para2">Already a member ?</p>
-            <Link to="/Pages/Login" className="signup-log">Login Page</Link>
+            <p className="signup-para2">Already a member ?
+            <Link to="/Pages/Login" className="signup-log">Log In</Link>
+            </p>
         </div>
         </div>
     );
