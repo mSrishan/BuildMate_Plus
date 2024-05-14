@@ -1,7 +1,16 @@
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-around;
     padding: 5px 16px;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+  }
+  
+  .navbar img {
+    width: 80%;
+    max-width: 300px; /* Limit the maximum width of the logo */
+  }
+  
+  .nav-logo {
     z-index: 10;
 }
 
@@ -12,65 +21,60 @@
     display: flex;
     align-items: center;
     gap: 10px;
-}
-.nav-menu{
+    margin-right: auto; /* Push the logo to the left */
+  }
+  
+  .nav-menu {
     display: flex;
     align-items: center;
-    list-style: flex;
-    gap: 50px;
+    list-style: none; /* Remove default list styles */
+    gap: 30px;
     color: white;
     font-size: 15px;
     font-weight: 500;
-    margin-left: 230px;
-}
-.nav-menu li{
+    margin-left: auto; /* Push the menu items to the right */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .nav-menu li {
     font-family: "Poppins", sans-serif;
     color: white;
-    display: flex;
     font-size: 18px;
     font-weight: 500;
-    flex-direction: column;
-    align-items: right;
-    justify-content: center;
-    gap: 3px;
     cursor: pointer;
-
-}
-.navbtn{
-    margin-left: 4px;
-    font-family: "Poppins", sans-serif;
-}
-
-.joinbtn {
-  background-color: rgb(10, 10, 54);
-  color: white;
-  height: 35px;
-  width: 100px;
-  outline: none;
-  border-radius: 70px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  font-family: "Poppins", sans-serif;
-}
-.signbtn{
-  background-color: rgba(255, 255, 255, 0);
-  color: white;
-  font-size: 15px;
-  border-color: rgba(255, 255, 255, 0);
-  height: 35px;
-  outline: none;
-  border-radius: 70px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  font-family: "Poppins", sans-serif;
-}
-.navbar button:active{
-    color: rgb(12, 92, 212);
-    z-index: 5;
-}
-.navbar a{
+  }
+  
+  .nav-menu li:last-child {
+    margin-right: 0; /* Remove margin from the last item */
+  }
+  
+  .nav-menu li a {
     text-decoration: none;
     color: white;
-}
+  }
+  
+  .joinbtn,
+  .signbtn {
+    height: 35px;
+    width: 100px;
+    border: none;
+    border-radius: 70px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column; /* Stack items vertically */
+      align-items: center; /* Center items horizontally */
+    }
+  
+    .nav-menu {
+      margin-top: 20px; /* Add space between logo and menu on small screens */
+      margin-left: 0; /* Reset margin for small screens */
+    }
+  }
+  
