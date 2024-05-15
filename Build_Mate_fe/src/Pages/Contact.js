@@ -49,7 +49,7 @@ export default function Contact() {
   };
 
   return (
-    <div>
+    <div className="contact">
     <Navbar/>
       <div className="contact-image-container">
         <img src={conta1} alt="Background" />

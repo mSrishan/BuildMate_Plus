@@ -44,7 +44,7 @@
     font-family: Poppins, sans-serif;
     color: #0D113E;
     font-size: 45px;
-    font-weight: 800;
+    font-weight: 1000;
     line-height: 0.5;
     letter-spacing: 0.07em;
 }
@@ -53,7 +53,7 @@
     font-family: Poppins, sans-serif;
     font-size: 19px;
     color: #0D113E;
-    font-weight: 300;
+    font-weight: 500;
     line-height: 0.5;
     letter-spacing: 0.1em;
     text-align: right;
@@ -62,7 +62,7 @@
 
 .signup-Fname,
 .signup-Lname {
-    width: 12%; /* Adjust as needed */
+    width: 20%; /* Adjust as needed */
     display: inline-block; /* Ensure Fname and Lname are on the same line */
     text-align: center;
     border-radius: 18px;
@@ -70,18 +70,18 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     color: #0D113E;
     font-family: Poppins;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 40px;
     letter-spacing: 0.12em;
     margin-bottom: 30px; /* Add spacing between fields */
 }
 .signup-Fname{
-    margin-right: 4%;
+    margin-right: 3%;
 }
 .signup-email,
 .signup-password {
-    width: 40%; /* Adjust as needed */
+    width: 100%; /* Adjust as needed */
     display: inline-block; /* Ensure Fname and Lname are on the same line */
     text-align: center;
     border-radius: 18px;
@@ -89,12 +89,12 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     color: #0D113E;
     font-family: Poppins;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 40px;
     letter-spacing: 0.12em;
     margin-bottom: 20px;
-    margin-left: 70%;
+    margin-left: 55%;
     
 }
 .row {
@@ -106,7 +106,7 @@
     color: #ffffff;
     font-family: Poppins;
     font-weight: 900;
-    font-size: 15px;
+    font-size: 20px;
     letter-spacing: 2px;
     border-radius: 18px;
     padding: 10px 20px;
@@ -119,8 +119,8 @@
 
 .signup-para2 {
     font-family: Poppins;
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 900;
     line-height: 24px;
     letter-spacing: 0.27em;
     text-align: right;
