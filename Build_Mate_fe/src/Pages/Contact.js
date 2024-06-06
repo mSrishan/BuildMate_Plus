@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Contact.css';
 import Navbar from '../Components/Navbar/Navbar';
 import conta1 from '../Components/Assets/conta1.jpg';
@@ -7,24 +7,27 @@ import Swal from 'sweetalert2';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
+    name: "",
     subject: "",
     message: ""
   });
 
+  useEffect(() => {
+    // Assuming email is retrieved from user context or authentication
+    const userEmail = "user@example.com"; // replace with actual method to get logged in user's email
+    setFormData(prevData => ({ ...prevData, email: userEmail }));
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try{
-      // Send form data to backend
-      await axios.post('http://localhost:8000/contact', formData);
+    try {
+      await axios.post('http://localhost:8000/api/contact', formData);
 
-      console.log("656+5")
-      // Clear form fields after submission
       setFormData({
         name: "",
-        email: "",
+        email: formData.email, // retain the user's email
         subject: "",
         message: ""
       });
@@ -33,11 +36,16 @@ export default function Contact() {
         title: 'Successful!',
         text: 'Your Message Sent Successfully...',
         confirmButtonText: 'OK'
-    })
+      });
 
     } catch (error) {
       console.error('Error submitting contact form:', error);
-      alert('Error submitting contact form. Please try again later.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error submitting contact form. Please try again later.',
+        confirmButtonText: 'OK'
+      });
     }
   };
 
@@ -50,7 +58,7 @@ export default function Contact() {
 
   return (
     <div className="contact">
-    <Navbar/>
+      <Navbar/>
       <div className="contact-image-container">
         <img src={conta1} alt="Background" />
 
@@ -61,7 +69,7 @@ export default function Contact() {
             <div className="contact-name">Your Name</div>
             <input type="text" className="contact-name-input" placeholder="Enter Your Name" name="name" value={formData.name} onChange={handleChange} />
             <div className="contact-email">Your Email</div>
-            <input type="email" className="contact-email-input" placeholder="Enter Your Email" name="email" value={formData.email} onChange={handleChange} />
+            <input type="email" className="contact-email-input" placeholder="Enter Your Email" name="email" value={formData.email} readOnly />
             <div className="contact-subject">Your Subject</div>
             <input type="text" className="contact-subject-input" placeholder="Enter Your Subject" name="subject" value={formData.subject} onChange={handleChange} />
             <div className="contact-message">Your Message</div>

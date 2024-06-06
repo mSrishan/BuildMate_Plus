@@ -1,67 +1,65 @@
-.contact{
-  font-family: Poppins;
-}
 .contact-image-container {
-  position: absolute;
-  background-size: cover;
-  object-fit: cover;
-  z-index: -100;
-  margin-bottom: -100px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  
 }
 
 .contact-image-container img {
-  width: 100%;
-  height: 100%;
+  display: block;
+  width:100%;
+  height: 900px;
+  margin-left: 0px;
+
 }
 
 .contact-white-container {
-  display: flex;
   position: absolute;
+  top: 100px;
+  left: 210px;
   width: 80%;
-  height: 60%;
-  left: 10%;
+  height: 85%;
   background-color: #ffffff68; /* Adjust the opacity as needed */
-  border-radius: 100px;
+  border-radius: 103px;
   z-index: 0;
   box-shadow: 3px 3px 3px 5px rgba(0, 0, 0, 0.466);
-  margin-top: -65%;
 }
 
 .contact-head {
   text-align: center;
   color: #0D113E;
+  padding-top: 40px;
   font-weight: bold;
-  font-size: 40px;
-  margin-left: 25%;
+  font-size: 45px;
 }
 
 .contact-orange-container {
+  top: 190px;
+  left: 75px;
   position: absolute;
   border-radius: 50px 0 0 50px;
   background-color: #FF6B00;
-  z-index: 100;
-  width: 50%;
-  height: 75%;
-  top:25%;
-  box-shadow: -3px 1px 5px 6px rgba(0, 0, 0, 0.5);
-  margin-left: 10%;
+  z-index: 1;
+  width: 53%;
+  height: 60%;
+  box-shadow: -3px 1px 5px 6px rgba(0, 0, 0, 0.548);
 }
 
 .contact-white-container2 {
+  top: 190px;
+  right: 75px;
   position: absolute;
   border-radius: 0 50px 50px 0;
   background-color: #FFFFFF;
   z-index: 1;
-  width: 30%;
-  height: 75%;
-  top:25%;
-  box-shadow: -3px 1px 5px 6px rgba(0, 0, 0, 0.5);
-  margin-left: 60%;
+  width: 40%;
+  height: 60%;
+  box-shadow: -1px -2px 5px 6px rgba(0, 0, 0, 0.564);
 }
 
 .contact-head1 {
   color: #FFFFFF;
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 700;
   text-align: left;
   padding-top: 30px;
@@ -70,7 +68,7 @@
 }
 
 .contact-name {
-  font-size: 13px;
+  font-size: 16px;
   color: #FFFFFF;
   padding-left: 50px;
   padding-top: 10px;
@@ -92,7 +90,7 @@
 }
 
 .contact-email {
-  font-size: 13px;
+  font-size: 16px;
   color: #FFFFFF;
   padding-left: 275px;
   margin-top: -59px;
@@ -111,7 +109,7 @@
 }
 
 .contact-subject {
-  font-size: 13px;
+  font-size: 16px;
   color: #FFFFFF;
   padding-left: 50px;
   padding-top: 7px;
@@ -130,7 +128,7 @@
 }
 
 .contact-message {
-  font-size: 13px;
+  font-size: 16px;
   color: #FFFFFF;
   padding-left: 50px;
   padding-top: 7px;
@@ -148,19 +146,18 @@
   box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.336);
 }
 
-.contact-button {
-    color: #ffffff;
-    font-family: Poppins;
-    font-weight: 900;
-    font-size: 15px;
-    letter-spacing: 2px;
-    border-radius: 18px;
-    padding: 10px 20px;
-    background-color: #0D113E;
-    border: none;
-    cursor: pointer;
-    margin-left: 70%;
-    margin-top: 2%;
+.contacts-button {
+  color: #FFFFFF;
+  background-color: #0D113E;
+  font-weight: 700;
+  font-size: 14px;
+  width: 125px;
+  height: 28px;
+  margin-left: 345px;
+  margin-top: 20px;
+  border-radius: 7px;
+  box-shadow: 1px 1px 3px 3px rgba(249, 248, 250, 0.336);
+  cursor: pointer;
 }
 
 .contact-para {
@@ -171,49 +168,49 @@
 }
 
 .contact-phone {
-  font-size: 10px;
+  font-size: 12px;
   padding-left: 30px;
   padding-top: 25px;
 }
 
 .contact-phone-result {
-  font-size: 16px;
+  font-size: 18px;
   padding-top: 1px;
   padding-left: 30px;
 }
 
 .contact-email2 {
-  font-size: 10px;
+  font-size: 12px;
   padding-left: 30px;
   padding-top: 13px;
 }
 
 .contact-email2-result {
-  font-size: 16px;
+  font-size: 18px;
   padding-top: 1px;
   padding-left: 30px;
 }
 
 .contact-address {
-  font-size: 10px;
+  font-size: 12px;
   padding-left: 30px;
   padding-top: 13px;
 }
 
 .contact-address-result {
-  font-size: 16px;
+  font-size: 18px;
   padding-top: 1px;
   padding-left: 30px;
 }
 
 .contact-web {
-  font-size: 10px;
+  font-size: 12px;
   padding-left: 30px;
   padding-top: 13px;
 }
 
 .contact-web-result {
-  font-size: 16px;
+  font-size: 18px;
   padding-top: 1px;
   padding-left: 30px;
 }

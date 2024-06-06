@@ -6,18 +6,18 @@ import './Signup.css';
 import si1 from "../Components/Assets/sign-img.jpg";
 
 function Signup() {
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [firstName, setFName] = useState("");
-    const [lastName, setLName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
 
     async function submit(e) {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:8000/signup", {
+            const response = await axios.post("http://localhost:8000/api/user/signup", {
                 email,
                 password,
                 firstName,
@@ -26,12 +26,10 @@ function Signup() {
 
             const responseData = response.data;
 
-            console.log(responseData==="exist")
-
             if (responseData === "notexist") {
                 showSuccessMessage();
             } else if (responseData === "exist") {
-                showErrorMessage("User already exists with this email.");
+                showExistMessage("User already exists with this email.");
             } else {
                 showErrorMessage("An error occurred while processing your request");
             }
@@ -47,9 +45,9 @@ function Signup() {
             icon: 'success',
             title: 'Signup Successful!',
             text: 'You have successfully signed up.',
-            confirmButtonText: 'OK'
+            confirmButtonText: 'Login from here'
         }).then(() => {
-            history("/Pages/Login"); // Corrected route name to "/Pages/Login"
+            navigate("/Pages/Login"); // Corrected route name to "/Pages/Login"
         });
     }
 
@@ -62,6 +60,17 @@ function Signup() {
         });
     }
 
+    function showExistMessage(message) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Exist User',
+            text: "You already signed up.",
+            confirmButtonText: 'Login from here'
+        }).then(() => {
+            navigate("/Pages/Login"); // Corrected route name to "/Pages/Login"
+        });
+    }
+
     return (
         <div className="signup">
             <div className="sign-img-container">
@@ -69,54 +78,54 @@ function Signup() {
                 <img className="sign-img" src={si1} alt="Background"/>
             </div>
             <div className="signup-locate">
-            <h1 className="head1">Create New Account</h1>
-                  <p className="par1">Please fill in your basic info</p>
+                <h1 className="head1">Create New Account</h1>
+                <p className="par1">Please fill in your basic info</p>
 
-            <form onSubmit={submit}>
-                <input
-                    className="signup-Fname"
-                    type="text"
-                    value={firstName}
-                    onChange={(e) => setFName(e.target.value)}
-                    placeholder="First Name"
-                    required
-                />
-                <input
-                    className="signup-Lname"
-                    type="text"
-                    value={lastName}
-                    onChange={(e) => setLName(e.target.value)}
-                    placeholder="Last Name"
-                    required
-                />
-                <div className="row">
+                <form onSubmit={submit}>
                     <input
-                        className="signup-email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Email"
+                        className="signup-Fname"
+                        type="text"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        placeholder="First Name"
                         required
                     />
-                </div>
-                <div className="row">
                     <input
-                        className="signup-password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Password"
+                        className="signup-Lname"
+                        type="text"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        placeholder="Last Name"
                         required
                     />
-                </div>
-                <div className="btn-container">
-                    <button className="btn" type="submit">CREATE ACCOUNT</button>
-                </div>
-            </form>
-            <p className="signup-para2">Already a member ?
-            <Link to="/Pages/Login" className="signup-log">Log In</Link>
-            </p>
-        </div>
+                    <div className="row">
+                        <input
+                            className="signup-email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Email"
+                            required
+                        />
+                    </div>
+                    <div className="row">
+                        <input
+                            className="signup-password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Password"
+                            required
+                        />
+                    </div>
+                    <div className="btn-container">
+                        <button className="btn" type="submit">CREATE ACCOUNT</button>
+                    </div>
+                </form>
+                <p className="signup-para2">Already a member ?
+                    <Link to="/Pages/Login" className="signup-log">Log In</Link>
+                </p>
+            </div>
         </div>
     );
 }

@@ -13,15 +13,14 @@
 .pro-topic{
     font-family: "Poppins", sans-serif;
     font-size: 150px;
-    margin-top: -2.5%;
     color: white;
     padding-left: 30%;
-    padding-top: 22%;
+    padding-top: 4%;
     
   }
 
   .pro-subtopic{
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 500;
     width: 40%;
     height: 20%;
@@ -44,14 +43,14 @@
   }
 
   .pro-line{
-    font-size: 40px;
+    font-size: 45px;
     padding-left: 7%;  
     margin-top: -2.4%;
 }
 
   .pro-tline{
     font-family: "Poppins", sans-serif;
-    font-size: 20px;
+    font-size: 25px;
     padding-left: 8%;
     padding-top: 0.001%;
   }
@@ -59,7 +58,7 @@
   .pro-fil{
     font-family: "Poppins", sans-serif;
     font-weight: 600;
-    font-size: 17px;
+    font-size: 22px;
     padding-left: 8%;
     padding-top: 2%;
     position: absolute;
@@ -67,7 +66,7 @@
 
   .pro-sea{
     font-family: "Poppins", sans-serif;
-    font-size: 17px;
+    font-size: 22x;
     font-weight: 600;
     padding-left: 92%;
     padding-top: 2%;
@@ -77,7 +76,7 @@
 
   .pro-st2{
     font-family: "Poppins", sans-serif;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 600;
     letter-spacing: 0.5ch;
     padding-left: 8%;
@@ -87,7 +86,7 @@
 
   .pro-t1{
     font-family: "Poppins", sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 400;
     position:absolute;
     
@@ -176,7 +175,7 @@
     font-size: 14px;
     font-weight: 600;
     color: #D9D9D9;
-    margin-top: -50%;
+    margin-top: -33%;
     margin-left: 10%;
     z-index: 1;
   }
@@ -187,7 +186,7 @@
     font-weight: 900;
     color: #D9D9D9;
     padding-left: 10%;
-    padding-top: 28%;
+    padding-top: 16%;
   }
 
   .pro-para{
@@ -202,7 +201,7 @@
 
   .pro-prog{
     font-family: "Poppins", sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 300;
     padding-left: 10%;
     position: absolute;
@@ -210,7 +209,7 @@
 
   .pro-est{
     font-family: "Poppins", sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 300;
     padding-left: 50%;
     position: absolute;
@@ -220,11 +219,11 @@
     font-family: "Poppins", sans-serif;
     color: #D9D9D9;
     background-color: #0D113E;
-    border-radius: 8px;
+    border-radius: 10px;
     height: 10%;
     width: 32%;
     margin-left: 31%;
-    margin-top: 18%;
+    margin-top: 14%;
   }
 
   .pro-scon4{
@@ -266,10 +265,11 @@
     background-color: #0D113E;
     border-radius: 10px;
     margin-left: 64%;
-    margin-top: 72%;
+    margin-top: 66%;
     width: 10%;
     height: 35px;
     font-size: 15px;
     font-weight: 800;
+    margin-bottom: 4%;
   }
  

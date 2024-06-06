@@ -5,9 +5,14 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
-import Project from "./Pages/Projects"; // Corrected import D:\campus\Sem 4\BuildMate+ Project\BuildMate_Plus\Build_Mate_fe\src\Pages\Projects.js
+import Project from "./Pages/Projects"; 
 import BlogPage from "./Pages/BlogPage";
 import Contact from "./Pages/Contact";
+import Registration from "./Pages/Registration";
+import Professional from "./Pages/Professional";
+import MaterialSup from "./Pages/MaterialSup";
+import ServiceSup from "./Pages/ServiceSup";
+import Architecture from "./Pages/Architecture"
 
 function App() {
   return (
@@ -21,6 +26,11 @@ function App() {
           <Route path="/Pages/Projects" element={<Project />} />
           <Route path="/Pages/BlogPage" element={<BlogPage />} />
           <Route path="/Pages/Contact" element={<Contact />} />
+          <Route path="/Pages/Registration" element={<Registration/>}/>
+          <Route path="/Pages/Professional" element={<Professional />}/>
+          <Route path="/Pages/MaterialSup" element={<MaterialSup />}/>
+          <Route path="/Pages/ServiceSup" element={<ServiceSup />}/>
+          <Route path="/Pages/Architecture" element={<Architecture />}/>
         </Routes>
       </Router>
     </div>
