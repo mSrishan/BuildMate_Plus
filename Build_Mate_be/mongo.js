@@ -1,58 +1,20 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-mongoose.connect("mongodb://localhost:27017/Build_Mate", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => {
-    console.log("MongoDB connected");
-})
-.catch((err) => {
-    console.error("MongoDB connection error:", err);
-});
+const connectToMongoDB = async () => {
+    const uri = process.env.MONGO_URI;
+    console.log('MONGO_URI:', uri); // Log the MONGO_URI
 
-// Define the schema for user data
-const userSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
-        type: String,
-        required: true
-    },
-});
-
-// Define the schema for contact form data
-const contactSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    subject: {
-        type: String,
-        required: true
-    },
-    message: {
-        type: String,
-        required: true
+    if (!uri) {
+        throw new Error('MONGO_URI environment variable is not set.');
     }
-});
 
-// Create models based on the schemas
-const User = mongoose.model("Users", userSchema);
-const ContactUs = mongoose.model("ContactUs", contactSchema);
+    try {
+        await mongoose.connect(uri); // No options needed for the latest versions
+        console.log('MongoDB connected');
+    } catch (err) {
+        console.error('MongoDB connection error:', err);
+        process.exit(1); // Exit process with failure
+    }
+};
 
-module.exports = { User, ContactUs };
+module.exports = connectToMongoDB;
