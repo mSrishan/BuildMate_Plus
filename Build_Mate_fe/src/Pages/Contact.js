@@ -14,9 +14,10 @@ export default function Contact() {
   });
 
   useEffect(() => {
-    // Assuming email is retrieved from user context or authentication
-    const userEmail = "user@example.com"; // replace with actual method to get logged in user's email
-    setFormData(prevData => ({ ...prevData, email: userEmail }));
+    const userEmail = localStorage.getItem("userEmail");
+    if (userEmail) {
+      setFormData(prevData => ({ ...prevData, email: userEmail }));
+    }
   }, []);
 
   const handleSubmit = async (e) => {
@@ -27,7 +28,7 @@ export default function Contact() {
 
       setFormData({
         name: "",
-        email: formData.email, // retain the user's email
+        email: formData.email,
         subject: "",
         message: ""
       });
@@ -43,7 +44,7 @@ export default function Contact() {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Error submitting contact form. Please try again later.',
+        text: error.response && error.response.data ? error.response.data.message : 'Error submitting contact form. Please try again later.',
         confirmButtonText: 'OK'
       });
     }
@@ -74,7 +75,7 @@ export default function Contact() {
             <input type="text" className="contact-subject-input" placeholder="Enter Your Subject" name="subject" value={formData.subject} onChange={handleChange} />
             <div className="contact-message">Your Message</div>
             <textarea className="contact-message-input" placeholder="Enter Your Message" name="message" value={formData.message} onChange={handleChange}></textarea>
-            <button className="contact-button" onClick={handleSubmit}>Submit</button>
+            <button className="contacts-button" onClick={handleSubmit}>Submit</button>
           </div>
 
           <div className="contact-white-container2">

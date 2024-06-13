@@ -93,10 +93,11 @@ const Home = () => {
         <div className='path'>
                       <div className='h1'>
                        <div className='firstbox'id='firstbox'>
-                          <div className='box1'>
+                       <div className='box1'>
                             <img src={dreamimage} className='dreamimg'/>
                             <div className='box'><h1 className='h1-text'>Ready to start building your dream or maintaining your existing construction? 
-                            </h1><button className='h1-button' onClick={HashChangeEvent}>Build your dream </button></div>
+                            </h1><button className='h1-button' onClick={() => navigate('/Pages/Connect')}
+                               >Build your dream </button></div>
                           </div>
                           <div className='box2'>
                             <img

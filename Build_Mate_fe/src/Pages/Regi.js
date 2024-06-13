@@ -1,4 +1,3 @@
-// Registration.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -14,8 +13,7 @@ function Registration() {
 
     const [profileInfo, setProfileInfo] = useState({
         email: "",
-        firstName: "",
-        lastName: "",
+        name: "", // Modified field
         gender: "",
         address: "",
         phoneNumber: "",
@@ -30,15 +28,20 @@ function Registration() {
     useEffect(() => {
         // Fetch user data from localStorage or make an API call to get the logged-in user's data
         const email = localStorage.getItem("userEmail");
-        const firstName = localStorage.getItem("userFirstName");
-        const lastName = localStorage.getItem("userLastName");
         if (email) {
-            setProfileInfo(prevData => ({
-                ...prevData,
-                email,
-                firstName,
-                lastName
-            }));
+            // Fetch user data from the backend using the email
+            axios.get(`http://localhost:8000/api/user/${email}`)
+                .then(response => {
+                    const userData = response.data;
+                    setProfileInfo(prevData => ({
+                        ...prevData,
+                        email,
+                        name: `${userData.firstName} ${userData.lastName}` // Set name using fetched data
+                    }));
+                })
+                .catch(error => {
+                    console.error("Error fetching user data:", error);
+                });
         }
     }, []);
 
@@ -50,65 +53,63 @@ function Registration() {
         }));
     };
 
-const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!profileInfo.email || !profileInfo.firstName || !profileInfo.lastName || !profileInfo.gender || !profileInfo.address || !profileInfo.phoneNumber || !profileInfo.country || !profileInfo.birthdayDate || !profileInfo.birthdayMonth || !profileInfo.birthdayYear || !profileInfo.userType || !profileInfo.agreeTerms) {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Please fill in all required fields",
-            confirmButtonText: "OK"
-        });
-        return;
-    }
-
-    try {
-        const response = await axios.post(`http://localhost:8000/api/registerClient`, profileInfo);
-
-        if (response.status === 201 && response.data.message === "User registered successfully") {
-            Swal.fire({
-                icon: "success",
-                title: "Success",
-                text: "Information saved successfully",
-                confirmButtonText: "OK"
-            }).then(() => {
-                switch (profileInfo.userType) {
-                    case "client":
-                        navigate("/Pages/Home");
-                        break;
-                    case "professional":
-                        navigate("/Pages/Professional");
-                        break;
-                    case "service supplier":
-                        navigate("/Pages/ServiceSup");
-                        break;
-                    case "material supplier":
-                        navigate("/Pages/MaterialSup");
-                        break;
-                    default:
-                        navigate("/Pages/Home");
-                        break;
-                }
-            });
-        } else {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!profileInfo.email || !profileInfo.name || !profileInfo.gender || !profileInfo.address || !profileInfo.phoneNumber || !profileInfo.country || !profileInfo.birthdayDate || !profileInfo.birthdayMonth || !profileInfo.birthdayYear || !profileInfo.userType || !profileInfo.agreeTerms) {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: response.data.message || "Error saving information",
+                text: "Please fill in all required fields",
+                confirmButtonText: "OK"
+            });
+            return;
+        }
+
+        try {
+            const response = await axios.post(`http://localhost:8000/api/registerClient`, profileInfo);
+
+            if (response.status === 201 && response.data.message === "User registered successfully") {
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: "Information saved successfully",
+                    confirmButtonText: "OK"
+                }).then(() => {
+                    switch (profileInfo.userType) {
+                        case "client":
+                            navigate("/Pages/Home");
+                            break;
+                        case "professional":
+                            navigate("/Pages/Professional");
+                            break;
+                        case "service supplier":
+                            navigate("/Pages/ServiceSup");
+                            break;
+                        case "material supplier":
+                            navigate("/Pages/MaterialSup");
+                            break;
+                        default:
+                            navigate("/Pages/Home");
+                            break;
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: response.data.message || "Error saving information",
+                    confirmButtonText: "OK"
+                });
+            }
+        } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: error.response?.data?.message || "Error saving information",
                 confirmButtonText: "OK"
             });
         }
-    } catch (error) {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: error.response?.data?.message || "Error saving information",
-            confirmButtonText: "OK"
-        });
-    }
-};
-
+    };
 
     const handleEditClick = () => {
         window.scrollTo({
@@ -164,22 +165,13 @@ const handleSubmit = async (e) => {
                         />
                     </label>
                     <label className="reg-form-l1">
-                        First Name <br/>
+                        Name <br/>
                         <input
                             type="text"
-                            name="firstName"
-                            value={profileInfo.firstName}
+                            name="name"
+                            value={profileInfo.name}
                             onChange={handleChange}
-                            required
-                        />
-                    </label>
-                    <label className="reg-form-l1">
-                        Last Name <br/>
-                        <input
-                            type="text"
-                            name="lastName"
-                            value={profileInfo.lastName}
-                            onChange={handleChange}
+                            readOnly
                             required
                         />
                     </label>

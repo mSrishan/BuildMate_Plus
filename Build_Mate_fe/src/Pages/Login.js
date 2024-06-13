@@ -27,6 +27,9 @@ function Login() {
             });
 
             if (response.status === 200) {
+                // Store email in local storage
+                localStorage.setItem("userEmail", email);
+
                 Swal.fire({
                     icon: 'success',
                     title: 'Login Successful!',

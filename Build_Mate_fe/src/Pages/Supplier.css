@@ -113,11 +113,11 @@
  }
 
 .frame1 {
-  border: 2px solid black; 
+  border: 5px solid black; 
   display: inline-block;   
   padding: 2%;
   margin: 15%;
-  margin-top: 18%;
+  margin-top: 12%;
   border-radius: 25px;
 
  }
@@ -148,7 +148,8 @@
   top: 127%; 
   border-bottom: 2px solid #000000;
   margin-left: 17%;
-  width: 65.5%;
+  width: 50.5%;
+  margin-top: -12%;
 
 }
 
@@ -159,8 +160,9 @@ left: 0;
 right: 0;
 top: 137%; 
 border-top: 2px solid #000000; 
-width: 65.5%;
+width: 50.5%;
 margin-left: 17%;
+margin-top: -13%;
 }
 
 .highlight {
@@ -209,7 +211,7 @@ text-align: left;
 }
 
 .frame2 {
-  border: 2px solid black; 
+  border: 5px solid black; 
   display: inline-block;   
   padding: 2%;
   margin: 15%;
@@ -245,7 +247,8 @@ text-align: left;
   top: 331.5%; 
   border-bottom: 2px solid #000000;
   margin-left: 17%;
-  width: 65.5%;
+  width: 50.5%;
+  margin-top: -34%;
 
 }
 
@@ -256,8 +259,9 @@ text-align: left;
   right: 0;
   top: 341.5%; 
   border-top: 2px solid #000000; 
-  width: 65.5%;
+  width: 50.5%;
   margin-left: 17%;
+  margin-top: -35%;
 }
 
 .ser3 {

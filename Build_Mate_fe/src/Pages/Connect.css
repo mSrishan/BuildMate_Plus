@@ -7,8 +7,9 @@
   .image-container img {
       display: block;
       width:150.4%;
-      height: 900px;
+      height: 990px;
       margin-left: -1000px;
+      margin-top: -5%;
   }
   
   .white-container {
@@ -70,7 +71,7 @@
     font-size: 24px;
   }
 
-  .button1{
+  .cont-button1{
     background-color: #0D113E;
     color: #F4F0F0;
     font-weight: 800;
@@ -80,6 +81,7 @@
     border-radius: 41px;
     margin-left: 15%;
     margin-top: 0;
+    cursor: pointer;
   }
 
   .sen1{

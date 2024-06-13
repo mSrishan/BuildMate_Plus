@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "./Suppliers.css"
+import "./Supplier.css"
 
 import supimg from '../Components/Assets/supimg.jpg';
 

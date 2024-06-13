@@ -47,7 +47,7 @@ function Signup() {
             text: 'You have successfully signed up.',
             confirmButtonText: 'Login from here'
         }).then(() => {
-            navigate("/Pages/Login"); // Corrected route name to "/Pages/Login"
+            navigate("/Pages/Login"); 
         });
     }
 
@@ -67,7 +67,7 @@ function Signup() {
             text: "You already signed up.",
             confirmButtonText: 'Login from here'
         }).then(() => {
-            navigate("/Pages/Login"); // Corrected route name to "/Pages/Login"
+            navigate("/Pages/Login"); 
         });
     }
 

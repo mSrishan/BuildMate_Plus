@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+.profile-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #D9D9D9;
+  padding: 20px;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+  width: 60%;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  border-radius: 5%;
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+}
+
+.profile-info {
+  margin-left: 10px;
+}
+
+.profile-name {
+  font-size: 55px;
+  font-weight: bold;
+}
+
+.profile-name {
+  font-family: "Poppins", sans-serif;
+  font-size: 24px; /* Adjust font size as needed */
+  font-weight: 700;
+  line-height: 30px; /* Adjust line height as needed */
+  text-align: center;
+}
+
+
+.profile-role {
+  color: #000;
+}
+
+.profile-rating {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.rating-score {
+  font-weight: bold;
+}
+
+.stars {
+  color: #FF6B00;
+  margin-left: 5px;
+}
+
+.reviews {
+  margin-left: 5px;
+  color: #777;
+}
+
+.profile-buttons {
+  margin-top: 10px;
+}
+
+.message-button, .contact-button {
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.message-button {
+  background-color: #FF6B00;
+  color: white;
+  height: 10%;
+}
+
+.contact-button {
+  background-color: #FF6B00;
+  color: white;
+  margin-left: 2px;
+  height: 10%;
+}
+
+.profile-sections .section {
+  margin-bottom: 20px;
+}
+
+.section h3 {
+  margin: 0;
+  font-size: 1.2em;
+  display: inline-block;
+}
+
+.view-all {
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  float: right;
+  background-color: #FF6B00;
+  color: white;
+  height: 40px;
+  width: 10%;
+  border-radius: 10px;
+}
+
+.section-content {
+  background-color: white;
+  height: 180px;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 1%;
+}
+
+.main-devide-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.devide-section {
+  background-color: #D9D9D9;
+  margin-top: 20px;
+  padding: 2% 1%;
+  display: flex;
+  height: 60px;
+  width: 48%;
+  border-radius: 10px;
+  margin-right: 3%;
+}
