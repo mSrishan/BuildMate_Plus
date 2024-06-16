@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Function to send a welcome email
-async function sendClientEmail(email, firstName) {
+async function sendClientEmail(email, firstName, userType) {
     const mailOptions = {
         from: 'pathumpasindu41@gmail.com',
         to: email,
@@ -21,9 +21,9 @@ async function sendClientEmail(email, firstName) {
         html: `
             <p>Hello ${firstName},</p>
             <p>Welcome to BuildMate+! 🎉</p>
-            <p>We're excited to have you as a registered client. You're now part of the BuildMate+ family, where we're committed to making your construction projects smoother, more efficient, and enjoyable.</p>
+            <p>We're excited to have you as a registered ${userType}. You're now part of the BuildMate+ family, where we're committed to making your construction projects smoother, more efficient, and enjoyable.</p>
             
-            <h3>What You Can Do as a Client:</h3>
+            <h3>What You Can Do as a ${userType}:</h3>
             <ul>
                 <li>🔍 <strong>Find Top Professionals:</strong> Connect with experienced professionals in your area who are ready to bring your vision to life.</li>
                 <li>📈 <strong>Manage Projects Seamlessly:</strong> Keep track of your project milestones, budgets, and timelines with our intuitive tools.</li>

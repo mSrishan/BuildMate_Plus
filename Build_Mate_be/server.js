@@ -18,9 +18,9 @@ app.use(cors());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
-app.use("/route/user", userRoutes);
-app.use("/route/contact", contactRoutes); 
-app.use('/route/registerClient', registrationRoute);
+app.use("/api/user", userRoutes);
+app.use("/api/contact", contactRoutes); 
+app.use('/api/registerClient', registrationRoute);
 
 // MongoDB connection
 mongoose.connect('mongodb://localhost:27017/Build_Mate', {

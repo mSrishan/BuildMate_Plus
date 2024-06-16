@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-around;
     padding: 5px 16px;
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    z-index: 100; /* Allow items to wrap to the next line */
   }
   
   .navbar img {

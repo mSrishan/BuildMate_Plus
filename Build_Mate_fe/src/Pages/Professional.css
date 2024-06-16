@@ -1,0 +1,257 @@
+.user_profile_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background-color: white;
+    overflow: hidden; /* This line can stay to prevent horizontal overflow */
+}
+
+.pro-form {
+    width: 50%;
+    background-color: #D9D9D9;
+    padding: 2%;
+    border-radius: 10px;
+    font-size: 15px;
+    max-height: 90vh; /* Add a max-height to make the container scrollable */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.pro-form-h1 h1 {
+    font-size: 250%;
+    margin: 0;
+    font-weight: 900;
+}
+
+.pro-form input {
+    border: none;
+    padding: 0 0 0 5%;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.pro-form-l0 {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.pro-profilepic {
+    display: flex; /* Allow setting width and height */
+    width: 150px; /* Adjust width as needed */
+    height: 150px; 
+    background-color: #ffffff; /* Set background color */
+    border: none; /* Create a border */
+    padding: 5px; /* Add padding for spacing */
+    cursor: pointer;
+    border-radius: 5%; 
+    align-items: center;
+    justify-content: center;
+}
+  
+.pro-profilepic img {
+    filter: contrast(50%);
+}
+  
+.pro-profilepic input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10%;
+    height: 10%; 
+}
+
+.pro-form-l1 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    margin-left: 10%;
+}
+
+.pro-form-l2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.pro-form-l2 input {
+    width: 120%;
+    background-color: white;
+    font-size: 18px;
+    border: none;
+    font-weight: 300;
+    font-family: "Poppins", sans-serif;
+    padding-left: 5%;
+}
+
+.pro-form-l2 select {
+    font-family: "Poppins", sans-serif;
+    width: 120%;
+    font-size: 18px;
+    font-weight: 300;
+    border: none;
+}
+
+.pro-form-l3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 1%;
+    width: 80%;
+}
+
+.pro-form-l3 label{
+    margin-bottom: 2%;
+}
+.pro-form-l3 input {
+    width: 120%;
+    background-color: white;
+}
+
+.pro-form-l4 {
+    background-color: white;
+    font-size: 18px;
+    border: none;
+    font-weight: 300;
+    font-family: "Poppins", sans-serif;
+    padding-left: 5%;
+}
+
+.pro-form-l5 {
+    background-color: white;
+    font-size: 18px;
+    border: none;
+    font-weight: 300;
+    font-family: "Poppins", sans-serif;
+    padding-left: 5%;
+}
+
+.pro-form-l6 {
+    display: flex;
+    flex-direction: column;
+}
+
+.pro-form-l6 label{
+    margin-bottom: 2%;
+}
+.pro-form-l6 input, textarea {
+    width: 80%;
+}
+
+.pro-button-group {
+    background-color: #FF6B00;
+    color: white;
+    padding: 3%;
+    border: solid white;
+    border-radius: 20px;
+}
+
+.pro-button-group h3 {
+    margin: 0 0 1% 0;
+    font-size: 200%;
+}
+
+.pro-button-group label {
+    font-size: 130%;
+}
+
+.pro-form-button {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-top: 2%;
+    margin-bottom: 3%;
+}
+
+.pro-form-button button {
+    margin: 0 5%;
+    padding: 2%;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.pro-form-button1 {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+.pro-form-button1 button {
+    width: 25%;
+    height: 60%;
+    padding: 1%;
+    font-size: 100%;
+    font-weight: 800;
+    background-color: #0D113E;
+    color: white;
+}
+
+.pro-form-button1 button:hover {
+    background-color: white;
+    color: #0D113E;
+}
+.job-file-container { /* Create a container for both elements */
+    display: flex; /* Allow setting width and height */
+    background-color: #ffffff; /* Set background color */
+    border: none; /* Create a border */
+    padding: 5px; /* Add padding for spacing */
+    cursor: pointer;
+    border-radius: 10px; 
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .job-file-container input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10%;
+    height: 10%; 
+    opacity: 0;
+}
+  
+  .job-profile-image { /* Style the image element */
+    width: 10%; /* Set the image width (adjust as needed) */
+    height: auto; /* Maintain image aspect ratio */
+    object-fit: cover; 
+    filter: contrast(50%);
+  }
+  
+  @media (max-width: 768px) {
+    .pro-form {
+        width: 100%;
+        padding: 5%;
+    }
+
+    .pro-form-l1 {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .pro-form-l3 {
+        flex-direction: column;
+    }
+
+    .pro-form-l3 label {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .pro-button-group {
+        padding: 5%;
+    }
+
+    .pro-form-button button {
+        width: 100%;
+        margin-bottom: 5%;
+    }
+
+    .pro-form-button1 button {
+        width: 100%;
+    }
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Home.css';
+import Registration from './Registration';
 import CountUp from 'react-countup';
 import homeimg from '../Components/Assets/wall1.jpg';
 import ic1 from '../Components/Assets/ic1.png'; 
@@ -18,6 +19,8 @@ import viewImage from '../Components/Assets/3d-view(1).png';
 
 import ScrollTrigger from "react-scroll-trigger";
 import { Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const Home = () => {
 
@@ -45,6 +48,9 @@ const Home = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const navigate = useNavigate();
+
   return (
    <>
    
@@ -87,15 +93,30 @@ const Home = () => {
         <div className='path'>
                       <div className='h1'>
                        <div className='firstbox'id='firstbox'>
-                          <div className='box1'>
+                       <div className='box1'>
                             <img src={dreamimage} className='dreamimg'/>
                             <div className='box'><h1 className='h1-text'>Ready to start building your dream or maintaining your existing construction? 
-                            </h1><button className='h1-button' onClick={HashChangeEvent}>Build your dream </button></div>
+                            </h1><button className='h1-button' onClick={() => navigate('/Pages/Connect')}
+                               >Build your dream </button></div>
                           </div>
                           <div className='box2'>
-                            <img src={oppertunityimg} className='dreamimg' style={{ transform: 'scaleX(-1)', zIndex:'-1',borderRadius:'0 65px 65px 0' }}/>
-                            <div className='box'><h1 className='h2-text' style={{transform:'scaleX(-1)'}}>Ready to take on new projects or find exciting job opportunities in the construction industry? 
-                            </h1><button className='h2-button' onClick={HashChangeEvent} style={{transform:'scaleX(-1)', }}>Explore Opportunities</button></div>
+                            <img
+                              src={oppertunityimg}
+                              className='dreamimg'
+                              style={{ transform: 'scaleX(-1)', zIndex: '-1', borderRadius: '0 65px 65px 0' }}
+                            />
+                            <div className='box'>
+                              <h1 className='h2-text' style={{ transform: 'scaleX(-1)' }}>
+                                Ready to take on new projects or find exciting job opportunities in the construction industry?
+                              </h1>
+                              <button
+                                className='h2-button'
+                                onClick={() => navigate('/Pages/registration')}
+                                style={{ transform: 'scaleX(-1)' }}
+                              >
+                                Explore Opportunities
+                              </button>
+                            </div>
                           </div>
                       </div> 
                       <div className='det'>

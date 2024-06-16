@@ -3,9 +3,15 @@ import './Projects.css'
 import mimg1 from "../Components/Assets/login1.jpg"
 import pp1 from "../Components/Assets/pro-p1.jpg"
 
+import Navbar from '../Components/Navbar/Navbar';
+import Footer from '../Components/Footer/footer';
+
 export default function Projects() {
   return (
+
+     
     <div>
+    <Navbar/>
       <img className='pro-mimg' src={mimg1} alt='Background'/>
       <div className='pro-content'>
              <h1 className='pro-topic'>Projects</h1>
@@ -97,7 +103,9 @@ export default function Projects() {
            </div>
 
            <button className='pro-sm'>see more</button>
-           
+           <Footer/>  
     </div>
+    
+    
   )
 }

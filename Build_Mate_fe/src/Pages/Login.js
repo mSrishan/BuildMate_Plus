@@ -8,32 +8,44 @@ import closeeye from '../Components/Assets/closeeye.png';
 import Swal from "sweetalert2";
 
 function Login() {
-    const history = useNavigate();
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false); 
+
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
 
     async function submit(e) {
         e.preventDefault();
-
+    
         try {
-            const response = await axios.post("http://localhost:8000/login", {
+            const response = await axios.post("http://localhost:8000/api/user/login", {
                 email,
-                password,                
-        
-            });
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: "You have logged successfully...",
-                confirmButtonText: 'Home'
+                password,
             });
 
-            history("/Pages/Home");
+            if (response.status === 200) {
+                // Store email in local storage
+                localStorage.setItem("userEmail", email);
 
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successful!',
+                    text: 'You have successfully logged in.',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    navigate("/Pages/Home");
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Check Username and Password",
+                    confirmButtonText: 'OK'
+                });
+            }
         } catch (error) {
             Swal.fire({
                 icon: 'error',
@@ -58,38 +70,34 @@ function Login() {
                         <p>OR LOGIN WITH EMAIL</p>
                     </div>
                     <div className="inputs">
-                        <form action="POST">
+                        <form onSubmit={submit}>
                             <label>Email</label>
-                            <input type="email" onChange={(e) => { setEmail(e.target.value) }} />
+                            <input type="email" onChange={(e) => { setEmail(e.target.value) }} required />
                             <label>Password</label>
                             <div className="input-container">
-                            <input
+                                <input
                                     type={showPassword ? "text" : "password"}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Password"
-                                    style={{
-                                        textAlign: 'center',
-                                        backgroundImage: 'none', // Hide the eye icon
-                                    }}
+                                    required
+                                    style={{ textAlign: 'center' }}
                                 />
-
                                 <img
                                     src={showPassword ? closeeye : openeye}
                                     alt="toggle password visibility"
                                     className="password-toggle"
                                     onClick={togglePasswordVisibility}
-                                    style={{ cursor: 'pointer' , width:'30px'}}
+                                    style={{ cursor: 'pointer', width: '30px' }}
                                 />
                             </div>
                             <label style={{ fontSize: '15px', color: '#0D113E' }}>Forgot Password?</label>
-                            <input type="submit" onClick={submit} style={{ marginTop: '20px' }} />
+                            <button type="submit" style={{ marginTop: '20px' }}>Login</button>
                         </form>
                     </div>
-                    <label style={{ marginLeft: '12px',fontSize:'18px',fontWeight:'700' }}>
-                        Or Create new account from <Link to="/Pages/signup"><span style={{ color: '#FF6B00' }}>here</span></Link>
+                    <label style={{ marginLeft: '12px', fontSize: '18px', fontWeight: '700' }}>
+                        Or Create new account from <Link to="/pages/signup"><span style={{ color: '#FF6B00' }}>here</span></Link>
                     </label>
-                    
                 </div>
             </div>
         </div>

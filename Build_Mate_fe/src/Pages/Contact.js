@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Contact.css';
 import Navbar from '../Components/Navbar/Navbar';
 import conta1 from '../Components/Assets/conta1.jpg';
@@ -7,24 +7,28 @@ import Swal from 'sweetalert2';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
+    name: "",
     subject: "",
     message: ""
   });
 
+  useEffect(() => {
+    const userEmail = localStorage.getItem("userEmail");
+    if (userEmail) {
+      setFormData(prevData => ({ ...prevData, email: userEmail }));
+    }
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try{
-      // Send form data to backend
-      await axios.post('http://localhost:8000/contact', formData);
+    try {
+      await axios.post('http://localhost:8000/api/contact', formData);
 
-      console.log("656+5")
-      // Clear form fields after submission
       setFormData({
         name: "",
-        email: "",
+        email: formData.email,
         subject: "",
         message: ""
       });
@@ -33,11 +37,16 @@ export default function Contact() {
         title: 'Successful!',
         text: 'Your Message Sent Successfully...',
         confirmButtonText: 'OK'
-    })
+      });
 
     } catch (error) {
       console.error('Error submitting contact form:', error);
-      alert('Error submitting contact form. Please try again later.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.response && error.response.data ? error.response.data.message : 'Error submitting contact form. Please try again later.',
+        confirmButtonText: 'OK'
+      });
     }
   };
 
@@ -49,8 +58,8 @@ export default function Contact() {
   };
 
   return (
-    <div>
-    <Navbar/>
+    <div className="contact">
+      <Navbar/>
       <div className="contact-image-container">
         <img src={conta1} alt="Background" />
 
@@ -61,12 +70,12 @@ export default function Contact() {
             <div className="contact-name">Your Name</div>
             <input type="text" className="contact-name-input" placeholder="Enter Your Name" name="name" value={formData.name} onChange={handleChange} />
             <div className="contact-email">Your Email</div>
-            <input type="email" className="contact-email-input" placeholder="Enter Your Email" name="email" value={formData.email} onChange={handleChange} />
+            <input type="email" className="contact-email-input" placeholder="Enter Your Email" name="email" value={formData.email} readOnly />
             <div className="contact-subject">Your Subject</div>
             <input type="text" className="contact-subject-input" placeholder="Enter Your Subject" name="subject" value={formData.subject} onChange={handleChange} />
             <div className="contact-message">Your Message</div>
             <textarea className="contact-message-input" placeholder="Enter Your Message" name="message" value={formData.message} onChange={handleChange}></textarea>
-            <button className="contact-button" onClick={handleSubmit}>Submit</button>
+            <button className="contacts-button" onClick={handleSubmit}>Submit</button>
           </div>
 
           <div className="contact-white-container2">
