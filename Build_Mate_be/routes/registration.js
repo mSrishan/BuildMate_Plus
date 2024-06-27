@@ -20,15 +20,15 @@ async function sendClientEmail(email, firstName, userType) {
         subject: 'Welcome to BuildMate+!',
         html: `
             <p>Hello ${firstName},</p>
-            <p>Welcome to BuildMate+! 🎉</p>
+            <p>Welcome to BuildMate+!</p>
             <p>We're excited to have you as a registered ${userType}. You're now part of the BuildMate+ family, where we're committed to making your construction projects smoother, more efficient, and enjoyable.</p>
             
             <h3>What You Can Do as a ${userType}:</h3>
             <ul>
-                <li>🔍 <strong>Find Top Professionals:</strong> Connect with experienced professionals in your area who are ready to bring your vision to life.</li>
-                <li>📈 <strong>Manage Projects Seamlessly:</strong> Keep track of your project milestones, budgets, and timelines with our intuitive tools.</li>
-                <li>🛠 <strong>Access Expert Advice:</strong> Get tips, tutorials, and advice from industry experts to help you with every aspect of your project.</li>
-                <li>📷 <strong>Showcase Your Work:</strong> Share photos and details of your completed projects and get inspired by the community.</li>
+                <li><strong>Find Top Professionals:</strong> Connect with experienced professionals in your area who are ready to bring your vision to life.</li>
+                <li><strong>Manage Projects Seamlessly:</strong> Keep track of your project milestones, budgets, and timelines with our intuitive tools.</li>
+                <li><strong>Access Expert Advice:</strong> Get tips, tutorials, and advice from industry experts to help you with every aspect of your project.</li>
+                <li><strong>Showcase Your Work:</strong> Share photos and details of your completed projects and get inspired by the community.</li>
             </ul>
 
             <p>We're here to support you every step of the way. If you have any questions or need assistance, don't hesitate to reach out to us at <a href="mailto:support@buildmateplus.com">support@buildmateplus.com</a>.</p>

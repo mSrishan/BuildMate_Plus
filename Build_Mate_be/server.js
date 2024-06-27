@@ -1,3 +1,4 @@
+//server.js
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require('body-parser');
@@ -21,6 +22,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/api/user", userRoutes);
 app.use("/api/contact", contactRoutes); 
 app.use('/api/registerClient', registrationRoute);
+app.use('/api/registerProfessional', registrationRoute);
+app.use('/api/registerServiceSupplier', registrationRoute);
+app.use('/api/registerMaterialSupplier', registrationRoute);
 
 // MongoDB connection
 mongoose.connect('mongodb://localhost:27017/Build_Mate', {

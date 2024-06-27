@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+.profile {
+  display: flex;
+  justify-content: center;
+  margin: 3% 0;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  display: flex;
+  width: fit-content;
+  margin: 2% 5%;
+}
+
+.back-button img {
+  width: 8%;
+  cursor: pointer;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  background-color: #ffffff;
+  border: 2px solid black;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  width: 60%;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 40%;
+  border-radius: 30px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.profile-info {
+  display: flex;
+  margin-left: 5%;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5% 0;
+}
+
+.profile-name01 {
+  font-size: 200%;
+  font-weight: 800;
+  margin: 0;
+  text-align: left;
+}
+
+.profile-role {
+  color: #000;
+  font-size: 120%;
+  margin: 0;
+  line-height: 10%;
+  font-weight: 400;
+  text-align: left;
+}
+
+.pro-Icon {
+  width: 4%;
+  margin-right: 2%;
+  cursor: pointer;
+}
+
+.profile-rating {
+  display: flex;
+  align-items: center;
+  margin-top: 2%;
+  font-size: 0.9em;
+  color: #000000;
+}
+
+.rating-score {
+  font-weight: bold;
+}
+
+.stars {
+  color: #FF6B00;
+  margin-left: 5px;
+}
+
+.reviews {
+  margin-left: 5px;
+  color: #000000;
+}
+
+.profile-buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 5%;
+  width: 60%;
+}
+
+.message-button {
+  font-size: 100%;
+  background-color: #FF6B00;
+  color: rgb(255, 255, 255);
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  padding: 3%;
+  border-radius: 15px;
+  text-align: center;
+  margin-right: 5%;
+}
+
+.message-button:hover {
+  background-color: #f0f0f0;
+  color: rgb(0, 0, 0);
+}
+
+.message-button.active {
+  background-color: #FF6B00;
+  color: white;
+}
+
+.profile-sections .section {
+  margin-bottom: 20px;
+}
+
+.section h3 {
+  margin: 0;
+  font-size: 1.2em;
+  display: inline-block;
+}
+
+.view-all {
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  float: right;
+  background-color: #FF6B00;
+  color: white;
+  padding: 1%;
+  border-radius: 10px;
+}
+
+.section-content {
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 3%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+
+.devide-section img{
+  width: 25%;
+  margin: 2% 2%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.file-text{
+  font-size: 15px;
+  font-weight: 400;
+}
+
+
+.reviews-container {
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+  margin: auto;
+}
+
+.review {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-name {
+  font-weight: 500;
+  font-size: 1.1em;
+}
+
+.review-date {
+  font-size: 0.9em;
+  color: #777;
+}
+
+.review-text {
+  margin: 10px 0;
+  font-size: 1em;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.review-star {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+}
+
+.new-review {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.new-review h3 {
+  margin-top: 0;
+}
+
+.new-review-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+.add-review-button {
+  background-color: #FF6B00;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.add-review-button:hover {
+  background-color: #e65a00;
+}

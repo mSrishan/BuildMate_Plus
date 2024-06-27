@@ -15,6 +15,13 @@ import MaterialSup from "./Pages/MaterialSup";
 import ServiceSup from "./Pages/ServiceSup";
 import Architecture from "./Pages/Architecture";
 import Profile from "./Pages/Profile"
+import Suppliers from "./Pages/Supplier";
+import Chat from "./Pages/Chat"; 
+import ChatIcon from "./Pages/ChatIcon";
+import ProfProfile from "./Pages/ProfProfile";
+import EditProfile from './Pages/EditProfile';
+import ArchProfile from "./Pages/ArchProfile";
+
 
 function App() {
   return (
@@ -35,7 +42,13 @@ function App() {
           <Route path="/Pages/ServiceSup" element={<ServiceSup />}/>
           <Route path="/Pages/Architecture" element={<Architecture />}/>
           <Route path="/Pages/Profile" element={<Profile />}/>
+          <Route path="/Pages/Supplier" element={<Suppliers/>}/>
+          <Route path="/Pages/Chat" element={<Chat />} />
+          <Route path="/Pages/ArchProfile" element={<ArchProfile />} />
+          <Route path="/Pages/ProfProfile" element={<ProfProfile/>}/>
+          {/* <Route path="/Pages/EditProfile" element={<EditProfile/>} /> */}
         </Routes>
+        <ChatIcon />
       </Router>
     </div>
   );
