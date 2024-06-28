@@ -41,7 +41,12 @@ const Navbar = () => {
 
           {isAuthenticated ? (
             <div className='navbtn'>
+<<<<<<< HEAD
               <li><span>Hi, {firstName} </span>
+=======
+              <li><span>Hi, {firstName}</span></li>
+              <li>
+>>>>>>> 3f86ca634c7c376e3c89fb90201011a2e2547434
                 <button className='signbtn' style={{ border: 'none' }} onClick={handleLogout}>Logout</button>
               </li>
             </div>
