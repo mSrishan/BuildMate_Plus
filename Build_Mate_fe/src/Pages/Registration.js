@@ -30,12 +30,14 @@ function Registration() {
         const email = localStorage.getItem("userEmail");
         const firstName = localStorage.getItem("userFirstName");
         const lastName = localStorage.getItem("userLastName");
+        const userType = localStorage.getItem("userType");
         if (email) {
             setProfileInfo(prevData => ({
                 ...prevData,
                 email,
                 firstName,
-                lastName
+                lastName,
+                userType
             }));
         }
     }, []);
