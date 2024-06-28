@@ -11,7 +11,7 @@ function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false); 
+    const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -19,7 +19,7 @@ function Login() {
 
     async function submit(e) {
         e.preventDefault();
-    
+
         try {
             const response = await axios.post("http://localhost:8000/api/user/login", {
                 email,
@@ -27,8 +27,11 @@ function Login() {
             });
 
             if (response.status === 200) {
-                // Store email in local storage
+                const { firstName } = response.data;
+
+                // Store email and first name in local storage
                 localStorage.setItem("userEmail", email);
+                localStorage.setItem("firstName", firstName);
 
                 Swal.fire({
                     icon: 'success',
@@ -66,7 +69,7 @@ function Login() {
                         <img src={googleimg} alt="google logo" style={{ width: '30px', gap: '15px' }} />
                         Log in with Google
                     </button>
-                    <div className="bracker" >
+                    <div className="bracker">
                         <p>OR LOGIN WITH EMAIL</p>
                     </div>
                     <div className="inputs">

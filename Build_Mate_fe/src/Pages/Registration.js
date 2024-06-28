@@ -1,4 +1,3 @@
-// Registration.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -28,16 +27,17 @@ function Registration() {
     });
 
     useEffect(() => {
-        // Fetch user data from localStorage or make an API call to get the logged-in user's data
         const email = localStorage.getItem("userEmail");
         const firstName = localStorage.getItem("userFirstName");
         const lastName = localStorage.getItem("userLastName");
+        const userType = localStorage.getItem("userType");
         if (email) {
             setProfileInfo(prevData => ({
                 ...prevData,
                 email,
                 firstName,
-                lastName
+                lastName,
+                userType
             }));
         }
     }, []);
@@ -50,65 +50,78 @@ function Registration() {
         }));
     };
 
-const handleSubmit = async (e) => {
-    e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    if (!profileInfo.email || !profileInfo.firstName || !profileInfo.lastName || !profileInfo.gender || !profileInfo.address || !profileInfo.phoneNumber || !profileInfo.country || !profileInfo.birthdayDate || !profileInfo.birthdayMonth || !profileInfo.birthdayYear || !profileInfo.userType || !profileInfo.agreeTerms) {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Please fill in all required fields",
-            confirmButtonText: "OK"
-        });
-        return;
-    }
-
-    try {
-        const response = await axios.post(`http://localhost:8000/api/registerClient`, profileInfo);
-
-        if (response.status === 201 && response.data.message === "User registered successfully") {
-            Swal.fire({
-                icon: "success",
-                title: "Success",
-                text: "Information saved successfully",
-                confirmButtonText: "OK"
-            }).then(() => {
-                switch (profileInfo.userType) {
-                    case "client":
-                        navigate("/Pages/Home");
-                        break;
-                    case "professional":
-                        navigate("/Pages/Professional");
-                        break;
-                    case "service supplier":
-                        navigate("/Pages/ServiceSup");
-                        break;
-                    case "material supplier":
-                        navigate("/Pages/MaterialSup");
-                        break;
-                    default:
-                        navigate("/Pages/Home");
-                        break;
-                }
-            });
-        } else {
+        if (!profileInfo.email || !profileInfo.firstName || !profileInfo.lastName || !profileInfo.gender || !profileInfo.address || !profileInfo.phoneNumber || !profileInfo.country || !profileInfo.birthdayDate || !profileInfo.birthdayMonth || !profileInfo.birthdayYear || !profileInfo.userType || !profileInfo.agreeTerms) {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: response.data.message || "Error saving information",
+                text: "Please fill in all required fields",
+                confirmButtonText: "OK"
+            });
+            return;
+        }
+
+        let endpoint;
+        let redirectPath;
+
+        switch (profileInfo.userType) {
+            case "client":
+                endpoint = "http://localhost:8000/api/registerClient";
+                redirectPath = "/Pages/Home";
+                break;
+            case "professional":
+                endpoint = "http://localhost:8000/api/registerProfessional";
+                redirectPath = "/Pages/Professional";
+                break;
+            case "service supplier":
+                endpoint = "http://localhost:8000/api/registerServiceSupplier";
+                redirectPath = "/Pages/ServiceSup";
+                break;
+            case "material supplier":
+                endpoint = "http://localhost:8000/api/registerMaterialSupplier";
+                redirectPath = "/Pages/MaterialSup";
+                break;
+            default:
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Invalid user type selected",
+                    confirmButtonText: "OK"
+                });
+                return;
+        }
+
+        try {
+            const response = await axios.post(endpoint, profileInfo);
+
+            if (response.status === 201 && response.data.message === "User registered successfully") {
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: "Information saved successfully",
+                    confirmButtonText: "OK"
+                }).then(() => {
+                    navigate(redirectPath);
+                });
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: response.data.message || "Error saving information",
+                    confirmButtonText: "OK"
+                });
+            }
+        } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: error.response?.data?.message || "Error saving information",
                 confirmButtonText: "OK"
             });
         }
-    } catch (error) {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: error.response?.data?.message || "Error saving information",
-            confirmButtonText: "OK"
-        });
-    }
-};
-
+    };
 
     const handleEditClick = () => {
         window.scrollTo({

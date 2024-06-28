@@ -61,34 +61,48 @@ export default function Contact() {
     <div className="contact">
       <Navbar/>
       <div className="contact-image-container">
-        <img src={conta1} alt="Background" />
+        <img className='contact-mimg' src={conta1} alt="Background" />
 
         <div className="contact-white-container">
-          <div className='contact-head'>Let's Connect: <br/>Reach Out and Build Together</div>
-          <div className="contact-orange-container">
-            <div className="contact-head1">Get In Touch</div>
-            <div className="contact-name">Your Name</div>
-            <input type="text" className="contact-name-input" placeholder="Enter Your Name" name="name" value={formData.name} onChange={handleChange} />
-            <div className="contact-email">Your Email</div>
-            <input type="email" className="contact-email-input" placeholder="Enter Your Email" name="email" value={formData.email} readOnly />
-            <div className="contact-subject">Your Subject</div>
-            <input type="text" className="contact-subject-input" placeholder="Enter Your Subject" name="subject" value={formData.subject} onChange={handleChange} />
-            <div className="contact-message">Your Message</div>
-            <textarea className="contact-message-input" placeholder="Enter Your Message" name="message" value={formData.message} onChange={handleChange}></textarea>
-            <button className="contacts-button" onClick={handleSubmit}>Submit</button>
-          </div>
+          <div className='contact-head'>Let's Connect: <br/><span>Reach Out and Build Together</span></div>
+          <div className="contact-container">
+            <div className="contact-orange-container">
+              <div className="contact-head1">Get In Touch</div>
+              <div className="con-0">
+                <div className="con-01">
+                <div className="contact-name">Your Name</div>
+                  <input type="text" className="contact-name-input" placeholder="Enter Your Name" name="name" value={formData.name} onChange={handleChange} />
+                
+                </div>
+                <div className="con-01">
+                  <div className="contact-email">Your Email</div>
+                  <input type="email" className="contact-email-input" placeholder="Enter Your Email" name="email" value={formData.email} readOnly />
+                </div>
+              </div>
+              
+              <div className="con-01">
+                <div className="contact-subject">Your Subject</div>
+                <input type="text" className="contact-subject-input" placeholder="Enter Your Subject" name="subject" value={formData.subject} onChange={handleChange} />
+              </div>
+              <div className="con-01">
+                <div className="contact-message">Your Message</div>
+                <textarea className="contact-message-input" placeholder="Enter Your Message" name="message" value={formData.message} onChange={handleChange}></textarea>
+              </div>
+              <div className="con-02">
+                <button className="contacts-button" onClick={handleSubmit}>Submit</button>
+              </div>
+              
+            </div>
 
-          <div className="contact-white-container2">
-            <div className="contact-para">Have a question or need assistance?<br/>Reach out to us! We're here to help you bring<br/>your construction dreams to life.</div>
-            <div className="contact-phone">Phone Number</div>
-            <div className="contact-phone-result">123-456-7890</div>
-            <div className="contact-email2">Email Address</div>
-            <div className="contact-email2-result">info@buildmateplus.com</div>
-            <div className="contact-address">Address</div>
-            <div className="contact-address-result">123 Main Street, City, Country</div>
-            <div className="contact-web">Web Address</div>
-            <div className="contact-web-result">www.buildmateplus.com</div>
+            <div className="contact-white-container2">
+              <div className="contact-para"><span>Have a question or need assistance?</span><br/>Reach out to us! We're here to help you bring your construction dreams to life.</div>
+              <div className="contact-information">Phone Number<br/><span>123-456-7890</span></div>
+              <div className="contact-information">Email Address<br/><span>info@buildmateplus.com</span></div>
+              <div className="contact-information">Address<br/><span>123 Main Street, City, Country</span></div>
+              <div className="contact-information">Web Address<br/><span>www.buildmateplus.com</span></div>
+            </div>
           </div>
+          
         </div>
       </div>
     </div>

@@ -4,10 +4,11 @@
     background-size: cover;
     background-position: center;
     color: white;
+    padding: 4%;
   }
   
   .wall1 {
-    filter: brightness(65%);
+    filter: brightness(40%);
     height: 610px;
     width: 100%;
     object-fit: cover;
@@ -17,36 +18,37 @@
     z-index: -1;
     border-radius: 0 0 0 155px ;
   }
-  
+  .ab-content{
+    display: flex;
+  flex-direction: column;
+    align-items: center;
+    margin-top: 10%;
+  }
+
   .ab-topic{
-    font-size: 124px;
+    font-size: 1000%;
     font-weight: 700;
     line-height: 186px;
     text-align: center;
     font-family: "Poppins", sans-serif;
-    margin-top: 195px;
+    margin: auto;
     
   }
   .ab-subtopic{
     font-family: "Poppins",sans-serif;
-    font-size: 32px;
+    font-size: 200%;
     font-weight: 700;
     width: 829px;
     height: 120px;
     background-color: #0D113E;
     border-radius: 25px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 7%;
     line-height: 48px;
-    text-align: left;
+    text-align: center;
     padding-top: 1.5%;
-    padding-left: 4%;
   }
 
   .larger {
-    font-size: 34px;
+    font-size: 120%;
     line-height: 51px;
   }
   
@@ -64,26 +66,26 @@
     font-family: "Poppins",sans-serif;
     font-size: 50px;
     text-align: center;
-    padding-top: 200px;
+    margin-bottom: 2%;
+
   }
 
   .about {
     width: 87.5%;
-    height: 453px;
-    top: 994px;
-    left: 83px;
     border-radius: 28px;
     margin-left: 6%;
     margin-right: 6%;
     margin-bottom: 50px;
   }
 
+  .ab-p-group{
+    display: flex;
+    justify-content: space-evenly;
+  }
   .ab-p1{
     font-family: "Poppins",sans-serif;
     width: 40%;
     text-align: justify;
-    font-size: 30px;
-    padding-left: 6%;
     
   }
 
@@ -91,21 +93,23 @@
     font-family: "Poppins",sans-serif;
     width: 40%;
     text-align: justify;
-    font-size: 30px;
-    padding-left: 54%;
-    margin-top: -669px;
     
   }
 
+  .aboutBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+
+  }
   .vision {
-    font-family: Poppins;
     font-size: 50px;
     font-weight: 600;
     line-height: 75px;
     letter-spacing: 0.24em;
     text-align: left;
-    margin-top: 7%;
-    margin-left: 6%;
+    margin-bottom: 2%;
   }
 
   .vis {
@@ -118,25 +122,17 @@
     height: 35%;
     background-color: #0D113E;
     border-radius: 25px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    align-content: center;
-    margin-top: 10%;
-    padding-left: 4%;
-    padding-right: 4%;
+    padding: 5% 2% 2% 2%;
     
   }
 
   .mission {
-    font-family: Poppins;
     font-size: 50px;
     font-weight: 600;
     line-height: 75px;
     letter-spacing: 0.24em;
     text-align: left;
-    margin-top: 25%;
-    margin-left: 6%;
+    margin-bottom: 2%;
   }
 
   .mis {
@@ -149,13 +145,7 @@
     height: 35%;
     background-color: #0D113E;
     border-radius: 25px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    align-content: center;
-    margin-top: 10%;
-    padding-left: 4%;
-    padding-right: 4%;
+    padding: 5% 2% 2% 2%;
   }
 
   .last {
@@ -165,7 +155,7 @@
     line-height: 41.46px;
     letter-spacing: 0.16em;
     text-align: center;
-    margin-top: 25%;
+    margin-top: 5%;
   }
 
   .last2 {
@@ -175,6 +165,7 @@
     line-height: 41.46px;
     letter-spacing: 0.16em;
     text-align: center;
+    margin-bottom : 5%;
   }
 
   .highlight {

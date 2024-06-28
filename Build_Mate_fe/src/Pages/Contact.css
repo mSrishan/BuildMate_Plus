@@ -1,75 +1,85 @@
 .contact-image-container {
-  position: relative;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 5% 0;
   
 }
-
-.contact-image-container img {
+.contact-mimg {
+  filter: brightness(40%);
   display: block;
   width:100%;
-  height: 900px;
-  margin-left: 0px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
+
 .contact-white-container {
-  position: absolute;
-  top: 100px;
-  left: 210px;
-  width: 80%;
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+  width: 70%;
   height: 85%;
   background-color: #ffffff68; /* Adjust the opacity as needed */
   border-radius: 103px;
   z-index: 0;
-  box-shadow: 3px 3px 3px 5px rgba(0, 0, 0, 0.466);
+  box-shadow: 0 2px 50px rgba(0, 0, 0, 0.947);
+  margin-top: -2%;
+  padding: 2%;
 }
 
+.contact-container{
+  display: flex;
+  flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2%;
+}
 .contact-head {
   text-align: center;
   color: #0D113E;
-  padding-top: 40px;
-  font-weight: bold;
-  font-size: 45px;
+  margin: 2% 0;
+  font-weight: 1000;
+  font-size: 400%;
+  line-height: 80%;
+  text-shadow: 0 2px 50px rgb(255, 255, 255);
 }
 
+.contact-head span{
+  font-size: 60%;
+  margin: auto;
+}
 .contact-orange-container {
-  top: 190px;
-  left: 75px;
-  position: absolute;
   border-radius: 50px 0 0 50px;
   background-color: #FF6B00;
   z-index: 1;
   width: 53%;
   height: 60%;
-  box-shadow: -3px 1px 5px 6px rgba(0, 0, 0, 0.548);
+  padding: 5% 5%;
 }
 
 .contact-white-container2 {
-  top: 190px;
-  right: 75px;
-  position: absolute;
   border-radius: 0 50px 50px 0;
   background-color: #FFFFFF;
   z-index: 1;
-  width: 40%;
   height: 60%;
-  box-shadow: -1px -2px 5px 6px rgba(0, 0, 0, 0.564);
+  padding: 9.75% 4%;
 }
 
 .contact-head1 {
   color: #FFFFFF;
-  font-size: 28px;
+  font-size: 250%;
   font-weight: 700;
   text-align: left;
-  padding-top: 30px;
-  padding-left: 50px;
   letter-spacing: 0.4ch;
 }
 
 .contact-name {
   font-size: 16px;
-  color: #FFFFFF;
-  padding-left: 50px;
-  padding-top: 10px;
+  color: #ffffff;
   
 }
 
@@ -77,12 +87,9 @@
   border-radius: 10px;
   width: 175px;
   height: 29px;
-  margin-left: 50px;
-  margin-top: 7px;
   background-color: #FFFFFF;
   color: black;
   border: none;
-  position: relative;
   z-index: 100;
   box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.336);
 }
@@ -90,16 +97,12 @@
 .contact-email {
   font-size: 16px;
   color: #FFFFFF;
-  padding-left: 275px;
-  margin-top: -59px;
 }
 
 .contact-email-input {
   border-radius: 10px;
   width: 195px;
   height: 29px;
-  margin-left: 275px;
-  margin-top: 7px;
   background-color: #FFFFFF;
   color: black;
   border: none;
@@ -109,16 +112,12 @@
 .contact-subject {
   font-size: 16px;
   color: #FFFFFF;
-  padding-left: 50px;
-  padding-top: 7px;
 }
 
 .contact-subject-input {
   border-radius: 10px;
   width: 420px;
   height: 50px;
-  margin-left: 50px;
-  margin-top: 7px;
   background-color: #FFFFFF;
   color: black;
   border: none;
@@ -128,43 +127,85 @@
 .contact-message {
   font-size: 16px;
   color: #FFFFFF;
-  padding-left: 50px;
-  padding-top: 7px;
 }
 
 .contact-message-input {
   border-radius: 10px;
   width: 420px;
   height: 70px;
-  margin-left: 50px;
-  margin-top: 7px;
   background-color: #FFFFFF;
   color: black;
   border: none;
   box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.336);
 }
 
-.contacts-button {
-  color: #FFFFFF;
+
+.contacts-button{
+  font-size: 100%;
   background-color: #0D113E;
-  font-weight: 700;
-  font-size: 14px;
-  width: 125px;
-  height: 28px;
-  margin-left: 345px;
-  margin-top: 20px;
-  border-radius: 7px;
-  box-shadow: 1px 1px 3px 3px rgba(249, 248, 250, 0.336);
+  color: rgb(255, 255, 255);
+  border: 1px solid #ccc;
+  padding: 10px 20px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  width: 50%;
+  padding: 2%;
+  border-radius: 15px;
+  text-align: center;
+  
+  
+}
+
+.contacts-button:hover {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+.contacts-button.active {
+  background-color: #ffffff;
+  color: #FF6B00;
+}
+
+.con-02{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5%;
+}
+
+.con-01{
+  display: flex;
+  flex-direction: column;
+    align-items: stretch;
+    margin-top: 5%;
+
+}
+
+.con-01 input{
+  padding-left: 0 5%;
+  width: 100%;
+}
+.con-0{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .contact-para {
-  font-size: 15px;
-  text-align: left;
-  padding-top: 60px;
-  padding-left: 30px;
+  font-size: 80%;
+  text-align: justify;
 }
 
+.contact-para span{
+  font-size: 120%;
+  font-weight: 600;
+}
+.contact-information{
+  font-size: 80%;
+  margin-top: 5%;
+}
+.contact-information span{
+  font-size: 150%;
+}
 .contact-phone {
   font-size: 12px;
   padding-left: 30px;

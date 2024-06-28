@@ -7,8 +7,8 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'pathumpasindu41@gmail.com',
-      pass: 'lkoy tvyt vydf olny'
+      user: 'buildmateplus@gmail.com',
+      pass: 'wgln wrwl xeiw jsxq'
     }
 });
 
@@ -76,7 +76,7 @@ router.post('/signup', async (req, res) => {
         // Send signup confirmation email
         try {
             await sendWelcomeEmail(email, firstName);
-            res.status(201).send("notexist");
+            res.status(201).json({ message: "notexist", firstName });
         } catch (error) {
             console.error("Error sending email:", error);
             res.status(500).json({ message: "Error sending signup confirmation email" });
@@ -92,7 +92,7 @@ router.post('/login', async (req, res) => {
     try {
         const user = await User.findOne({ email, password });
         if (user) {
-            res.status(200).json({ message: "success" });
+            res.status(200).json({ message: "success", firstName: user.firstName });
         } else {
             res.status(401).json({ message: 'Invalid credentials' });
         }
