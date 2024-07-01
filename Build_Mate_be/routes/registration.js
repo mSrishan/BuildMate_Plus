@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 // Function to send a welcome email
 async function sendClientEmail(email, firstName, userType) {
     const mailOptions = {
-        from: 'pathumpasindu41@gmail.com',
+        from: 'buildmateplus@gmail.com',
         to: email,
         subject: 'Welcome to BuildMate+!',
         html: `
