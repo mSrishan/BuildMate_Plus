@@ -14,13 +14,15 @@ import Professional from "./Pages/Professional";
 import MaterialSup from "./Pages/MaterialSup";
 import ServiceSup from "./Pages/ServiceSup";
 import Architecture from "./Pages/Architecture";
-import Profile from "./Pages/Profile"
+import Profile from "./Pages/Profile";
 import Suppliers from "./Pages/Supplier";
 import Chat from "./Pages/Chat"; 
 import ChatIcon from "./Pages/ChatIcon";
 import ProfProfile from "./Pages/ProfProfile";
-import EditProfile from './Pages/EditProfile';
 import ArchProfile from "./Pages/ArchProfile";
+import ProfileCards from "./Pages/ProfileCards";
+import Profiless from "./Pages/Profiless";
+import Profilems from "./Pages/Profilems";
 
 
 function App() {
@@ -41,12 +43,14 @@ function App() {
           <Route path="/Pages/MaterialSup" element={<MaterialSup />}/>
           <Route path="/Pages/ServiceSup" element={<ServiceSup />}/>
           <Route path="/Pages/Architecture" element={<Architecture />}/>
-          <Route path="/Pages/Profile" element={<Profile />}/>
+          <Route path="/Pages/profile/:id" element={<Profile />} />
           <Route path="/Pages/Supplier" element={<Suppliers/>}/>
           <Route path="/Pages/Chat" element={<Chat />} />
           <Route path="/Pages/ArchProfile" element={<ArchProfile />} />
-          <Route path="/Pages/ProfProfile" element={<ProfProfile/>}/>
-          {/* <Route path="/Pages/EditProfile" element={<EditProfile/>} /> */}
+          <Route path="/Pages/profileCards" element={<ProfileCards />}/>
+          <Route path="/Pages/profiless" element={<Profiless />}/>
+          <Route path="/Pages/profilems" element={<Profilems />}/>
+          <Route path="/Pages/ProfProfile" element={<ProfProfile />} />
         </Routes>
         <ChatIcon />
       </Router>

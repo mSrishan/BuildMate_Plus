@@ -38,7 +38,7 @@ async function sendClientEmail(email, firstName, userType) {
             <p>Best regards,<br>The BuildMate+ Team</p>
 
             <p><strong>Website:</strong> <a href="http://www.buildmateplus.com">www.buildmateplus.com</a></p>
-            <p><strong>Email:</strong> <a href="mailto:support@buildmateplus.com">support@buildmateplus.com</a></p>
+            <p><strong>Email:</strong> <a href="www.buildmateplus@gmail.com">buildmateplus@gmail.com</a></p>
         `
     };
 
@@ -85,6 +85,12 @@ router.post('/', async (req, res) => {
                 return res.status(400).json({ message: "Invalid user type" });
         }
 
+        // Check if the user already exists
+        const existingUser = await userModel.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: "User with this email already exists" });
+        }
+
         const newUser = new userModel({
             email,
             firstName,
@@ -104,7 +110,7 @@ router.post('/', async (req, res) => {
         
         // Attempt to send the email
         try {
-            await sendClientEmail(email, firstName);
+            await sendClientEmail(email, firstName, userType);
         } catch (error) {
             console.error("Error sending email:", error);
             // Log the error, but continue to respond with success

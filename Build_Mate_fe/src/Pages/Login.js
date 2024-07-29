@@ -6,6 +6,7 @@ import googleimg from '../Components/Assets/pngegg.png';
 import openeye from '../Components/Assets/openeye.png';
 import closeeye from '../Components/Assets/closeeye.png';
 import Swal from "sweetalert2";
+import closeIcon from "../Components/Assets/close.png"; // Import close icon
 
 function Login() {
     const navigate = useNavigate();
@@ -58,9 +59,12 @@ function Login() {
             });
         }
     }
+    function handleClose() {
+        navigate("/Pages/Home"); // Navigate to the home page
+    }
 
     return (
-        <div className="login_page">
+        <div className="login_page"><img src={closeIcon} alt="Close" className="close-icon" onClick={handleClose} />
             <div className="login">
                 <div className="login1">
                     <h1>Member Login</h1>
@@ -95,7 +99,7 @@ function Login() {
                                 />
                             </div>
                             <label style={{ fontSize: '15px', color: '#0D113E' }}>Forgot Password?</label>
-                            <button type="submit" style={{ marginTop: '20px' }}>Login</button>
+                            <button className="login-button" type="submit" style={{ marginTop: '20px' }}>Login</button>
                         </form>
                     </div>
                     <label style={{ marginLeft: '12px', fontSize: '18px', fontWeight: '700' }}>

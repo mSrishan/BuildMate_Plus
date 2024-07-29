@@ -1,0 +1,200 @@
+.chat{
+    flex: 2;
+    border-left: 1px solid rgba(255, 255, 255, 0.534);
+    border-right: 1px solid rgba(255, 255, 255, 0.534);
+    height: 100%;
+    display: flex;
+
+    flex-direction:column ;
+
+    .top{
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(240, 240, 240, 0.571);
+    
+        .user {
+            display: flex;
+            align-items: center;
+            gap:20px;
+
+            img{
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .texts{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                span{
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+
+                p{
+                  font-size: 15px;
+                  font-weight: 400;
+                  color: rgba(36, 36, 36, 0.688);  
+                }
+            }
+        }
+
+        .item{
+            display: flex;
+            gap: 20px;
+
+            img{
+                width: 15px;
+                height: 15px;
+            }
+        }
+    
+    }
+
+    .center{
+        padding: 20px;
+        flex: 1;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        
+        .message{
+            max-width: 70%;
+            gap: 20px;
+            
+
+            /* Add this CSS to handle image styling within the message */
+            .message-img {
+                width: 100%;
+                height: auto;
+                border-radius: 5px;
+                object-fit: cover;
+            }
+  
+            &.own{
+            align-self: flex-end;
+
+            .texts{
+                display: flex;
+                align-items: end;
+                .centerTexts{
+                    background-color: rgba(0, 18, 57, 0.5);
+                    text-align: left;
+                }
+            }
+            }
+
+            img{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .texts{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+
+                .centerTexts{
+                    padding: 20px;
+                    border-radius: 15px;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    font-size: 18px;
+                    font-weight: 200;
+                }
+
+                span{
+                    font-size: 10px;
+                }
+
+                img{
+                    width: 100%;
+                    height: 300%;
+                    border-radius: 5px;
+                    object-fit: cover;
+
+                }
+            }
+        }
+
+        
+    }
+
+    .bottom{
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        border-top:1px solid rgba(240, 240, 240, 0.571);
+        margin-top: auto;
+            img{
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+            }
+        .icons{
+            display: flex;
+            gap: 10px;
+
+            img{
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+            }
+        }
+
+        .bottomInput{
+            flex: 1;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            outline: none;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 15px;
+
+            &:disabled{
+                cursor: not-allowed;
+            }
+        }
+
+        .emoji{
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            .picker{
+                position: absolute;
+                bottom: 50px;
+                left: 0;
+            }
+        }
+        .sendButton{
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+
+            &:disabled{
+                background-color: rgba(0, 0, 255, 0.5);
+                cursor: not-allowed;
+            }
+        }
+    }
+
+
+
+
+}

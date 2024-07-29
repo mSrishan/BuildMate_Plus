@@ -5,8 +5,24 @@
   font-family: "Poppins", sans-serif;
 }
 
+.head-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.sub-head-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
 .wall {
-  filter: brightness(40%);
+  filter: brightness(30%);
   position: absolute;
   width: 100%;
   height: 90%;
@@ -21,34 +37,52 @@
 
 
 .content {
-  margin: 10% 0 0 0;
-  position: relative;
-  
+  width: 100%;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
 }
 
-.content h1{
-  
-  text-align: center;
-  font-size: 3rem;
+.home-content-1 h1{
+  max-width: 800px;
+  content: "";
   margin: auto;
-}
-.content p{
+  font-size: 6vh;
   text-align: center;
-  margin: 0.5% auto;
+}
+
+  
+.home-content-1 h1::after {
+  content: "";
+  line-height: 48px;
+  animation: abomination1 2.5s steps(25) 1;
+  animation-fill-mode: forwards;
+}
+
+.content p{
+  width: 50%;
+  margin: 2% auto 2% auto;
   font-size: 1.5rem;
 }
 
 .ic1 { 
-  z-index: -5;
-  height: 70vh;
-  margin: -15% 0 0 8%;
+  position: absolute;
+  max-height: 100%; /* Adjust based on your design */
+  width: 10%;
+  height: auto;
+  left: 15%;
+  bottom: 30%;
+  margin-right: 20px; /* Space between the image and the content */
+  border-radius: 8px;
+  object-fit: cover;
+
 }
 .search-center {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 5%;
-  margin-top: -17%;
 }
 
 .search-bar-container {
@@ -93,7 +127,7 @@
   padding: 8px 16px;
   cursor: pointer;
   border-top-right-radius: 33px; /* Rounded corners */
-  border-top-left-radius: 3px;
+  border-top-left-radius: 33px;
   width: 120px;
   border: none;
   outline: none;
@@ -102,16 +136,17 @@
   z-index: 1;
   box-shadow: #4f4e4e 0 0 20px 0;
   margin-left: -3%;
+  
 }
 
 .switch-button-ma {
-  background-color: #D3D3D3;
+  background-color: #F3F0F0;
   color: black;
   font-size: 16px;
   padding: 8px 16px;
   cursor: pointer;
   border-top-right-radius: 33px; /* Rounded corners */
-  border-top-left-radius: 3px;
+  border-top-left-radius: 33px;
   width: 120px;
   border: none;
   outline: none;
@@ -120,19 +155,35 @@
   margin-left: -3%;
 }
 
-.switch-button.active {
-  background-color: white; /* Change background color for active button */
-  color: blue; /* Change text color for active button */
+.switch-button-ex:hover,
+.switch-button-su:hover,
+.switch-button-ma:hover {
+  background-color: #0D113E;
+  color: #ffffff;
+}
+
+.switch-button-ex.active,
+.switch-button-su.active,
+.switch-button-ma.active {
+  background-color: rgb(22, 16, 80);
+  color: rgb(238, 238, 243);
+  z-index: 4; /* Bring the Supplier button further to the front */
+  transform: scale(1.04); /* Make the Supplier button appear even larger */
+}
+
+.switch-button-ex:not(.active),
+.switch-button-su:not(.active),
+.switch-button-ma:not(.active) {
+  z-index: 2; /* Ensure the non-active buttons are behind the active button */
+  transform: scale(1); /* Reset the scale for non-active buttons */
 }
 
 .search-input {
   flex-grow: 1;
   width: calc(100% - 150px); /* Take remaining space */
   padding: 8px 15px;
-  border-radius: 0 0 0 25px;
+  border-bottom-left-radius: 33px;
   border: none;
-  font-size: 16px;
-  height: 40px;
   background-color: #ededed;
   color: #0D113E;
   
@@ -158,7 +209,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 4% auto;
+  margin-top: 5%;
 
 }
 .downarrow{
@@ -177,8 +228,9 @@
 }
 
 .h2-text{
-  width: 75%;
+  width: 70%;
   color: black;
+  font-size: 1.8vw;
   text-align: left;
 }
 
@@ -193,41 +245,58 @@
   border: none;
 }
 
-.path{
-  background-color: #ffffff;
-  margin-top: -20%;
-  position:absolute;
-  z-index: -10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.woman-img{
+  position: absolute;
+  max-height: 100%; /* Adjust based on your design */
+  width: 25%;
+  right: 0.5%;
+  filter: opacity(40%);
+  height: auto;
+  margin-right: 20px; /* Space between the image and the content */
+  border-radius: 8px;
+  object-fit: cover;
+  z-index: -100;
+
 }
 .firstbox{
+  margin-top: 5%;
   padding: 0 10% ;
-  max-width: 80%;
   max-height: 10%;
 }
 .box1{
   display: flex;
-  align-items: center;
-  margin: 30% auto auto auto;
+  overflow: hidden;
+  margin:  auto;
   border-radius: 65px;
   box-shadow: 0 0 40px rgba(67, 67, 67, 0.4);
+}
+.box3{
+  display: flex;
+  overflow: hidden;
   
+  margin: 3% auto auto auto;
+  border-radius: 65px;
+  box-shadow: 0 0 40px rgba(67, 67, 67, 0.4);
 }
 .dreamimg{
   
-  height: 390px;
+  height: auto;
+  border-radius: 65px 0 0 65px;
+
+}
+
+.dreamimg01{
+  width: 45%;
+  height: auto;
   border-radius: 65px 0 0 65px;
 
 }
 .box {
   display: flex;
   align-items: center;
-
+  padding: 0 5%;
   flex-grow: 1;
-  height: 350px;
-  padding: 20px 80px 20px 20px; /* Adjust as needed */
+  height: auto;/* Adjust as needed */
   margin-left: -40%;
   background: linear-gradient(to right, 
     rgba(217, 217, 217, 0.19) 0%,      
@@ -237,19 +306,20 @@
   border-radius: 0 65px 65px 0;
   flex-direction: column;
     align-items: flex-end;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 .h1-text{
-  width: 40%;
+  width: 65%;
   color: black;
   text-align: right;
-  font-size: 150%;
+  font-size: 1.8vw;
+  
 }
 .h1-button{
   border-radius: 50px;
   color: white;
-  font-size: 23px;
-  padding: 10px 20px;
+  font-size: 2.0vw;
+  padding: 10px 30px;
   font-weight: 600;
   background-color:#0D113E;
   border: none;
@@ -258,7 +328,6 @@
 }
 .box2{
   display: flex;
-  align-items: center;
   margin: 3% auto auto auto;
   transform: scaleX(-1);
   
@@ -371,7 +440,7 @@
 .re-con{
   background-color: #d9d9d9;
   width: 100%;
-  margin: 3% auto auto auto;
+  margin: 0 auto auto auto;
   padding: 3% 0;
 }
 
@@ -417,13 +486,11 @@
 
 .re-name{
   font-size: 13px;
-  margin: auto;
   text-align: left;
 }
 
 .re-po{
   font-size: 10px;
-  margin: auto;
 }
 
 .profile-img{
@@ -440,7 +507,7 @@
 
 }
 
-.review-star{
+.reviewStar{
   display: flex;
 }
 
@@ -449,17 +516,55 @@
   width: 200px;
 }
 
+.wel-all-collection{
+  margin-top: 35%;
+}
+.leFadeIn {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+.animate__fadeInLeft{
+  animation-delay: 5s;
+}
+.leFadeInVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate__backInRight {
+  animation-delay: 5s;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.animate__backInRightVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate__fadeInLeft {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.animate__fadeInLeftVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.position{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
 /* Default styles */
 
 /* Add more breakpoints and adjust styles as needed */
 @media (max-width: 1200px) {
-  .content h1 {
-    font-size: 2.5rem; /* Decrease font size */
-  }
-
-  .content p {
-    font-size: 1.3rem; /* Decrease font size */
-  }
+  
 
   .search-bar-container {
     width: 70%; /* Decrease width */
@@ -484,10 +589,6 @@
     padding: 6px 12px; /* Adjust padding */
   }
 
-  .box1,
-  .box2 {
-    height: 300px; /* Adjust height */
-  }
 
   .det {
     margin: 1% auto; /* Adjust margin */
@@ -544,3 +645,100 @@
     font-size: 10px; /* Decrease font size */
   }
 }
+/* Responsive design */
+@media (max-width: 768px) {
+  .ic1 {
+      max-width: 100%; /* Adjust the width for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .ic1 {
+      max-width: 100%; /* Adjust the width for even smaller screens */
+  }
+}
+
+@keyframes abomination1 {
+  0% {
+    content: "C";
+  }
+  4% {
+    content: "Co";
+  }
+  8% {
+    content: "Con";
+  }
+  12% {
+    content: "Conn";
+  }
+  16% {
+    content: "Conne";
+  }
+  20% {
+    content: "Connec";
+  }
+  24% {
+    content: "Connect";
+  }
+  28% {
+    content: "Connect,";
+  }
+  32% {
+    content: "Connect, ";
+  }
+  36% {
+    content: "Connect, C";
+  }
+  40% {
+    content: "Connect, Cr";
+  }
+  44% {
+    content: "Connect, Cre";
+  }
+  48% {
+    content: "Connect, Crea";
+  }
+  52% {
+    content: "Connect, Creat";
+  }
+  56% {
+    content: "Connect, Create";
+  }
+  60% {
+    content: "Connect, Create,";
+  }
+  64% {
+    content: "Connect, Create, ";
+  }
+  68% {
+    content: "Connect, Create, C";
+  }
+  72% {
+    content: "Connect, Create, Co";
+  }
+  76% {
+    content: "Connect, Create, Con";
+  }
+  80% {
+    content: "Connect, Create, Cons";
+  }
+  84% {
+    content: "Connect, Create, Const";
+  }
+  88% {
+    content: "Connect, Create, Constr";
+  }
+  92% {
+    content: "Connect, Create, Constru";
+  }
+  96% {
+    content: "Connect, Create, Construc";
+  }
+  100% {
+    content: "Connect, Create, Construct";
+  }}
+
+  
+
+
+  

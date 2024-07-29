@@ -7,12 +7,13 @@ const ChatIcon = () => {
   const navigate = useNavigate();
 
   const handleChatIconClick = () => {
-    navigate('/Pages/Chat');
+    navigate('../Components/ChatApp/App');
   };
 
   return (
     <div style={styles.chatIconContainer} onClick={handleChatIconClick}>
-      <img src={chatIcon} alt="Chat Icon" style={styles.chatIcon} />
+        <img src={chatIcon} alt="Chat Icon" style={styles.chatIcon} />
+      
     </div>
   );
 };
@@ -24,11 +25,13 @@ const styles = {
     right: '20px',
     cursor: 'pointer',
     zIndex: 1000,
+    display: 'flex'
     
   },
   chatIcon: {
-    width: '150px',
-    height: '150px',
+    width: '100px',
+    height: '100px',
+    padding: '5%'
     
   },
 };

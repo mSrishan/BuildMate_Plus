@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
 import './Home.css';
-import Registration from './Registration';
 import CountUp from 'react-countup';
 import homeimg from '../Components/Assets/wall1.jpg';
 import ic1 from '../Components/Assets/ic1.png'; 
 import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/footer';
-import ic2 from '../Components/Assets/ic2.png';
+import women from '../Components/Assets/Home-women.png';
 import profile from '../Components/Assets/profile.png';
 import seemore from '../Components/Assets/down-arrow.png'
 import dreamimage from '../Components/Assets/1638943222107.jpeg'
@@ -16,11 +15,36 @@ import groupImage from '../Components/Assets/group.png';
 import propertyImage from '../Components/Assets/property.png';
 import starImage from '../Components/Assets/star.png';
 import viewImage from '../Components/Assets/3d-view(1).png';
+import reviewImg01 from "../Components/Assets/review01.jpeg";
+import reviewImg02 from "../Components/Assets/review02.jpeg";
+import reviewImg03 from "../Components/Assets/review03.jpeg";
+import 'animate.css';
+
+
 
 import ScrollTrigger from "react-scroll-trigger";
 import { Route } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
+
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <img
+          key={i}
+          src={starImage}
+          alt="star"
+          className="star"
+          style={{
+            width: '15px',
+            filter: i <= rating ? 'none' : 'grayscale(100%)',
+          }}
+        />
+      );
+    }
+    return stars;
+  };
 
 const Home = () => {
 
@@ -47,77 +71,189 @@ const Home = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    if (backInRightRef.current) {
+      backInRightRef.current.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        backInRightRef.current.classList.add('animate__backInRightVisible');
+      }, 300); // Adjust timing as needed
+    }
+    if (fadeInLeftRef.current) {
+      fadeInLeftRef.current.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        fadeInLeftRef.current.classList.add('animate__fadeInLeftVisible');
+      }, 300); // Adjust timing as needed
+    }
   };
+  const boxRef = useRef(null);
 
-  const navigate = useNavigate();
+    useEffect(() => {
+        const observerOptions = {
+            threshold: 0.1
+        };
 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        const boxElement = boxRef.current;
+        if (boxElement) {
+            observer.observe(boxElement);
+        }
+
+        return () => {
+            if (boxElement) {
+                observer.unobserve(boxElement);
+            }
+        };
+    }, []);
+
+    const fadeInRef = useRef(null);
+    const backInRightRef = useRef(null);
+    const fadeInLeftRef = useRef(null);
+
+    useEffect(() => {
+      
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              if (entry.target.classList.contains('leFadeIn')) {
+                entry.target.classList.add('leFadeInVisible');
+              } else if (entry.target.classList.contains('animate__backInRight')) {
+                entry.target.classList.add('animate__backInRightVisible');
+              } else if (entry.target.classList.contains('animate__fadeInLeft')) {
+                entry.target.classList.add('animate__fadeInLeftVisible');
+              }
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.1 // Trigger when 10% of the element is visible
+        }
+      );
+
+      if (fadeInRef.current) {
+        observer.observe(fadeInRef.current);
+      }
+      if (backInRightRef.current) {
+        observer.observe(backInRightRef.current);
+      }
+      if (fadeInLeftRef.current) {
+        observer.observe(fadeInLeftRef.current);
+      }
+
+      return () => {
+        if (fadeInRef.current) {
+          observer.unobserve(fadeInRef.current);
+        }
+        if (backInRightRef.current) {
+          observer.unobserve(backInRightRef.current);
+        }
+        if (fadeInLeftRef.current) {
+          observer.unobserve(fadeInLeftRef.current);
+        }
+      };
+    }, []);
+  
   return (
    <>
    
     <div className='homepage'>
       <Navbar/>
       <img className='wall' src={homeimg} alt='Background' />
-      <div className='content'>
-        <h1>Connect, Create, Construct</h1>
-        <p>Buildmate+ connects countless dreamers with the perfect <br/>
-        team to turn their construction visions into reality.</p>
+      <div className='head-content'>
+        <img src={ic1} alt='icon one' className='ic1' />
         
-      
-        <img className='ic1' src={ic1} alt='Icon' />
-        <div className='search-center'>
-          <div className="search-bar-container">
+        
+        <div className='content'>
+          <div className='home-content-1'>
+            <h1></h1>
+            <div className='animate__fadeInUp' ref={fadeInRef}>
+              <p>Buildmate+ connects countless dreamers with the perfect team to turn their construction visions into reality.</p>
+            </div>
             
-              <div className="switch-buttons">
-                <button className={`switch-button-ex ${searchType === 'Expert' ? 'active' : ''}`} onClick={() => handleSearchTypeChange('Expert')}>Expert</button>
-                <button className={`switch-button-su ${searchType === 'Supplier' ? 'active' : ''}`} onClick={() => handleSearchTypeChange('Supplier')}>Supplier</button>
-                <button className={`switch-button-ma ${searchType === 'Material' ? 'active' : ''}`} onClick={() => handleSearchTypeChange('Material')}>Material</button>
+            
+          </div>
+          
+          <div className='search-center'>
+            <div className="search-bar-container">
+              
+                <div className="switch-buttons">
+                  <button className={`switch-button-ex ${searchType === 'Expert' ? 'active' : ''}`} onClick={() => handleSearchTypeChange('Expert')}>Expert</button>
+                  <button className={`switch-button-su ${searchType === 'Supplier' ? 'active' : ''}`} onClick={() => handleSearchTypeChange('Supplier')}>Supplier</button>
+                  <button className={`switch-button-ma ${searchType === 'Material' ? 'active' : ''}`} onClick={() => handleSearchTypeChange('Material')}>Material</button>
+                </div>
+              <div className="search-bar">
+                <input
+                  type="text"
+                  className="search-input"
+                  placeholder={` Search ${searchType.toLowerCase()}`}
+                  value={searchQuery}
+                  onChange={handleSearchInputChange}
+                />
+                <button className="search-button" onClick={handleSearchSubmit}>Search</button>
               </div>
-            <div className="search-bar">
-              <input
-                type="text"
-                className="search-input"
-                placeholder={` Search ${searchType.toLowerCase()}`}
-                value={searchQuery}
-                onChange={handleSearchInputChange}
-              />
-              <button className="search-button" onClick={handleSearchSubmit}>Search</button>
             </div>
           </div>
-        </div>
           <div className='arrow'>
-            <img
-             className='downarrow' src={seemore} alt='downarrow'
-             onClick={pathWindow}
-            /></div>
+            
+              <img
+              className='downarrow' src={seemore} alt='downarrow'
+              onClick={pathWindow}
+              />
+          </div>
+          
+        </div>
       </div>
+    
+      
         <div className='path'>
                       <div className='h1'>
                        <div className='firstbox'id='firstbox'>
-                       <div className='box1'>
-                            <img src={dreamimage} className='dreamimg'/>
-                            <div className='box'><h1 className='h1-text'>Ready to start building your dream or maintaining your existing construction? 
-                            </h1><button className='h1-button' onClick={() => navigate('/Pages/Connect')}
-                               >Build your Team </button></div>
-                          </div>
-                          <div className='box2'>
-                            <img
-                              src={oppertunityimg}
-                              className='dreamimg'
-                              style={{ transform: 'scaleX(-1)', zIndex: '-1', borderRadius: '0 65px 65px 0' }}
-                            />
+                        <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
+                          <div className='box1'>
+                            <img src={dreamimage} className='dreamimg' alt='Dream' />
                             <div className='box'>
-                              <h1 className='h2-text' style={{ transform: 'scaleX(-1)' }}>
-                                Ready to take on new projects or find exciting job opportunities in the construction industry?
-                              </h1>
-                              <button
-                                className='h2-button'
-                                onClick={() => navigate('/Pages/registration')}
-                                style={{ transform: 'scaleX(-1)' }}
-                              >
-                                Explore Opportunities
-                              </button>
+                                <h1 className='h1-text'>
+                                    Ready to start building your dream or maintaining your existing construction?
+                                </h1>
+                                <Link to='/Pages/connect'>
+                                    <button className='h1-button'>Build your dream</button>
+                                </Link>
+                            </div></div>
+
+                        </div>
+                        <div className='animate_box1 animate__animated animate__backInRight' ref={backInRightRef}>
+                           <div className='box2'>
+                            <img src={oppertunityimg} className='dreamimg01' style={{ transform: 'scaleX(-1)', zIndex:'-1',borderRadius:'0 65px 65px 0' }}/>
+                            <div className='box'><h1 className='h2-text' style={{transform:'scaleX(-1)'}}>Ready to take on new projects or find exciting job opportunities in the construction industry? 
+                            </h1>
+                            <Link to="/Pages/Projects" >
+                              <button className='h1-button'  style={{transform:'scaleX(-1)', }}>Explore Opportunities</button>
+                            </Link>
                             </div>
-                          </div>
+                          </div> 
+                        
+                        </div>
+                        <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
+                          <div className='box3'>
+                            <img src={dreamimage} className='dreamimg' alt='Dream' />
+                            <div className='box'>
+                                <h1 className='h1-text'>
+                                Ready to join us and showcase your expertise to the world?
+                                </h1>
+                                <Link to='/Pages/Registration'>
+                                    <button className='h1-button'>Be a BuildMate</button>
+                                </Link>
+                            </div></div>
+
+                        </div>  
+                          
                       </div> 
                       <div className='det'>
                           <div className='details-content'>
@@ -140,94 +276,91 @@ const Home = () => {
                             </div>
                           </div>
                     </div>
-                          <img className='ic2' src={ic2} alt='Icon' />
-                        <div className='wel-all' >
-                          <h1 className='wel-h'>Welcome to BuildMate+</h1>
-                          <p className='wel-p'>Choose BuildMate+ for your construction needs and unlock a world of possibilities. Join our thriving community of builders, designers, and dreamers, and let's build the future together.</p>
-                          </div>
+                          
+                        
                       </div>
+                      <div className='sub-head-content'>
+                        <img src={women} alt='woman' className='woman-img'/>
+                          <div className='wel-all-collection'>
+                                <div className='wel-all' >
+                                  
+                                  <h1 className='wel-h'>Welcome to BuildMate+</h1>
+                                  <p className='wel-p'>Choose BuildMate+ for your construction needs and unlock a world of possibilities. Join our thriving community of builders, designers, and dreamers, and let's build the future together.</p>
+                                </div>
+                                
+                                <div className="wel1">
+                                  <div className='we-c'>
+                                    <img src={propertyImage} alt='property' className='wel-img'/>
+                                  <h2 className="we-h">Dream Project Matchmaking</h2>
+                                  <p className="we-p">Connects clients with projects that perfectly align with their vision and requirements, ensuring satisfaction from start to finish.</p>
+                                  </div>
+                                  <div className='we-c'>
+                                    <img src={groupImage} alt='group'className='wel-img'/>
+                                  <h2 className="we-h">Streamlined Communication</h2>
+                                  <p className="we-p">Facilitates efficient and effective communication among all stakeholders, reducing misunderstandings and enhancing collaboration.</p>
+                                  </div>
+                                
+                                    
+                                  <div className='we-c'><img src={viewImage} alt='view'className='wel-img'/>
+                                  <h2 className="we-h">Seamless 3D Design Integration</h2>
+                                  <p className="we-p">Enables easy creation and integration of 3D designs, improving project visualization and planning accuracy.</p>
+                                  </div>
 
-                          <div className="wel1">
-                            <div className='we-c'>
-                              <img src={propertyImage} alt='property' className='wel-img'/>
-                            <h2 className="we-h">Dream Project Matchmaking</h2>
-                            <p className="we-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
-                            </div>
-                            <div className='we-c'>
-                              <img src={groupImage} alt='group'className='wel-img'/>
-                            <h2 className="we-h">Streamlined Communication</h2>
-                            <p className="we-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero</p>
-                            </div>
-                           
-                              
-                            <div className='we-c'><img src={viewImage} alt='view'className='wel-img'/>
-                            <h2 className="we-h">Seamless 3D Design Integration</h2>
-                            <p className="we-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero</p>
-                            </div>
-
-                            <div className='we-c'>
-                              <img src={growthImage} alt='growth'className='wel-img'/>
-                            <h2 className="we-h">Transparent Progress Tracking</h2>
-                            <p className="we-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero</p>
-                            </div>
+                                  <div className='we-c'>
+                                    <img src={growthImage} alt='growth'className='wel-img'/>
+                                  <h2 className="we-h">Transparent Progress Tracking</h2>
+                                  <p className="we-p">Provides real-time updates on project progress, ensuring transparency and building trust with clients.</p>
+                                  </div>
+                              </div>
                           </div>
+  
+                      </div>
+                      
+                          
 
                           <div className='re-con'>
                             <h1 className='re-h'>We care about our customer<br/> experience too </h1>
                             <div className='review-con'>
 
                             <div className="con-1">
-                              <img src={profile} alt="Image" className='profile-img' style={{width:'70px'}} />
-                              <p className='re'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed.</p>
-                              <div className='line-re'></div>
-                              <div className='footer-con'>
-                                <div className='position'>
-                              <p className='re-name'>John Walker</p>
-                              <p className='re-po'>Architecture</p></div>
-                              <div className='review-star'>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px', filter: 'grayscale(10%)'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                              </div>
+                              <img src={reviewImg01} alt="Profile" className="profile-img" style={{ width: '70px' }} />
+                              <p className="re">
+                              "BuildMate+ has significantly improved our project coordination and execution. The Dream Project Matchmaking feature is fantastic for finding projects that fit our expertise. Streamlined communication has reduced the back-and-forth between team members, making our workflow more efficient. The 3D Design Integration allows us to present detailed plans to clients, enhancing their understanding and satisfaction. Overall, BuildMate+ has been an invaluable tool for our firm."
+                              </p>
+                              <div className="line-re"></div>
+                              <div className="footer-con">
+                                <div className="position">
+                                  <p className='re-name'>Sophia Williams</p>
+                                  <p className='re-po'>Architect</p>
+                                </div>
+                                <div className="reviewStar">{renderStars(4)}</div>
                               </div>
                             </div>
                             
 
-                            <div className="con-1">
-                              <img src={profile} alt="Image" className='profile-img' style={{width:'70px'}} />
-                              <p className='re'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed.</p>
-                              <div className='line-re'></div>
-                              <div className='footer-con'>
-                                <div className='position'>
-                              <p className='re-name'>John Walker</p>
-                              <p className='re-po'>Architecture</p></div>
-                              <div className='review-star'>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px', filter: 'grayscale(75%)'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                              </div>
+                            <div className='con-1'>
+                            <img src={reviewImg02} alt="Image" style={{width:'70px'}} className='profile-img'/>
+                            <p className='re'>"BuildMate+ has greatly improved our project management process. The intuitive 3D Design Integration allows for easy creation and modification of designs, enhancing client presentations. The streamlined communication features ensure our team stays informed, reducing errors. Highly recommend BuildMate+ for engineering teams aiming to boost efficiency and collaboration."</p>
+                            <div className='line-re'></div>
+                            <div className="footer-con">
+                                <div className="position">
+                                  <p className="re-name">John Walker</p>
+                                  <p className="re-po">Architecture</p>
+                                </div>
+                                <div className="reviewStar">{renderStars(3)}</div>
                               </div>
                             </div>
 
-                            <div className="con-1">
-                              <img src={profile} alt="Image" className='profile-img' style={{width:'70px'}} />
-                              <p className='re'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed.</p>
-                              <div className='line-re'></div>
-                              <div className='footer-con'>
-                                <div className='position'>
-                              <p className='re-name'>John Walker</p>
-                              <p className='re-po'>Architecture</p></div>
-                              <div className='review-star'>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px', filter: 'grayscale(100%)'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                              </div>
+                            <div className='con-1'>
+                            <img src={reviewImg03} alt="Image" style={{width:'70px'}} className='profile-img'/>
+                            <p className='re'>"The BuildMate+ platform has revolutionized our project management approach. The seamless integration of 3D designs has made it easier to visualize and plan our projects. The streamlined communication tools ensure that everyone is on the same page, minimizing errors and delays. The transparent progress tracking feature is a favorite among our clients, as it provides real-time updates and fosters trust. I can't imagine managing our projects without BuildMate+."</p>
+                            <div className='line-re'></div>
+                            <div className="footer-con">
+                                <div className="position">
+                                  <p className='re-name'>James Anderson</p>
+                                  <p className='re-po'>Project Manager</p>
+                                </div>
+                                <div className="reviewStar">{renderStars(5)}</div>
                               </div>
                             </div>
 

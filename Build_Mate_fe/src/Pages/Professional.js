@@ -1,34 +1,58 @@
-//Professional.js
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import "./Professional.css";
-import addImage from "../Components/Assets/image.png";
-import uploadImage from "../Components/Assets/cloud-computing.png";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate, useLocation } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import './Professional.css';
+import addImage from '../Components/Assets/image.png';
+import uploadImage from '../Components/Assets/cloud-computing.png';
 
-function Professional({ userEmail }) {
+function Professional() {
     const navigate = useNavigate();
+    const location = useLocation();
     const [profilePicture, setProfilePicture] = useState(null);
     const [profilePicturePreview, setProfilePicturePreview] = useState(addImage);
     const [previousJobFile, setPreviousJobFile] = useState(null);
     const [profileInfo, setProfileInfo] = useState({
-        name: "",
-        profession: "",
-        address: "",
-        phoneNumber: "",
-        linkedin: "",
-        weblink: "",
-        experience: "",
-        workPlace: "",
-        bio: "",
-        skillLevel: "",
-        jobCost: ""
+        email: (location.state && location.state.email) || '',
+        name: `${(location.state && location.state.firstName) || ''} ${(location.state && location.state.lastName) || ''}`,
+        profession: '',
+        linkedin: '',
+        weblink: '',
+        experience: '',
+        workPlace: '',
+        bio: '',
+        skillLevel: '',
+        jobCost: ''
     });
 
+    useEffect(() => {
+        const email = location.state && location.state.email;
+        const firstName = location.state && location.state.firstName;
+        const lastName = location.state && location.state.lastName;
+        if (email && firstName && lastName) {
+            setProfileInfo(prevData => ({
+                ...prevData,
+                email,
+                name: `${firstName} ${lastName}`
+            }));
+        }
+    }, [location.state]);
+
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setProfileInfo({ ...profileInfo, [name]: value });
+        const { name, value, type, files } = e.target;
+        if (type === 'file') {
+            if (name === 'profilePicture') {
+                setProfilePicture(files[0]);
+                setProfilePicturePreview(URL.createObjectURL(files[0]));
+            } else if (name === 'previousJobFile') {
+                setPreviousJobFile(files[0]);
+            }
+        } else {
+            setProfileInfo(prevState => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
     };
 
     const handleFileChange = (e) => {
@@ -44,91 +68,72 @@ function Professional({ userEmail }) {
         setPreviousJobFile(file);
     };
 
-    const handleButtonClick = (e) => {
-        const { name, value } = e.target;
+    const handleButtonClick = (name, value) => {
         setProfileInfo({ ...profileInfo, [name]: value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
     
+        const formData = new FormData();
+        formData.append('name', profileInfo.name);
+        formData.append('email', profileInfo.email);
+        formData.append('profession', profileInfo.profession);
+        formData.append('linkedin', profileInfo.linkedin);
+        formData.append('weblink', profileInfo.weblink);
+        formData.append('experience', profileInfo.experience);
+        formData.append('workPlace', profileInfo.workPlace);
+        formData.append('bio', profileInfo.bio);
+        formData.append('skillLevel', profileInfo.skillLevel);
+        formData.append('jobCost', profileInfo.jobCost);
+        formData.append('profilePicture', profilePicture);
+        formData.append('previousJobFile', previousJobFile);
+    
         try {
-            const registrationData = {
-                email: userEmail,
-                name: profileInfo.name,
-                profession: profileInfo.profession,
-                address: profileInfo.address,
-                phoneNumber: profileInfo.phoneNumber,
-                linkedin: profileInfo.linkedin,
-                weblink: profileInfo.weblink,
-                experience: profileInfo.experience,
-                workPlace: profileInfo.workPlace,
-                bio: profileInfo.bio,
-                skillLevel: profileInfo.skillLevel,
-                jobCost: profileInfo.jobCost,
-            };
+            const response = await axios.post('http://localhost:8000/api/registerProfessionalDetails', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
     
-            console.log("Submitting registration data:", registrationData); // Add logging here
-    
-            const response = await axios.post("http://localhost:8000/registerProfessional", registrationData);
-            console.log("Response from server:", response);
-    
-            if (response.data.message === "Registration details added and user status updated successfully") {
+            if (response.status === 201) {
                 Swal.fire({
-                    icon: "success",
-                    title: "Success",
-                    text: "Information saved successfully",
-                    confirmButtonText: "OK"
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Profile updated successfully',
+                    confirmButtonText: 'OK',
                 }).then(() => {
-                    // Conditional navigation based on userType
-                    switch (profileInfo.userType) {
-                        case "client":
-                            navigate("/home");
-                            break;
-                        case "professional":
-                            navigate("/professional");
-                            break;
-                        case "service supplier":
-                            navigate("/serviceSup");
-                            break;
-                        case "material supplier":
-                            navigate("/materialSup");
-                            break;
-                        default:
-                            navigate("/home");
-                            break;
-                    }
+                    navigate(`/Pages/ProfProfile/${response.data._id}`);
                 });
             } else {
-                console.error("Error from server response:", response.data.message);
                 Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: response.data.message || "Error saving information",
-                    confirmButtonText: "OK"
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: response.data.message || 'Error updating profile',
+                    confirmButtonText: 'OK',
                 });
             }
         } catch (error) {
-            console.error("Error during registration:", error);
+            console.error('Error in handleSubmit:', error);
             Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Error saving information",
-                confirmButtonText: "OK"
+                icon: 'error',
+                title: 'Oops...',
+                text: error.response?.data?.message || 'Error updating profile',
+                confirmButtonText: 'OK',
             });
         }
     };
     
 
     const professions = [
-        { value: "", label: "Select your profession" },
-        { value: "Architectures", label: "Architectures" },
-        { value: "Engineers", label: "Engineers" },
-        { value: "Project Managers", label: "Project Managers" },
-        { value: "Legal Advisors", label: "Legal Advisors" },
-        { value: "Interior Designers", label: "Interior Designers" },
-        { value: "Landscapers", label: "Landscapers" },
-        { value: "Other", label: "Other" }
+        { value: '', label: 'Select your profession' },
+        { value: 'Architectures', label: 'Architectures' },
+        { value: 'Engineers', label: 'Engineers' },
+        { value: 'Project Managers', label: 'Project Managers' },
+        { value: 'Legal Advisors', label: 'Legal Advisors' },
+        { value: 'Interior Designers', label: 'Interior Designers' },
+        { value: 'Landscapers', label: 'Landscapers' },
+        { value: 'Other', label: 'Other' }
     ];
 
     return (
@@ -145,40 +150,52 @@ function Professional({ userEmail }) {
                                 onChange={handleFileChange}
                                 required
                                 id="profilePictureInput"
-                                style={{ display: 'none' }}  // Hide the input element
+                                style={{ display: 'none' }}
                             />
                             <img
                                 src={profilePicturePreview}
                                 alt="Profile"
-                                style={{ width: '40%', cursor: 'pointer' }}
+                                style={{ width: '200px', height: '200px', cursor: 'pointer' }}
                             />
                         </label>
-                        <div className="pro-form-l1">
-                            <label className="pro-form-l2">
-                                Name
+                        <div className="pro-form-l2">
+                            <label className="pro-form-l1">
+                                Name <br />
                                 <input
                                     type="text"
                                     name="name"
                                     value={profileInfo.name}
                                     onChange={handleChange}
+                                    readOnly
                                     required
                                 />
                             </label>
-                            <label className="pro-form-l2">
-                                Your Profession<br />
-                                <select
-                                    name="profession"
-                                    value={profileInfo.profession}
+                            <label className="pro-form-l1">
+                                Email <br />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={profileInfo.email}
                                     onChange={handleChange}
+                                    readOnly
                                     required
-                                >
-                                    {professions.map((profession, index) => (
-                                        <option key={index} value={profession.value}>{profession.label}</option>
-                                    ))}
-                                </select>
+                                />
                             </label>
                         </div>
                     </div>
+                    <label className="pro-form-l2">
+                        Your Profession<br />
+                        <select
+                            name="profession"
+                            value={profileInfo.profession}
+                            onChange={handleChange}
+                            required
+                        >
+                            {professions.map((profession, index) => (
+                                <option key={index} value={profession.value}>{profession.label}</option>
+                            ))}
+                        </select>
+                    </label>
                     <div className="pro-form-l3">
                         <label className="pro-form-l2">
                             LinkedIn profile link<br />
@@ -221,39 +238,7 @@ function Professional({ userEmail }) {
                             />
                         </label>
                     </div>
-                    <div className="pro-form-l3">
-                        <label className="pro-form-l2">
-                            E-mail<br />
-                            <input
-                                type="text"
-                                name="email"
-                                value={profileInfo.email}
-                                onChange={handleChange}
-                                required
-                            />
-                        </label>
-                        <label className="pro-form-l2" style={{ marginLeft: '20%' }}>
-                            Contact Number <br />
-                            <input
-                                type="text"
-                                name="phoneNumber"
-                                value={profileInfo.phoneNumber}
-                                onChange={handleChange}
-                            />
-                        </label>
-                    </div>
                     <div className="pro-form-l6">
-                        <label>
-                            Address<br />
-                            <input
-                                type="text"
-                                name="address"
-                                value={profileInfo.address}
-                                onChange={handleChange}
-                                required
-                                className="pro-form-l4"
-                            />
-                        </label>
                         <label>
                             Bio<br />
                             <textarea
@@ -274,7 +259,7 @@ function Professional({ userEmail }) {
                                 name="skillLevel"
                                 value="Beginner"
                                 className={profileInfo.skillLevel === "Beginner" ? "active" : ""}
-                                onClick={handleButtonClick}
+                                onClick={() => handleButtonClick("skillLevel", "Beginner")}
                             >
                                 Beginner
                             </button>
@@ -283,7 +268,7 @@ function Professional({ userEmail }) {
                                 name="skillLevel"
                                 value="Intermediate"
                                 className={profileInfo.skillLevel === "Intermediate" ? "active" : ""}
-                                onClick={handleButtonClick}
+                                onClick={() => handleButtonClick("skillLevel", "Intermediate")}
                             >
                                 Intermediate
                             </button>
@@ -292,7 +277,7 @@ function Professional({ userEmail }) {
                                 name="skillLevel"
                                 value="Expert"
                                 className={profileInfo.skillLevel === "Expert" ? "active" : ""}
-                                onClick={handleButtonClick}
+                                onClick={() => handleButtonClick("skillLevel", "Expert")}
                             >
                                 Expert
                             </button>
@@ -304,7 +289,7 @@ function Professional({ userEmail }) {
                                 name="jobCost"
                                 value="0-100"
                                 className={profileInfo.jobCost === "0-100" ? "active" : ""}
-                                onClick={handleButtonClick}
+                                onClick={() => handleButtonClick("jobCost", "0-100")}
                             >
                                 $0-100
                             </button>
@@ -313,7 +298,7 @@ function Professional({ userEmail }) {
                                 name="jobCost"
                                 value="100-500"
                                 className={profileInfo.jobCost === "100-500" ? "active" : ""}
-                                onClick={handleButtonClick}
+                                onClick={() => handleButtonClick("jobCost", "100-500")}
                             >
                                 $100-500
                             </button>
@@ -322,14 +307,14 @@ function Professional({ userEmail }) {
                                 name="jobCost"
                                 value="500+"
                                 className={profileInfo.jobCost === "500+" ? "active" : ""}
-                                onClick={handleButtonClick}
+                                onClick={() => handleButtonClick("jobCost", "500+")}
                             >
                                 $500+
                             </button>
                         </div>
                         <div className="previousJob">
                             <h3>Previous Job</h3>
-                            <label>Upload Files</label><br />
+                            <label>Upload Files</label><br/>
                             <div className="job-file-container">
                                 <input
                                     type="file"
@@ -348,7 +333,7 @@ function Professional({ userEmail }) {
                         </div>
                     </div>
                     <div className="pro-form-button1">
-                        <button type="edit">Edit</button>
+                        <button type="button">Edit</button>
                         <button type="submit" style={{ marginLeft: '5%' }}>Submit</button>
                     </div>
                 </form>

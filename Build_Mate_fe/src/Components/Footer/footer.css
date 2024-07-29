@@ -1,75 +1,103 @@
-.footer{
+.footer {
     font-family: "Poppins", sans-serif;
     background-color: #FF6B00;
     width: 100%;
     display: flex;
+    flex-direction: column;
     color: white;
-    justify-content: space-evenly;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 3% 0;
-
+    align-items: center;
+    padding-top: 3%;
+    position: relative;
 }
-.left-footer{
+
+.left-footer {
     display: flex;
     width: 40%;
     flex-direction: column;
 }
-.logoImage{
+.logoImage {
     width: 60%;
 }
-.socilMedia{
+.socialMedia {
     display: flex;
     justify-content: flex-start;
-     padding-left: 2%;
-     margin-top: 5%;
-
+    padding-left: 2%;
+    margin-top: 5%;
 }
-.mediaImg{
+.mediaImg {
     width: 35px;
     filter: invert(100%);
-     margin-right: 8%;
+    margin-right: 8%;
     cursor: pointer;
 }
-.mediaImg:hover{
+.mediaImg:hover {
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
     border-radius: 5px;
 }
-.middle-footer{
+.middle-footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
-.right-footer{
+.right-footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin: 0;
 }
-.contact-info{
+.contact-info {
     display: flex;
     margin-top: 2%;
     width: 100%;
     align-items: stretch;
 }
-.contact-logo{
+.contact-logo {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
 }
-.contact-detail{
+.contact-detail {
     display: flex;
     align-items: center;
     margin-top: 5%;
     justify-content: flex-start;
-
 }
-.c-logo{
+.c-logo {
     width: 30px;
     filter: invert(100%);
     cursor: pointer;
 }
-.c-logo:hover{
+.c-logo:hover {
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1em 0;
+    border-top: 2px solid #e1e1e1;
+    width: 90%;
+    background-color: #FF6B00;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.footer-bottom a {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 1em;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+.footer-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 3%;
 }

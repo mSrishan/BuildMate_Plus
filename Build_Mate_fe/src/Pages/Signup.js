@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 import './Signup.css';
 import si1 from "../Components/Assets/sign-img.jpg";
+import closeIcon from "../Components/Assets/close.png"; // Import close icon
 
 function Signup() {
     const navigate = useNavigate();
@@ -71,60 +72,66 @@ function Signup() {
         });
     }
 
-    return (
-        <div className="signup">
-            <div className="sign-img-container">
-                <div className="gradient-overlay"></div>
-                <img className="sign-img" src={si1} alt="Background"/>
-            </div>
-            <div className="signup-locate">
-                <h1 className="head1">Create New Account</h1>
-                <p className="par1">Please fill in your basic info</p>
+    function handleClose() {
+        navigate("/Pages/Home"); // Navigate to the home page
+    }
 
-                <form onSubmit={submit}>
-                    <input
-                        className="signup-Fname"
-                        type="text"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
-                        placeholder="First Name"
-                        required
-                    />
-                    <input
-                        className="signup-Lname"
-                        type="text"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
-                        placeholder="Last Name"
-                        required
-                    />
-                    <div className="row">
-                        <input
-                            className="signup-email"
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Email"
-                            required
-                        />
+    return (
+        <div className="signup01"><img src={closeIcon} alt="Close" className="close-icon" onClick={handleClose} />
+            <div className="signup">
+                <div className="signup-locate">
+                    
+                    <h1 className="head1">Create New Account</h1>
+                    <p className="par1">Please fill in your basic info</p>
+                    
+                    <div className="inputs">
+                        <form onSubmit={submit} className="signupForm">
+                            <div className="signupDiv">
+                                <input
+                                        className="signup-Fname"
+                                        type="text"
+                                        value={firstName}
+                                        onChange={(e) => setFirstName(e.target.value)}
+                                        placeholder="First Name"
+                                        required
+                                    />
+                                    <input
+                                        className="signup-Lname"
+                                        type="text"
+                                        value={lastName}
+                                        onChange={(e) => setLastName(e.target.value)}
+                                        placeholder="Last Name"
+                                        required
+                                    /> 
+                            </div>
+                        
+                            <label>Email</label>
+                            <input
+                                className="signup-email"
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Email"
+                                required
+                            />
+                            <label>Password</label>
+                            <input
+                                className="signup-password"
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Password"
+                                required
+                            />
+                            <div className="btn-container">
+                            <button className="btn" type="submit">CREATE ACCOUNT</button>
+                        </div>
+                        </form>
                     </div>
-                    <div className="row">
-                        <input
-                            className="signup-password"
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Password"
-                            required
-                        />
-                    </div>
-                    <div className="btn-container">
-                        <button className="btn" type="submit">CREATE ACCOUNT</button>
-                    </div>
-                </form>
-                <p className="signup-para2">Already a member ?
-                    <Link to="/Pages/Login" className="signup-log">Log In</Link>
-                </p>
+                    <p className="signup-para2">Already a member ?
+                        <Link to="/Pages/Login" className="signup-log">Log In</Link>
+                    </p>
+                </div>
             </div>
         </div>
     );

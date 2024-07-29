@@ -57,10 +57,7 @@ export default function Suppliers() {
           <p className='sup-subtopic1'>
             Choose your path to construction excellence: select the best services, materials, or both for your project with Buildmate+. Streamline your decisions, empower your vision, and build with confidence.
           </p>
-          <div className='sup-topButton'>
-            <button className={`sbutton1 ${activeButton === 1 ? 'active' : ''}`} onClick={() => handleButtonClick(1)}>MATERIALS SUPPLIERS</button>
-            <button className={`sbutton2 ${activeButton === 2 ? 'active' : ''}`} onClick={() => handleButtonClick(2)}>SERVICE SUPPLIERS</button>
-          </div>
+
         </div>
       </div>
       <div className='pro-content01'>

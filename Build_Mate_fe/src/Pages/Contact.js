@@ -97,7 +97,7 @@ export default function Contact() {
             <div className="contact-white-container2">
               <div className="contact-para"><span>Have a question or need assistance?</span><br/>Reach out to us! We're here to help you bring your construction dreams to life.</div>
               <div className="contact-information">Phone Number<br/><span>123-456-7890</span></div>
-              <div className="contact-information">Email Address<br/><span>info@buildmateplus.com</span></div>
+              <div className="contact-information">Email Address<br/><span>buildmateplus@gmail.com</span></div>
               <div className="contact-information">Address<br/><span>123 Main Street, City, Country</span></div>
               <div className="contact-information">Web Address<br/><span>www.buildmateplus.com</span></div>
             </div>

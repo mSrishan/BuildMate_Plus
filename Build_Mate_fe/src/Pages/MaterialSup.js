@@ -1,33 +1,58 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import "./Professional.css";
-import addImage from "../Components/Assets/image.png";
-import uploadImage from "../Components/Assets/cloud-computing.png";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate, useLocation } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import './Professional.css';
+import addImage from '../Components/Assets/image.png';
+import uploadImage from '../Components/Assets/cloud-computing.png';
 
-function MaterialSup({ userEmail }) {
+function MaterialSupplier() {
     const navigate = useNavigate();
+    const location = useLocation();
     const [profilePicture, setProfilePicture] = useState(null);
     const [profilePicturePreview, setProfilePicturePreview] = useState(addImage);
     const [previousJobFile, setPreviousJobFile] = useState(null);
     const [profileInfo, setProfileInfo] = useState({
-        name: "",
-        profession: "",
-        address: "",
-        phoneNumber: "",
-        linkedin: "",
-        weblink: "",
-        experience: "",
-        workPlace: "",
-        bio: "",
-        skillLevel: "",
-        jobCost: ""
+        email: (location.state && location.state.email) || '',
+        msdet: `${(location.state && location.state.firstName) || ''} ${(location.state && location.state.lastName) || ''}`,
+        serviceAreaCoverage: '',
+        linkedin: '',
+        weblink: '',
+        experience: '',
+        workPlace: '',
+        bio: '',
+        typeOfMaterialsOffered: '',
+        materialQualityStandards: ''
     });
 
+    useEffect(() => {
+        const email = location.state && location.state.email;
+        const firstName = location.state && location.state.firstName;
+        const lastName = location.state && location.state.lastName;
+        if (email && firstName && lastName) {
+            setProfileInfo(prevData => ({
+                ...prevData,
+                email,
+                msdet: `${firstName} ${lastName}`
+            }));
+        }
+    }, [location.state]);
+
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setProfileInfo({ ...profileInfo, [name]: value });
+        const { name, value, type, files } = e.target;
+        if (type === 'file') {
+            if (name === 'profilePicture') {
+                setProfilePicture(files[0]);
+                setProfilePicturePreview(URL.createObjectURL(files[0]));
+            } else if (name === 'previousJobFile') {
+                setPreviousJobFile(files[0]);
+            }
+        } else {
+            setProfileInfo(prevState => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
     };
 
     const handleFileChange = (e) => {
@@ -43,66 +68,61 @@ function MaterialSup({ userEmail }) {
         setPreviousJobFile(file);
     };
 
-    const handleButtonClick = (e) => {
-        const { name, value } = e.target;
+    const handleButtonClick = (name, value) => {
         setProfileInfo({ ...profileInfo, [name]: value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         const formData = new FormData();
-        formData.append("profilePicture", profilePicture);
-        formData.append("email", userEmail);
-        formData.append("previousJobFile", previousJobFile);
-        for (const key in profileInfo) {
-            formData.append(key, profileInfo[key]);
-        }
-
+        formData.append('msdet', profileInfo.msdet);
+        formData.append('email', profileInfo.email);
+        formData.append('serviceAreaCoverage', profileInfo.serviceAreaCoverage);
+        formData.append('linkedin', profileInfo.linkedin);
+        formData.append('weblink', profileInfo.weblink);
+        formData.append('experience', profileInfo.experience);
+        formData.append('workPlace', profileInfo.workPlace);
+        formData.append('bio', profileInfo.bio);
+        formData.append('typeOfMaterialsOffered', profileInfo.typeOfMaterialsOffered);
+        formData.append('materialQualityStandards', profileInfo.materialQualityStandards);
+        formData.append('profilePicture', profilePicture);
+        formData.append('previousJobFile', previousJobFile);
+    
         try {
-            const response = await axios.put("http://localhost:8000/updateUser", formData, {
+            const response = await axios.post('http://localhost:8000/api/registerMaterialSupplierDetails', formData, {
                 headers: {
-                    "Content-Type": "multipart/form-data",
+                    'Content-Type': 'multipart/form-data',
                 },
             });
-
-            if (response.data.message === "User information updated successfully") {
+    
+            if (response.status === 201) {
                 Swal.fire({
-                    icon: "success",
-                    title: "Success",
-                    text: "Information updated successfully",
-                    confirmButtonText: "OK"
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Profile updated successfully',
+                    confirmButtonText: 'OK',
                 }).then(() => {
-                    navigate("/home");
+                    navigate('/Pages/ProfileCards');
                 });
             } else {
                 Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: response.data.message,
-                    confirmButtonText: "OK"
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: response.data.message || 'Error updating profile',
+                    confirmButtonText: 'OK',
                 });
             }
         } catch (error) {
+            console.error('Error in handleSubmit:', error);
             Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Error updating information",
-                confirmButtonText: "OK"
+                icon: 'error',
+                title: 'Oops...',
+                text: error.response?.data?.message || 'Error updating profile',
+                confirmButtonText: 'OK',
             });
         }
     };
-
-    const professions = [
-        { value: "", label: "Select your profession" },
-        { value: "Architectures", label: "Architectures" },
-        { value: "Engineers", label: "Engineers" },
-        { value: "Project Managers", label: "Project Managers" },
-        { value: "Legal Advisors", label: "Legal Advisors" },
-        { value: "Interior Designers", label: "Interior Designers" },
-        { value: "Landscapers", label: "Landscapers" },
-        { value: "Other", label: "Other" }
-    ];
 
     return (
         <div className="user_profile_form">
@@ -118,40 +138,49 @@ function MaterialSup({ userEmail }) {
                                 onChange={handleFileChange}
                                 required
                                 id="profilePictureInput"
-                                style={{ display: 'none' }}  // Hide the input element
+                                style={{ display: 'none' }}
                             />
                             <img
                                 src={profilePicturePreview}
                                 alt="Profile"
-                                style={{ width: '40%', cursor: 'pointer' }}
+                                style={{ width: '200px', height: '200px', cursor: 'pointer' }}
                             />
                         </label>
-                        <div className="pro-form-l1">
-                            <label className="pro-form-l2">
-                                User Name
+                        <div className="pro-form-l2">
+                            <label className="pro-form-l1">
+                                Name <br />
                                 <input
                                     type="text"
-                                    name="name"
-                                    value={profileInfo.name}
+                                    name="msdet"
+                                    value={profileInfo.msdet}
                                     onChange={handleChange}
+                                    readOnly
                                     required
                                 />
                             </label>
-                            <label className="pro-form-l2">
-                                Type of Materials You Have<br />
-                                <select
-                                    name="profession"
-                                    value={profileInfo.profession}
+                            <label className="pro-form-l1">
+                                Email <br />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={profileInfo.email}
                                     onChange={handleChange}
+                                    readOnly
                                     required
-                                >
-                                    {professions.map((profession, index) => (
-                                        <option key={index} value={profession.value}>{profession.label}</option>
-                                    ))}
-                                </select>
+                                />
                             </label>
                         </div>
                     </div>
+                    <label className="pro-form-l2">
+                        Service Area Coverage<br />
+                        <input
+                            type="text"
+                            name="serviceAreaCoverage"
+                            value={profileInfo.serviceAreaCoverage}
+                            onChange={handleChange}
+                            required
+                        />
+                    </label>
                     <div className="pro-form-l3">
                         <label className="pro-form-l2">
                             LinkedIn profile link<br />
@@ -175,58 +204,26 @@ function MaterialSup({ userEmail }) {
                     </div>
                     <div className="pro-form-l3">
                         <label className="pro-form-l2">
-                            Service Area Coverage<br />
-                            <input
-                                type="text"
-                                name="workPlace"
-                                value={profileInfo.workPlace}
-                                onChange={handleChange}
-                                required
-                            />
-                        </label>
-                        <label className="pro-form-l2" style={{ marginLeft: '20%' }}>
-                            Field Experience <br />
+                            Experience<br />
                             <input
                                 type="text"
                                 name="experience"
                                 value={profileInfo.experience}
                                 onChange={handleChange}
-                            />
-                        </label>
-                    </div>
-                    <div className="pro-form-l3">
-                        <label className="pro-form-l2">
-                            E-mail<br />
-                            <input
-                                type="text"
-                                name="email"
-                                value={profileInfo.email}
-                                onChange={handleChange}
                                 required
                             />
                         </label>
                         <label className="pro-form-l2" style={{ marginLeft: '20%' }}>
-                            Contact Number <br />
+                            Work Place <br />
                             <input
                                 type="text"
-                                name="phoneNumber"
-                                value={profileInfo.phoneNumber}
+                                name="workPlace"
+                                value={profileInfo.workPlace}
                                 onChange={handleChange}
                             />
                         </label>
                     </div>
                     <div className="pro-form-l6">
-                        <label>
-                            Address<br />
-                            <input
-                                type="text"
-                                name="address"
-                                value={profileInfo.address}
-                                onChange={handleChange}
-                                required
-                                className="pro-form-l4"
-                            />
-                        </label>
                         <label>
                             Bio<br />
                             <textarea
@@ -239,90 +236,150 @@ function MaterialSup({ userEmail }) {
                         </label>
                     </div>
                     <div className="pro-button-group">
-                        <h3>Professional Portfolio</h3>
-                        <label>Skill Level</label>
+                        <h3>Type of Materials Offered</h3>
                         <div className="pro-form-button">
                             <button
                                 type="button"
-                                name="skillLevel"
-                                value="Beginner"
-                                className={profileInfo.skillLevel === "Beginner" ? "active" : ""}
-                                onClick={handleButtonClick}
+                                name="typeOfMaterialsOffered"
+                                value="Hardware"
+                                className={profileInfo.typeOfMaterialsOffered.includes("Hardware") ? "active" : ""}
+                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Hardware")}
                             >
-                                Beginner
+                                Hardware
                             </button>
                             <button
                                 type="button"
-                                name="skillLevel"
-                                value="Intermediate"
-                                className={profileInfo.skillLevel === "Intermediate" ? "active" : ""}
-                                onClick={handleButtonClick}
+                                name="typeOfMaterialsOffered"
+                                value="Plumbing"
+                                className={profileInfo.typeOfMaterialsOffered.includes("Plumbing") ? "active" : ""}
+                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Plumbing")}
                             >
-                                Intermediate
+                                Plumbing
                             </button>
                             <button
                                 type="button"
-                                name="skillLevel"
-                                value="Expert"
-                                className={profileInfo.skillLevel === "Expert" ? "active" : ""}
-                                onClick={handleButtonClick}
+                                name="typeOfMaterialsOffered"
+                                value="Electrical"
+                                className={profileInfo.typeOfMaterialsOffered.includes("Electrical") ? "active" : ""}
+                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Electrical")}
                             >
-                                Expert
-                            </button>
-                        </div>
-                        <label>Job Cost</label>
-                        <div className="pro-form-button">
-                            <button
-                                type="button"
-                                name="jobCost"
-                                value="0-100"
-                                className={profileInfo.jobCost === "0-100" ? "active" : ""}
-                                onClick={handleButtonClick}
-                            >
-                                $0-100
+                                Electrical
                             </button>
                             <button
                                 type="button"
-                                name="jobCost"
-                                value="100-500"
-                                className={profileInfo.jobCost === "100-500" ? "active" : ""}
-                                onClick={handleButtonClick}
+                                name="typeOfMaterialsOffered"
+                                value="Construction"
+                                className={profileInfo.typeOfMaterialsOffered.includes("Construction") ? "active" : ""}
+                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Construction")}
                             >
-                                $100-500
+                                Construction
                             </button>
                             <button
                                 type="button"
-                                name="jobCost"
-                                value="500+"
-                                className={profileInfo.jobCost === "500+" ? "active" : ""}
-                                onClick={handleButtonClick}
+                                name="typeOfMaterialsOffered"
+                                value="Finishing"
+                                className={profileInfo.typeOfMaterialsOffered.includes("Finishing") ? "active" : ""}
+                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Finishing")}
                             >
-                                $500+
+                                Finishing
                             </button>
-                        </div>
-                        <div className="previousJob">
-                            <h3>Previous Job</h3>
-                            <label>Upload Files</label><br />
-                            <div className="job-file-container">
-                                <input
-                                    type="file"
-                                    name="previousJobFile"
-                                    onChange={handlePreviousJobFileChange}
-                                    id="previousJobFileInput"
-                                    style={{ display: 'none' }}  // Hide the input element
-                                />
-                                <img
-                                    src={uploadImage}
-                                    alt="Upload"
-                                    className="job-profile-image"
-                                    onClick={() => document.getElementById('previousJobFileInput').click()}
-                                />
-                            </div>
+                            <button
+                                type="button"
+                                name="typeOfMaterialsOffered"
+                                value="Paint"
+                                className={profileInfo.typeOfMaterialsOffered.includes("Paint") ? "active" : ""}
+                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Paint")}
+                            >
+                                Paint
+                            </button>
+                            <button
+                                type="button"
+                                name="typeOfMaterialsOffered"
+                                value="Roofing"
+                                className={profileInfo.typeOfMaterialsOffered.includes("Roofing") ? "active" : ""}
+                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Roofing")}
+                            >
+                                Roofing
+                            </button>
+                            <button
+                                type="button"
+                                name="typeOfMaterialsOffered"
+                                value="Other"
+                                className={profileInfo.typeOfMaterialsOffered.includes("Other") ? "active" : ""}
+                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Other")}
+                            >
+                                Other
+                            </button>
                         </div>
                     </div>
-                    <div className="pro-form-button1">
-                        <button type="edit">Edit</button>
-                        <button type="submit" style={{ marginLeft: '5%' }}>Submit</button>
+                    <div className="pro-button-group">
+                        <h3>Material Quality Standards</h3>
+                        <div className="pro-form-button">
+                            <button
+                                type="button"
+                                name="materialQualityStandards"
+                                value="ISO"
+                                className={profileInfo.materialQualityStandards.includes("ISO") ? "active" : ""}
+                                onClick={() => handleButtonClick("materialQualityStandards", "ISO")}
+                            >
+                                ISO
+                            </button>
+                            <button
+                                type="button"
+                                name="materialQualityStandards"
+                                value="SLS"
+                                className={profileInfo.materialQualityStandards.includes("SLS") ? "active" : ""}
+                                onClick={() => handleButtonClick("materialQualityStandards", "SLS")}
+                            >
+                                SLS
+                            </button>
+                            <button
+                                type="button"
+                                name="materialQualityStandards"
+                                value="EN"
+                                className={profileInfo.materialQualityStandards.includes("EN") ? "active" : ""}
+                                onClick={() => handleButtonClick("materialQualityStandards", "EN")}
+                            >
+                                EN
+                            </button>
+                            <button
+                                type="button"
+                                name="materialQualityStandards"
+                                value="ASTM"
+                                className={profileInfo.materialQualityStandards.includes("ASTM") ? "active" : ""}
+                                onClick={() => handleButtonClick("materialQualityStandards", "ASTM")}
+                            >
+                                ASTM
+                            </button>
+                            <button
+                                type="button"
+                                name="materialQualityStandards"
+                                value="BS"
+                                className={profileInfo.materialQualityStandards.includes("BS") ? "active" : ""}
+                                onClick={() => handleButtonClick("materialQualityStandards", "BS")}
+                            >
+                                BS
+                            </button>
+                        </div>
+                    </div>
+                    <div className="pro-form-l3">
+                        <label className="pro-form-l4">
+                            Upload Previous Job Files <br />
+                            <input
+                                type="file"
+                                name="previousJobFile"
+                                onChange={handlePreviousJobFileChange}
+                            />
+                            <img
+                                src={uploadImage}
+                                alt="Upload"
+                                style={{ width: '100px', height: '100px', cursor: 'pointer' }}
+                            />
+                        </label>
+                    </div>
+                    <div className="line" style={{ marginTop: '7%', marginBottom: '5%' }}></div>
+                    <div className="pro-form-l7">
+                        <button type="submit" className="btn-professional">Save Profile</button>
                     </div>
                 </form>
             </div>
@@ -330,4 +387,4 @@ function MaterialSup({ userEmail }) {
     );
 }
 
-export default MaterialSup;
+export default MaterialSupplier;

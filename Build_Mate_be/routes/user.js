@@ -7,29 +7,29 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'buildmateplus@gmail.com',
-      pass: 'wgln wrwl xeiw jsxq'
+        user: 'buildmateplus@gmail.com',
+        pass: 'wgln wrwl xeiw jsxq'
     }
 });
 
 // Function to send a welcome email
-async function sendWelcomeEmail(email, firstName) {
+async function sendWelcomeEmail(email, firstName, userType) {
     const mailOptions = {
         from: 'buildmateplus@gmail.com',
         to: email,
         subject: 'Welcome to BuildMate+!',
         html: `
             <p>Hello ${firstName},</p>
-            <p>Welcome to the BuildMate+ family! 🎉 We're thrilled to have you on board and excited for you to explore the endless possibilities our platform offers.</p>
+            <p>Welcome to the BuildMate+ family!  We're thrilled to have you on board and excited for you to explore the endless possibilities our platform offers.</p>
             
             <p>At BuildMate+, we're committed to making your construction projects smoother, more efficient, and enjoyable. Whether you're a professional builder, a DIY enthusiast, or someone planning their dream home, we're here to support you every step of the way.</p>
             
             <h3>Here's What You Can Do with BuildMate+:</h3>
             <ul>
-                <li>🔍 <strong>Find Top Professionals:</strong> Connect with experienced professionals in your area who are ready to bring your vision to life.</li>
-                <li>📈 <strong>Manage Projects Seamlessly:</strong> Keep track of your project milestones, budgets, and timelines with our intuitive tools.</li>
-                <li>🛠 <strong>Access Expert Advice:</strong> Get tips, tutorials, and advice from industry experts to help you with every aspect of your project.</li>
-                <li>📷 <strong>Showcase Your Work:</strong> Share photos and details of your completed projects and get inspired by the community.</li>
+                <li><strong>Find Top Professionals:</strong> Connect with experienced professionals in your area who are ready to bring your vision to life.</li>
+                <li><strong>Manage Projects Seamlessly:</strong> Keep track of your project milestones, budgets, and timelines with our intuitive tools.</li>
+                <li><strong>Access Expert Advice:</strong> Get tips, tutorials, and advice from industry experts to help you with every aspect of your project.</li>
+                <li><strong>Showcase Your Work:</strong> Share photos and details of your completed projects and get inspired by the community.</li>
             </ul>
 
             <h3>Getting Started is Easy!</h3>
@@ -55,7 +55,7 @@ async function sendWelcomeEmail(email, firstName) {
             <p>Best regards,<br>The BuildMate+ Team</p>
 
             <p><strong>Website:</strong> <a href="http://www.buildmateplus.com">www.buildmateplus.com</a></p>
-            <p><strong>Email:</strong> <a href="mailto:support@buildmateplus.com">support@buildmateplus.com</a></p>
+            <p><strong>Email:</strong> <a href="buildmateplus@gmail.com">support@buildmateplus.com</a></p>
         `
     };
 

@@ -4,6 +4,7 @@ import Footer from '../Components/Footer/footer';
 import abimg from "../Components/Assets/Abh.jpg"
 import aboutimg from "../Components/Assets/About.jpg"
 import Navbar from '../Components/Navbar/Navbar'
+import { Link } from 'react-router-dom';
 
 export default function About() {
   return (
@@ -35,7 +36,7 @@ export default function About() {
         <div className='mis'>"Our mission is to provide a comprehensive online platform that facilitates seamless collaboration, knowledge sharing, and resource optimization within the construction industry. We aim to empower contractors, architects, engineers, suppliers, and other stakeholders by offering cutting-edge tools, insightful resources, and a vibrant community for networking and learning."</div>
         </div>
         <p className='last'>Discover Our Ongoing and Completed </p>
-        <p className='last2'>Projects : <span class="highlight">Watch Out</span></p>
+        <p className='last2'>Projects : <span class="highlight"><Link to="/Pages/Projects">Watch Out</Link></span></p>
         <Footer/>   
   </div>
   )

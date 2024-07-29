@@ -1,27 +1,12 @@
-.image-container {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  }
-  
-  .image-container img {
-      display: block;
-      width:150.4%;
-      height: 990px;
-      margin-left: -1000px;
-      margin-top: -5%;
-  }
-  
-  .white-container {
+.connect-img{
+  filter: brightness(40%);
+  display: block;
+  width:100%;
+  object-fit: cover;
   position: absolute;
-  top: 100px;
-  left: 210px;
-  width: 80%;
-  height: 85%;
-  background-color: #ffffff68; /* Adjust the opacity as needed */
-  border-radius: 103px;
-  z-index: 0;
-  box-shadow: 3px 3px 3px 5px rgba(0, 0, 0, 0.466);
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
   
   .head{
@@ -33,55 +18,70 @@
   }
 
   .para{
+    width: 70%;
     text-align: center;
-    padding-left: 30px;
-    padding-right: 30px;
-    font-size: 35px;
+    font-size: 100%;
+    margin: 2% auto 0 auto;
   }
-
+  .orange-container{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+  }
   .orange-container1{
-    position: absolute;
-    top: 50%;
+    padding: 3%;
     width: 30%;
-    height: 40%;
     background-color: #FF6B00; 
-    border-radius: 69px;
+    border-radius: 30px;
     z-index: 1;
-    box-shadow: 3px 3px 3px 5px rgba(0, 0, 0, 0.466);
-    left: 15%;
+    box-shadow: 0 2px 50px rgba(0, 0, 0, 0.947);
   }
 
   .orange-container2{
-    position: absolute;
-    top: 50%;
-    right: 15%;
+    padding: 5%;
     width: 30%;
-    height: 40%;
     background-color: #FF6B00; /* Adjust the opacity as needed */
     border-radius: 69px;
     z-index: 1;
-    box-shadow: 3px 3px 3px 5px rgba(0, 0, 0, 0.466);
+    box-shadow: 0 2px 50px rgba(0, 0, 0, 0.947);
   }
 
   .para1{
     text-align: center;
-    padding: 45px;
     color: white;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 1.2vw;
   }
 
-  .cont-button1{
+  .con-button{
+    font-size: 120%;
     background-color: #0D113E;
-    color: #F4F0F0;
-    font-weight: 800;
-    text-align: center;
-    width: 70%;
-    height: 18%;
-    border-radius: 41px;
-    margin-left: 15%;
-    margin-top: 0;
+    color: rgb(255, 255, 255);
+    border: 1px solid #ccc;
+    padding: 5% 10%;
     cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 5%;
+    font-weight: 700;
+  }
+  
+  .con-button:hover {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+  }
+  
+  .con-button.active {
+    background-color: #ffffff;
+    color: #FF6B00;
+  }
+  
+  .connect-02{
+    display: flex;
+    justify-content: center;
   }
 
   .sen1{

@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../Assets/Logo_version2.0.png';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  
+  function handleHomeBack() {
+    navigate("../../Pages/Home"); // Correct path for your route
+  }
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [firstName, setFirstName] = useState('');
 
@@ -29,15 +35,15 @@ const Navbar = () => {
     <section className='home1'>
       <div className='navbar'>
         <div className='nav-logo'>
-          <img src={logo} alt='Logo' />
+          <img src={logo} alt='Logo' onClick={handleHomeBack} style={{ cursor: 'pointer' }} />
         </div>
 
         <ul className='nav-menu'>
-          <li><Link to="/Pages/home">Home</Link></li>
-          <li><Link to="/Pages/about">About</Link></li>
-          <li><Link to="/Pages/projects">Projects</Link></li>
-          <li><Link to="/Pages/BlogPage">Blogs</Link></li>
-          <li><Link to="/Pages/contact">Contact</Link></li>
+          <li><NavLink to="/Pages/home" activeClassName="active">Home</NavLink></li>
+          <li><NavLink to="/Pages/about" activeClassName="active">About</NavLink></li>
+          <li><NavLink to="/Pages/projects" activeClassName="active">Projects</NavLink></li>
+          <li><NavLink to="/Pages/BlogPage" activeClassName="active">Blogs</NavLink></li>
+          <li><NavLink to="/Pages/contact" activeClassName="active">Contact</NavLink></li>
 
           {isAuthenticated ? (
             <div className='navbtn'>
@@ -48,14 +54,14 @@ const Navbar = () => {
           ) : (
             <>
               <div className='navbtn'>
-                <li><Link to="/Pages/login">
+                <li><NavLink to="/Pages/login">
                   <button className='signbtn' style={{ border: 'none' }}>Sign in</button>
-                </Link></li>
+                </NavLink></li>
               </div>
               <div className='navbtn'>
-                <li><Link to="/Pages/signup">
+                <li><NavLink to="/Pages/signup">
                   <button className='joinbtn'>Join</button>
-                </Link></li>
+                </NavLink></li>
               </div>
             </>
           )}

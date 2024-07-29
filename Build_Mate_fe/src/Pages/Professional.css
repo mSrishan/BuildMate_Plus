@@ -1,257 +1,208 @@
+/* Professional.css */
 .user_profile_form {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: auto;
     font-family: "Poppins", sans-serif;
-    background-color: white;
-    overflow: hidden; /* This line can stay to prevent horizontal overflow */
+    padding: 0%;
+    background-color: #FF6B00;
 }
 
 .pro-form {
-    width: 50%;
-    background-color: #D9D9D9;
-    padding: 2%;
+    width: 60%;
+    padding: 40px;
+    background: #ffffff;
     border-radius: 10px;
-    font-size: 15px;
-    max-height: 90vh; /* Add a max-height to make the container scrollable */
-    overflow-y: auto; /* Enable vertical scrolling */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: "Poppins", sans-serif;
 }
 
-.pro-form-h1 h1 {
-    font-size: 250%;
-    margin: 0;
-    font-weight: 900;
-}
-
-.pro-form input {
-    border: none;
-    padding: 0 0 0 5%;
-    border-radius: 5px;
-    background-color: white;
+.line {
+    border: 0;
+    height: 1px;
+    background-color: #cccccc;
+    margin: 20px 0;
 }
 
 .pro-form-l0 {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: left;
+    margin-bottom: 20px;
 }
 
 .pro-profilepic {
-    display: flex; /* Allow setting width and height */
-    width: 150px; /* Adjust width as needed */
-    height: 150px; 
-    background-color: #ffffff; /* Set background color */
-    border: none; /* Create a border */
-    padding: 5px; /* Add padding for spacing */
-    cursor: pointer;
-    border-radius: 5%; 
-    align-items: center;
+    display: flex;
     justify-content: center;
-}
-  
-.pro-profilepic img {
-    filter: contrast(50%);
-}
-  
-.pro-profilepic input[type="file"] {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 10%;
-    height: 10%; 
+    align-items: center;
+    cursor: pointer;
 }
 
-.pro-form-l1 {
+.pro-profilepic img {
+    width: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #cccccc;
+    transition: transform 0.3s ease;
+}
+
+.pro-profilepic img:hover {
+    transform: scale(1.1);
+}
+
+.pro-form-l1,
+.pro-form-l3 {
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    margin-left: 10%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.pro-form-l1{
+    margin-left: 10px;
 }
 
 .pro-form-l2 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    width: 100%;
 }
 
-.pro-form-l2 input {
-    width: 120%;
-    background-color: white;
-    font-size: 18px;
-    border: none;
-    font-weight: 300;
-    font-family: "Poppins", sans-serif;
-    padding-left: 5%;
+.pro-form-l2 label {
+    font-size: 1.25vw;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 10px;
 }
 
+.pro-form-l2 input,
 .pro-form-l2 select {
-    font-family: "Poppins", sans-serif;
-    width: 120%;
-    font-size: 18px;
-    font-weight: 300;
-    border: none;
-}
-
-.pro-form-l3 {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    margin-top: 1%;
-    width: 80%;
-}
-
-.pro-form-l3 label{
-    margin-bottom: 2%;
-}
-.pro-form-l3 input {
-    width: 120%;
-    background-color: white;
-}
-
-.pro-form-l4 {
-    background-color: white;
-    font-size: 18px;
-    border: none;
-    font-weight: 300;
-    font-family: "Poppins", sans-serif;
-    padding-left: 5%;
-}
-
-.pro-form-l5 {
-    background-color: white;
-    font-size: 18px;
-    border: none;
-    font-weight: 300;
-    font-family: "Poppins", sans-serif;
-    padding-left: 5%;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
 }
 
 .pro-form-l6 {
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 20px;
 }
 
-.pro-form-l6 label{
-    margin-bottom: 2%;
+.pro-form-l6 label {
+    font-size: 1.25vw;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 10px;
 }
-.pro-form-l6 input, textarea {
-    width: 80%;
+
+.pro-form-l5 {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    resize: none;
+    font-size: 14px;
 }
 
 .pro-button-group {
-    background-color: #FF6B00;
-    color: white;
-    padding: 3%;
-    border: solid white;
-    border-radius: 20px;
+    margin-bottom: 20px;
 }
 
 .pro-button-group h3 {
-    margin: 0 0 1% 0;
-    font-size: 200%;
-}
-
-.pro-button-group label {
-    font-size: 130%;
+    font-size: 2.25vw;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 10px;
 }
 
 .pro-form-button {
     display: flex;
-    flex-direction: row;
-    width: 90%;
-    margin-top: 2%;
-    margin-bottom: 3%;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .pro-form-button button {
-    margin: 0 5%;
-    padding: 2%;
-    height: 30px;
-    font-size: 15px;
-    font-weight: 600;
+    width: 32%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #0D113E;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.pro-form-button button.active {
+    background-color: #0D113E;
+    color: white;
+}
+
+.pro-form-button button:hover {
+    background-color: #0D113E;
+    color: white;
+}
+
+.previousJob {
+    margin-bottom: 20px;
+}
+
+.previousJob h3 {
+    font-size: 2.25vw;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.job-file-container {
+    display: flex;
+    align-items: center;
+}
+
+.job-profile-image {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.job-profile-image:hover {
+    transform: scale(1.1);
 }
 
 .pro-form-button1 {
     display: flex;
     justify-content: flex-end;
-    flex-direction: row;
 }
 
 .pro-form-button1 button {
-    width: 25%;
-    height: 60%;
-    padding: 1%;
-    font-size: 100%;
-    font-weight: 800;
+    width: 120px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #0D113E;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.pro-form-button1 button:hover {
     background-color: #0D113E;
     color: white;
 }
 
-.pro-form-button1 button:hover {
-    background-color: white;
-    color: #0D113E;
+/* Add styles for radio buttons */
+.pro-form-radio {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
-.job-file-container { /* Create a container for both elements */
-    display: flex; /* Allow setting width and height */
-    background-color: #ffffff; /* Set background color */
-    border: none; /* Create a border */
-    padding: 5px; /* Add padding for spacing */
-    cursor: pointer;
-    border-radius: 10px; 
+
+.pro-form-radio label {
+    display: flex;
     align-items: center;
-    justify-content: center;
-  }
-  
-  .job-file-container input[type="file"] {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 10%;
-    height: 10%; 
-    opacity: 0;
+    cursor: pointer;
 }
-  
-  .job-profile-image { /* Style the image element */
-    width: 10%; /* Set the image width (adjust as needed) */
-    height: auto; /* Maintain image aspect ratio */
-    object-fit: cover; 
-    filter: contrast(50%);
-  }
-  
-  @media (max-width: 768px) {
-    .pro-form {
-        width: 100%;
-        padding: 5%;
-    }
 
-    .pro-form-l1 {
-        margin-left: 0;
-        width: 100%;
-    }
-
-    .pro-form-l3 {
-        flex-direction: column;
-    }
-
-    .pro-form-l3 label {
-        margin-right: 0;
-        width: 100%;
-    }
-
-    .pro-button-group {
-        padding: 5%;
-    }
-
-    .pro-form-button button {
-        width: 100%;
-        margin-bottom: 5%;
-    }
-
-    .pro-form-button1 button {
-        width: 100%;
-    }
+.pro-form-radio input[type="radio"] {
+    margin-right: 10px;
 }
