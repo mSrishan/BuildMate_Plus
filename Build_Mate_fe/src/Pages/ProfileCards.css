@@ -182,3 +182,20 @@
         background-color: #FF6B00;
         color: #ffffff;
 }
+
+
+.search-bar2 {
+    position: fixed;
+    top: 95px;
+    right: 5%; /* Adjust as needed for desired right margin */
+    z-index: 1000; /* Ensure it appears on top of other elements */
+  }
+  
+  .search-input2 {
+    width: 290px; /* Adjust width as needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  

@@ -6,7 +6,7 @@ import './Professional.css';
 import addImage from '../Components/Assets/image.png';
 import uploadImage from '../Components/Assets/cloud-computing.png';
 
-function MaterialSupplier() {
+function MaterialSup() {
     const navigate = useNavigate();
     const location = useLocation();
     const [profilePicture, setProfilePicture] = useState(null);
@@ -15,14 +15,13 @@ function MaterialSupplier() {
     const [profileInfo, setProfileInfo] = useState({
         email: (location.state && location.state.email) || '',
         msdet: `${(location.state && location.state.firstName) || ''} ${(location.state && location.state.lastName) || ''}`,
-        serviceAreaCoverage: '',
+        TypeOfMaterials: [],
         linkedin: '',
         weblink: '',
-        experience: '',
-        workPlace: '',
+        coveringArea: '',
+        companyName: '',
         bio: '',
-        typeOfMaterialsOffered: '',
-        materialQualityStandards: ''
+        qualityOfMaterials: ''
     });
 
     useEffect(() => {
@@ -69,7 +68,14 @@ function MaterialSupplier() {
     };
 
     const handleButtonClick = (name, value) => {
-        setProfileInfo({ ...profileInfo, [name]: value });
+        setProfileInfo(prevState => {
+            const updatedValues = new Set(prevState[name]);
+            updatedValues.has(value) ? updatedValues.delete(value) : updatedValues.add(value);
+            return {
+                ...prevState,
+                [name]: Array.from(updatedValues)
+            };
+        });
     };
 
     const handleSubmit = async (e) => {
@@ -78,14 +84,13 @@ function MaterialSupplier() {
         const formData = new FormData();
         formData.append('msdet', profileInfo.msdet);
         formData.append('email', profileInfo.email);
-        formData.append('serviceAreaCoverage', profileInfo.serviceAreaCoverage);
+        formData.append('TypeOfMaterials', JSON.stringify(profileInfo.TypeOfMaterials));
         formData.append('linkedin', profileInfo.linkedin);
         formData.append('weblink', profileInfo.weblink);
-        formData.append('experience', profileInfo.experience);
-        formData.append('workPlace', profileInfo.workPlace);
+        formData.append('coveringArea', profileInfo.coveringArea);
+        formData.append('companyName', profileInfo.companyName);
         formData.append('bio', profileInfo.bio);
-        formData.append('typeOfMaterialsOffered', profileInfo.typeOfMaterialsOffered);
-        formData.append('materialQualityStandards', profileInfo.materialQualityStandards);
+        formData.append('qualityOfMaterials', profileInfo.qualityOfMaterials);
         formData.append('profilePicture', profilePicture);
         formData.append('previousJobFile', previousJobFile);
     
@@ -98,12 +103,25 @@ function MaterialSupplier() {
     
             if (response.status === 201) {
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: 'Profile updated successfully',
-                    confirmButtonText: 'OK',
-                }).then(() => {
-                    navigate('/Pages/ProfileCards');
+                    title: "Do you want to save the changes?",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Save",
+                    denyButtonText: `Don't save`
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success",
+                            text: "Information saved successfully",
+                            confirmButtonText: "OK",
+                            footer: "You are now registered as a Material Supplier..."
+                        }).then(() => {
+                            navigate('../Pages/Profilems');
+                        });
+                    } else if (result.isDenied) {
+                        Swal.fire("Changes are not saved", "", "info");
+                    }
                 });
             } else {
                 Swal.fire({
@@ -123,6 +141,23 @@ function MaterialSupplier() {
             });
         }
     };
+    
+    
+
+    const materials = [
+        { value: 'Wood', label: 'Wood' },
+        { value: 'Steel', label: 'Steel' },
+        { value: 'Concrete', label: 'Concrete' },
+        { value: 'Glass', label: 'Glass' },
+        { value: 'Plastic', label: 'Plastic' },
+        { value: 'Other', label: 'Other' }
+    ];
+
+    const qualities = [
+        { value: 'High', label: 'High' },
+        { value: 'Medium', label: 'Medium' },
+        { value: 'Low', label: 'Low' }
+    ];
 
     return (
         <div className="user_profile_form">
@@ -136,7 +171,6 @@ function MaterialSupplier() {
                                 type="file"
                                 name="profilePicture"
                                 onChange={handleFileChange}
-                                required
                                 id="profilePictureInput"
                                 style={{ display: 'none' }}
                             />
@@ -148,14 +182,14 @@ function MaterialSupplier() {
                         </label>
                         <div className="pro-form-l2">
                             <label className="pro-form-l1">
-                                Name <br />
-                                <input
-                                    type="text"
-                                    name="msdet"
-                                    value={profileInfo.msdet}
-                                    onChange={handleChange}
-                                    readOnly
-                                    required
+                                    Name <br />
+                                    <input
+                                        type="text"
+                                        name="msdet"
+                                        value={profileInfo.msdet}
+                                        onChange={handleChange}
+                                        readOnly
+                                        required
                                 />
                             </label>
                             <label className="pro-form-l1">
@@ -171,16 +205,7 @@ function MaterialSupplier() {
                             </label>
                         </div>
                     </div>
-                    <label className="pro-form-l2">
-                        Service Area Coverage<br />
-                        <input
-                            type="text"
-                            name="serviceAreaCoverage"
-                            value={profileInfo.serviceAreaCoverage}
-                            onChange={handleChange}
-                            required
-                        />
-                    </label>
+                    
                     <div className="pro-form-l3">
                         <label className="pro-form-l2">
                             LinkedIn profile link<br />
@@ -204,21 +229,21 @@ function MaterialSupplier() {
                     </div>
                     <div className="pro-form-l3">
                         <label className="pro-form-l2">
-                            Experience<br />
+                            Company Name<br />
                             <input
                                 type="text"
-                                name="experience"
-                                value={profileInfo.experience}
+                                name="companyName"
+                                value={profileInfo.companyName}
                                 onChange={handleChange}
                                 required
                             />
                         </label>
                         <label className="pro-form-l2" style={{ marginLeft: '20%' }}>
-                            Work Place <br />
+                            Covering Area <br />
                             <input
                                 type="text"
-                                name="workPlace"
-                                value={profileInfo.workPlace}
+                                name="coveringArea"
+                                value={profileInfo.coveringArea}
                                 onChange={handleChange}
                             />
                         </label>
@@ -235,151 +260,67 @@ function MaterialSupplier() {
                             />
                         </label>
                     </div>
-                    <div className="pro-button-group">
-                        <h3>Type of Materials Offered</h3>
+                    <label className="pro-form-l2">
+                        Type of Materials<br />
                         <div className="pro-form-button">
-                            <button
-                                type="button"
-                                name="typeOfMaterialsOffered"
-                                value="Hardware"
-                                className={profileInfo.typeOfMaterialsOffered.includes("Hardware") ? "active" : ""}
-                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Hardware")}
-                            >
-                                Hardware
-                            </button>
-                            <button
-                                type="button"
-                                name="typeOfMaterialsOffered"
-                                value="Plumbing"
-                                className={profileInfo.typeOfMaterialsOffered.includes("Plumbing") ? "active" : ""}
-                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Plumbing")}
-                            >
-                                Plumbing
-                            </button>
-                            <button
-                                type="button"
-                                name="typeOfMaterialsOffered"
-                                value="Electrical"
-                                className={profileInfo.typeOfMaterialsOffered.includes("Electrical") ? "active" : ""}
-                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Electrical")}
-                            >
-                                Electrical
-                            </button>
-                            <button
-                                type="button"
-                                name="typeOfMaterialsOffered"
-                                value="Construction"
-                                className={profileInfo.typeOfMaterialsOffered.includes("Construction") ? "active" : ""}
-                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Construction")}
-                            >
-                                Construction
-                            </button>
-                            <button
-                                type="button"
-                                name="typeOfMaterialsOffered"
-                                value="Finishing"
-                                className={profileInfo.typeOfMaterialsOffered.includes("Finishing") ? "active" : ""}
-                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Finishing")}
-                            >
-                                Finishing
-                            </button>
-                            <button
-                                type="button"
-                                name="typeOfMaterialsOffered"
-                                value="Paint"
-                                className={profileInfo.typeOfMaterialsOffered.includes("Paint") ? "active" : ""}
-                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Paint")}
-                            >
-                                Paint
-                            </button>
-                            <button
-                                type="button"
-                                name="typeOfMaterialsOffered"
-                                value="Roofing"
-                                className={profileInfo.typeOfMaterialsOffered.includes("Roofing") ? "active" : ""}
-                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Roofing")}
-                            >
-                                Roofing
-                            </button>
-                            <button
-                                type="button"
-                                name="typeOfMaterialsOffered"
-                                value="Other"
-                                className={profileInfo.typeOfMaterialsOffered.includes("Other") ? "active" : ""}
-                                onClick={() => handleButtonClick("typeOfMaterialsOffered", "Other")}
-                            >
-                                Other
-                            </button>
+                            {materials.map((material, index) => (
+                                <button
+                                    key={index}
+                                    type="button"
+                                    name="TypeOfMaterials"
+                                    value={material.value}
+                                    className={profileInfo.TypeOfMaterials.includes(material.value) ? "active" : ""}
+                                    onClick={() => handleButtonClick("TypeOfMaterials", material.value)}
+                                >
+                                    {material.label}
+                                </button>
+                            ))}
                         </div>
+                    </label>
+                    <div className="pro-form-l6">
+                        <label>
+                            Quality of Materials<br />
+                            <div className="pro-form-button">
+                                {qualities.map((quality, index) => (
+                                    <button
+                                        key={index}
+                                        type="button"
+                                        name="qualityOfMaterials"
+                                        value={quality.value}
+                                        className={profileInfo.qualityOfMaterials === quality.value ? "active" : ""}
+                                        onClick={() => setProfileInfo(prevState => ({
+                                            ...prevState,
+                                            qualityOfMaterials: quality.value
+                                        }))}
+                                    >
+                                        {quality.label}
+                                    </button>
+                                ))}
+                            </div>
+                        </label>
                     </div>
-                    <div className="pro-button-group">
-                        <h3>Material Quality Standards</h3>
-                        <div className="pro-form-button">
-                            <button
-                                type="button"
-                                name="materialQualityStandards"
-                                value="ISO"
-                                className={profileInfo.materialQualityStandards.includes("ISO") ? "active" : ""}
-                                onClick={() => handleButtonClick("materialQualityStandards", "ISO")}
-                            >
-                                ISO
-                            </button>
-                            <button
-                                type="button"
-                                name="materialQualityStandards"
-                                value="SLS"
-                                className={profileInfo.materialQualityStandards.includes("SLS") ? "active" : ""}
-                                onClick={() => handleButtonClick("materialQualityStandards", "SLS")}
-                            >
-                                SLS
-                            </button>
-                            <button
-                                type="button"
-                                name="materialQualityStandards"
-                                value="EN"
-                                className={profileInfo.materialQualityStandards.includes("EN") ? "active" : ""}
-                                onClick={() => handleButtonClick("materialQualityStandards", "EN")}
-                            >
-                                EN
-                            </button>
-                            <button
-                                type="button"
-                                name="materialQualityStandards"
-                                value="ASTM"
-                                className={profileInfo.materialQualityStandards.includes("ASTM") ? "active" : ""}
-                                onClick={() => handleButtonClick("materialQualityStandards", "ASTM")}
-                            >
-                                ASTM
-                            </button>
-                            <button
-                                type="button"
-                                name="materialQualityStandards"
-                                value="BS"
-                                className={profileInfo.materialQualityStandards.includes("BS") ? "active" : ""}
-                                onClick={() => handleButtonClick("materialQualityStandards", "BS")}
-                            >
-                                BS
-                            </button>
-                        </div>
-                    </div>
-                    <div className="pro-form-l3">
-                        <label className="pro-form-l4">
-                            Upload Previous Job Files <br />
+                    <div className="previousJob">
+                        <h3>Previous Job</h3>
+                        <label>Upload Files</label><br />
+                        <div className="job-file-container">
                             <input
                                 type="file"
                                 name="previousJobFile"
                                 onChange={handlePreviousJobFileChange}
+                                id="previousJobFileInput"
+                                style={{ display: 'none' }}  // Hide the input element
                             />
                             <img
                                 src={uploadImage}
                                 alt="Upload"
-                                style={{ width: '100px', height: '100px', cursor: 'pointer' }}
+                                className="job-profile-image"
+                                onClick={() => document.getElementById('previousJobFileInput').click()}
                             />
-                        </label>
+                        </div>
                     </div>
-                    <div className="line" style={{ marginTop: '7%', marginBottom: '5%' }}></div>
-                    <div className="pro-form-l7">
-                        <button type="submit" className="btn-professional">Save Profile</button>
+                    <div className="pro-form-button1">
+                        <button type="reset">Edit</button>
+                        <button type="submit" style={{ marginLeft: '5%' }}>Submit</button>
                     </div>
                 </form>
             </div>
@@ -387,4 +328,4 @@ function MaterialSupplier() {
     );
 }
 
-export default MaterialSupplier;
+export default MaterialSup;

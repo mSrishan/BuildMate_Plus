@@ -9,8 +9,7 @@ const contactRoutes = require("./routes/contact");
 const registrationRoute = require('./routes/registration');
 const professionalRoutes = require("./routes/professionalRoutes");
 const ssRoutes = require('./routes/ssRoutes');
-// const msRoutes = require('./routes/msRoutes');
-const materialSupplierRoutes = require('./routes/msRoutes');
+const msRoutes = require('./routes/msRoutes')
 
 const app = express();
 const PORT = 8000;
@@ -31,7 +30,7 @@ app.use('/api/registerServiceSupplier', registrationRoute);
 app.use('/api/registerMaterialSupplier', registrationRoute);
 app.use("/api", professionalRoutes);
 app.use('/api', ssRoutes);
-app.use('/api', materialSupplierRoutes);
+app.use('/api', msRoutes);
 
 
 // Serve static files

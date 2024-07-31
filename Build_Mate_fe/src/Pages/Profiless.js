@@ -14,12 +14,14 @@ const Profiless = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         const fetchProfiles = async () => {
             try {
                 const response = await axios.get('http://localhost:8000/api/serviceSuppliers');
                 const data = response.data;
+                console.log("API Response:", data); // Debug: log the response data
                 setProfiles(data);
                 categorizeProfiles(data);
             } catch (error) {
@@ -46,9 +48,25 @@ const Profiless = () => {
         setCategorizedProfiles(categories);
     };
 
+    const handleSearchInputChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
     const handleCategoryChange = (category) => {
         setSelectedCategory(category);
     };
+
+    const filteredProfiles = profiles.filter(profile =>
+        (profile.ssded && profile.ssdet.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (profile.TypeOfService && profile.TypeOfService.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
+
+    const displayedProfiles = selectedCategory === 'All'
+        ? filteredProfiles
+        : (categorizedProfiles[selectedCategory] || []).filter(profile =>
+            (profile.name && profile.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
+            (profile.TypeOfService && profile.TypeOfService.toLowerCase().includes(searchQuery.toLowerCase()))
+        );
 
     if (loading) {
         return <div>Loading...</div>;
@@ -58,10 +76,6 @@ const Profiless = () => {
         return <div>{error}</div>;
     }
 
-    const displayedProfiles = selectedCategory === 'All'
-        ? profiles
-        : categorizedProfiles[selectedCategory] || [];
-
     return (
         <div className="main-container">
             <div className="navbar-container" style={{ backgroundColor: '#FF6B00' }}>
@@ -69,6 +83,17 @@ const Profiless = () => {
             </div>
             <div className='pro-body01'>
                 <div className='pro-st1'>Service Suppliers</div>
+
+                <div className="search-bar2">
+                    <input
+                        type="text"
+                        className="search-input2"
+                        placeholder="Search by name or service 🔍"
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
+                    />
+                </div>
+
                 <div className='pro-line'></div>
                 <div className='pro-tline'>{selectedCategory === 'All' ? 'All Service Suppliers' : selectedCategory}</div>
                 <div className='pro-line'></div>
@@ -104,7 +129,7 @@ const Profiless = () => {
                                     <div className="profile-header">
                                         <img src={`http://localhost:8000/${profile.profilePicture}`} alt={profile.name} className="profile-image" />
                                         <div className="profile-info">
-                                            <h3 className="profile-name">{profile.name}</h3>
+                                            <h3 className="profile-name">{profile.ssdet}</h3>
                                             <p className="profile-role">{profile.TypeOfService}</p>
                                             <div className="profile-rating">
                                                 <img src={gps} alt='location' className='pro-icon' onClick={() => window.location.href = profile.workPlace} />

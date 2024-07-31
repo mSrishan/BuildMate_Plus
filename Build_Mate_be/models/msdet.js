@@ -1,52 +1,19 @@
+// backend/models/msdet.js
+
 const mongoose = require('mongoose');
 
-const msdetSchema = new mongoose.Schema({
-    msdet: {
-        type: String,
-        required: true,
-    },
-    email: {
-        type: String,
-        required: true,
-    },
-    serviceAreaCoverage: {
-        type: String,
-        required: true,
-    },
-    linkedin: {
-        type: String,
-        required: true,
-    },
-    weblink: {
-        type: String,
-    },
-    experience: {
-        type: String,
-        required: true,
-    },
-    workPlace: {
-        type: String,
-    },
-    bio: {
-        type: String,
-        required: true,
-    },
-    typeOfMaterialsOffered: {
-        type: String,
-        required: true,
-    },
-    materialQualityStandards: {
-        type: String,
-        required: true,
-    },
-    profilePicture: {
-        type: String,
-    },
-    previousJobFile: {
-        type: String,
-    },
+const MsdetSchema = new mongoose.Schema({
+    msdet: { type: String, required: true },
+    email: { type: String, required: true },
+    TypeOfMaterials: [String],
+    linkedin: { type: String },
+    weblink: { type: String },
+    coveringArea: { type: String },
+    companyName: { type: String, required: true },
+    bio: { type: String, required: true },
+    qualityOfMaterials: { type: String, required: true },
+    profilePicture: { type: String }, // URL or path to the uploaded file
+    previousJobFile: { type: String } // URL or path to the uploaded file
 });
 
-const Msdet = mongoose.model('Msdet', msdetSchema);
-
-module.exports = Msdet;
+module.exports = mongoose.model('Msdet', MsdetSchema);

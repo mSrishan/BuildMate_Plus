@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 import './Signup.css';
-import si1 from "../Components/Assets/sign-img.jpg";
 import closeIcon from "../Components/Assets/close.png"; // Import close icon
 
 function Signup() {
@@ -25,11 +24,30 @@ function Signup() {
                 lastName
             });
 
-            const responseData = response.data;
-
-            if (responseData === "notexist") {
-                showSuccessMessage();
-            } else if (responseData === "exist") {
+            if (response.status === 201 && response.data.message === "User registered successfully") {
+                Swal.fire({
+                    title: "Do you want to save the changes?",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Save",
+                    denyButtonText: `Don't save`
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success",
+                            text: "Information saved successfully",
+                            confirmButtonText: "OK",
+                            footer: "You have successfully signed up for <br/> BuildMate+ !"
+                        }).then(() => {
+                            const { firstName, lastName, email } = response.data;
+                            navigate("/Pages/Login", { state: { firstName, lastName, email } });
+                        });
+                    } else if (result.isDenied) {
+                        Swal.fire("Changes are not saved", "", "info");
+                    }
+                });
+            } else if (response.data.message === "exist") {
                 showExistMessage("User already exists with this email.");
             } else {
                 showErrorMessage("An error occurred while processing your request");
@@ -39,17 +57,6 @@ function Signup() {
             showErrorMessage("An error occurred while processing your request");
             console.error("Error:", error);
         }
-    }
-
-    function showSuccessMessage() {
-        Swal.fire({
-            icon: 'success',
-            title: 'Signup Successful!',
-            text: 'You have successfully signed up.',
-            confirmButtonText: 'Login from here'
-        }).then(() => {
-            navigate("/Pages/Login"); 
-        });
     }
 
     function showErrorMessage(message) {
@@ -63,10 +70,11 @@ function Signup() {
 
     function showExistMessage(message) {
         Swal.fire({
-            icon: 'error',
+            icon: 'Hi there,',
             title: 'Exist User',
             text: "You already signed up.",
-            confirmButtonText: 'Login from here'
+            confirmButtonText: "OK",
+            footer: "You can login for BuildMate+ from here"
         }).then(() => {
             navigate("/Pages/Login"); 
         });
@@ -80,31 +88,28 @@ function Signup() {
         <div className="signup01"><img src={closeIcon} alt="Close" className="close-icon" onClick={handleClose} />
             <div className="signup">
                 <div className="signup-locate">
-                    
                     <h1 className="head1">Create New Account</h1>
                     <p className="par1">Please fill in your basic info</p>
-                    
                     <div className="inputs">
                         <form onSubmit={submit} className="signupForm">
                             <div className="signupDiv">
                                 <input
-                                        className="signup-Fname"
-                                        type="text"
-                                        value={firstName}
-                                        onChange={(e) => setFirstName(e.target.value)}
-                                        placeholder="First Name"
-                                        required
-                                    />
-                                    <input
-                                        className="signup-Lname"
-                                        type="text"
-                                        value={lastName}
-                                        onChange={(e) => setLastName(e.target.value)}
-                                        placeholder="Last Name"
-                                        required
-                                    /> 
+                                    className="signup-Fname"
+                                    type="text"
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                    placeholder="First Name"
+                                    required
+                                />
+                                <input
+                                    className="signup-Lname"
+                                    type="text"
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                    placeholder="Last Name"
+                                    required
+                                />
                             </div>
-                        
                             <label>Email</label>
                             <input
                                 className="signup-email"
@@ -124,8 +129,8 @@ function Signup() {
                                 required
                             />
                             <div className="btn-container">
-                            <button className="btn" type="submit">CREATE ACCOUNT</button>
-                        </div>
+                                <button className="btn" type="submit">CREATE ACCOUNT</button>
+                            </div>
                         </form>
                     </div>
                     <p className="signup-para2">Already a member ?

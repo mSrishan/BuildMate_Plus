@@ -8,7 +8,7 @@ const router = express.Router();
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        const uploadPath = 'uploads/Portfolios';
+        const uploadPath = 'uploads/Portfolios/';
         if (!fs.existsSync(uploadPath)){
             fs.mkdirSync(uploadPath, { recursive: true });
         }
@@ -71,6 +71,22 @@ router.get('/professionals/:id', async (req, res) => {
         res.json(prof);
     } catch (error) {
         res.status(500).json({ message: error.message });
+    }
+});
+
+// Search for professionals by name or profession
+router.get('/search', async (req, res) => {
+    try {
+        const { query } = req.query;
+        const professionals = await ProfDet.find({
+            $or: [
+                { name: { $regex: query, $options: 'i' } },
+                { profession: { $regex: query, $options: 'i' } }
+            ]
+        });
+        res.json(professionals);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 });
 

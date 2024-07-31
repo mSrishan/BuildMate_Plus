@@ -23,7 +23,6 @@ import 'animate.css';
 
 
 import ScrollTrigger from "react-scroll-trigger";
-import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 
@@ -60,7 +59,6 @@ const Home = () => {
   };
 
   const handleSearchSubmit = () => {
-    // Implement search functionality based on searchType and searchQuery
     console.log(`Searching ${searchType} for: ${searchQuery}`);
   };
 

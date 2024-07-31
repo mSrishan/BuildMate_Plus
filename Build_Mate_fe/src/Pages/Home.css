@@ -525,7 +525,7 @@
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 .animate__fadeInLeft{
-  animation-delay: 5s;
+  animation-delay: 3s;
 }
 .leFadeInVisible {
   opacity: 1;
@@ -533,7 +533,7 @@
 }
 
 .animate__backInRight {
-  animation-delay: 5s;
+  animation-delay: 3s;
   opacity: 0;
   transform: translateX(100px);
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;

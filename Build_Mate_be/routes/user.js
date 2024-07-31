@@ -68,7 +68,7 @@ router.post('/signup', async (req, res) => {
     try {
         const existingUser = await User.findOne({ email });
         if (existingUser) {
-            return res.status(200).send("exist");
+            return res.status(200).json({ message: "exist" });
         }
         const newUser = new User({ email, password, firstName, lastName });
         await newUser.save();
@@ -76,7 +76,7 @@ router.post('/signup', async (req, res) => {
         // Send signup confirmation email
         try {
             await sendWelcomeEmail(email, firstName);
-            res.status(201).json({ message: "notexist", firstName });
+            res.status(201).json({ message: "User registered successfully", firstName, lastName, email });
         } catch (error) {
             console.error("Error sending email:", error);
             res.status(500).json({ message: "Error sending signup confirmation email" });
@@ -85,6 +85,7 @@ router.post('/signup', async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 });
+
 
 // Login route
 router.post('/login', async (req, res) => {

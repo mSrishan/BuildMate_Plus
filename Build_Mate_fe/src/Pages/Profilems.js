@@ -8,7 +8,7 @@ import gps from '../Components/Assets/gps.png';
 import web from '../Components/Assets/web.png';
 import './ProfileCards.css';
 
-const Profilems = () => {
+const ProfileMs = () => {
     const [profiles, setProfiles] = useState([]);
     const [categorizedProfiles, setCategorizedProfiles] = useState({});
     const [selectedCategory, setSelectedCategory] = useState('All');
@@ -18,7 +18,7 @@ const Profilems = () => {
     useEffect(() => {
         const fetchProfiles = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/materialSuppliers');
+                const response = await axios.get('http://localhost:8000/api/serviceSuppliers');
                 const data = response.data;
                 setProfiles(data);
                 categorizeProfiles(data);
@@ -35,11 +35,11 @@ const Profilems = () => {
 
     const categorizeProfiles = (profiles) => {
         const categories = profiles.reduce((acc, profile) => {
-            const { materialType } = profile; // Assuming each profile has a `materialType` property
-            if (!acc[materialType]) {
-                acc[materialType] = [];
+            const { TypeOfMaterials } = profile;
+            if (!acc[TypeOfMaterials]) {
+                acc[TypeOfMaterials] = [];
             }
-            acc[materialType].push(profile);
+            acc[TypeOfMaterials].push(profile);
             return acc;
         }, {});
 
@@ -84,13 +84,13 @@ const Profilems = () => {
                     >
                         All
                     </button>
-                    {Object.keys(categorizedProfiles).map((materialType) => (
+                    {Object.keys(categorizedProfiles).map((material) => (
                         <button
-                            key={materialType}
-                            onClick={() => handleCategoryChange(materialType)}
-                            className={selectedCategory === materialType ? 'active' : ''}
+                            key={material}
+                            onClick={() => handleCategoryChange(material)}
+                            className={selectedCategory === material ? 'active' : ''}
                         >
-                            {materialType}
+                            {material}
                         </button>
                     ))}
                 </div>
@@ -105,7 +105,6 @@ const Profilems = () => {
                                         <img src={`http://localhost:8000/${profile.profilePicture}`} alt={profile.name} className="profile-image" />
                                         <div className="profile-info">
                                             <h3 className="profile-name">{profile.name}</h3>
-                                            <p className="profile-role">{profile.materialType}</p>
                                             <div className="profile-rating">
                                                 <img src={gps} alt='location' className='pro-icon' onClick={() => window.location.href = profile.workPlace} />
                                                 <img src={linkedin} alt='linkedin' className='pro-icon' onClick={() => window.location.href = profile.linkedin} />
@@ -115,6 +114,8 @@ const Profilems = () => {
                                     </div>
                                     <div className="profile-content">
                                         <p>{profile.bio}</p>
+                                        <p className="profile-email">{profile.email}</p>
+                                            <p className="profile-materials">{profile.TypeOfMaterials}</p>
                                         <a href={`http://localhost:8000/${profile.previousJobFile}`} download>Download Portfolio</a>
                                         <button
                                             onClick={() => window.location.href = `/materialSupplier/${profile._id}`}
@@ -136,4 +137,4 @@ const Profilems = () => {
     );
 };
 
-export default Profilems;
+export default ProfileMs;
