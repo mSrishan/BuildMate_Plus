@@ -3,6 +3,7 @@ const cors = require("cors");
 const bodyParser = require('body-parser');
 const path = require("path");
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 const userRoutes = require("./routes/user");
 const contactRoutes = require("./routes/contact");
@@ -10,9 +11,13 @@ const registrationRoute = require('./routes/registration');
 const professionalRoutes = require("./routes/professionalRoutes");
 const ssRoutes = require('./routes/ssRoutes');
 const msRoutes = require('./routes/msRoutes')
+const imageRoutes = require('./routes/imageRoutes');
+
+dotenv.config();
 
 const app = express();
 const PORT = 8000;
+
 
 // Middleware
 app.use(express.json());
@@ -20,6 +25,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
+
 
 // Routes
 app.use("/api/user", userRoutes);
@@ -31,6 +37,7 @@ app.use('/api/registerMaterialSupplier', registrationRoute);
 app.use("/api", professionalRoutes);
 app.use('/api', ssRoutes);
 app.use('/api', msRoutes);
+app.use('/generate-image', imageRoutes);
 
 
 // Serve static files

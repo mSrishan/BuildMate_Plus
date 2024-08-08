@@ -2,15 +2,18 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SearchBar.css'; // Import the CSS file
 
+axios.defaults.baseURL = 'http://localhost:8000';
+
 const SearchBar = () => {
-    const [query, setQuery] = useState('');
+    const [searchType, setSearchType] = useState('Expert');
+    const [searchQuery, setSearchQuery] = useState('');
     const [results, setResults] = useState([]);
     const [showResults, setShowResults] = useState(false);
 
     const fetchResults = async () => {
-        if (query.trim() !== '') {
+        if (searchQuery.trim() !== '') {
             try {
-                const response = await axios.get(`/api/search?query=${query}`);
+                const response = await axios.get(`/api/search?query=${searchQuery}&type=${searchType}`);
                 setResults(response.data);
                 setShowResults(true);
             } catch (error) {
@@ -21,6 +24,7 @@ const SearchBar = () => {
             setShowResults(false);
         }
     };
+    
 
     useEffect(() => {
         const delayDebounceFn = setTimeout(() => {
@@ -28,7 +32,21 @@ const SearchBar = () => {
         }, 300);
 
         return () => clearTimeout(delayDebounceFn);
-    }, [query]);
+    }, [searchQuery, searchType]);
+
+    const handleSearchTypeChange = (type) => {
+        setSearchType(type);
+        setResults([]); // Clear results when changing search type
+    };
+
+    const handleSearchInputChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const handleSearchClick = (e) => {
+        e.preventDefault();
+        fetchResults();
+    };
 
     const handleBlur = () => {
         // Delay hiding results to allow click on result
@@ -37,24 +55,44 @@ const SearchBar = () => {
         }, 200);
     };
 
-    const handleSearchClick = (e) => {
-        e.preventDefault();
-        fetchResults();
-    };
-
     return (
-        <div className="search-bar-container">
-            <form onSubmit={(e) => e.preventDefault()}>
-                <input
-                    type="text"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Search professionals by name or email..."
-                    onBlur={handleBlur}
-                    onFocus={() => setShowResults(true)}
-                />
-                <button type="button" onClick={handleSearchClick}>Search</button>
-            </form>
+        <div className="search-center">
+            <div className="search-bar-container">
+                <div className="switch-buttons">
+                    <button
+                        className={`switch-button-ex ${searchType === 'Expert' ? 'active' : ''}`}
+                        onClick={() => handleSearchTypeChange('Expert')}
+                    >
+                        Expert
+                    </button>
+                    <button
+                        className={`switch-button-su ${searchType === 'Supplier' ? 'active' : ''}`}
+                        onClick={() => handleSearchTypeChange('Supplier')}
+                    >
+                        Supplier
+                    </button>
+                    <button
+                        className={`switch-button-ma ${searchType === 'Material' ? 'active' : ''}`}
+                        onClick={() => handleSearchTypeChange('Material')}
+                    >
+                        Material
+                    </button>
+                </div>
+                <div className="search-bar">
+                    <input
+                        type="text"
+                        className="search-input"
+                        placeholder={`Search ${searchType.toLowerCase()}`}
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
+                        onBlur={handleBlur}
+                        onFocus={() => setShowResults(true)}
+                    />
+                    <button className="search-button" onClick={handleSearchClick}>
+                        Search
+                    </button>
+                </div>
+            </div>
             {showResults && results.length > 0 && (
                 <div className="search-results-popup">
                     {results.map((user) => (
@@ -63,8 +101,10 @@ const SearchBar = () => {
                             <p>Email: {user.email}</p>
                             <p>Profession: {user.profession}</p>
                             <p>Experience: {user.experience} years</p>
-                            <img src={`http://localhost:5000/${user.profilePicture}`} alt="Profile" width="100" />
-                            <a href={`http://localhost:5000/${user.previousJobFile}`} download>Download Previous Job File</a>
+                            <img src={`http://localhost:8000/${user.profilePicture}`} alt="Profile" width="100" />
+                            <a href={`http://localhost:8000/${user.previousJobFile}`} download>
+                                Download Previous Job File
+                            </a>
                         </div>
                     ))}
                 </div>

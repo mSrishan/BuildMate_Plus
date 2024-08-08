@@ -19,7 +19,7 @@ import reviewImg01 from "../Components/Assets/review01.jpeg";
 import reviewImg02 from "../Components/Assets/review02.jpeg";
 import reviewImg03 from "../Components/Assets/review03.jpeg";
 import 'animate.css';
-
+import SearchBar from '../Components/Searchbar/SearchBar';
 
 
 import ScrollTrigger from "react-scroll-trigger";
@@ -46,21 +46,6 @@ import { Link } from 'react-router-dom';
   };
 
 const Home = () => {
-
-  const [searchType, setSearchType] = useState('Expert');
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleSearchTypeChange = (type) => {
-    setSearchType(type);
-  };
-
-  const handleSearchInputChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSearchSubmit = () => {
-    console.log(`Searching ${searchType} for: ${searchQuery}`);
-  };
 
   const [counterOn, setCounterOn] = useState(false);
   const pathWindow = () => {
@@ -178,26 +163,8 @@ const Home = () => {
             
           </div>
           
-          <div className='search-center'>
-            <div className="search-bar-container">
-              
-                <div className="switch-buttons">
-                  <button className={`switch-button-ex ${searchType === 'Expert' ? 'active' : ''}`} onClick={() => handleSearchTypeChange('Expert')}>Expert</button>
-                  <button className={`switch-button-su ${searchType === 'Supplier' ? 'active' : ''}`} onClick={() => handleSearchTypeChange('Supplier')}>Supplier</button>
-                  <button className={`switch-button-ma ${searchType === 'Material' ? 'active' : ''}`} onClick={() => handleSearchTypeChange('Material')}>Material</button>
-                </div>
-              <div className="search-bar">
-                <input
-                  type="text"
-                  className="search-input"
-                  placeholder={` Search ${searchType.toLowerCase()}`}
-                  value={searchQuery}
-                  onChange={handleSearchInputChange}
-                />
-                <button className="search-button" onClick={handleSearchSubmit}>Search</button>
-              </div>
-            </div>
-          </div>
+          <SearchBar/>
+
           <div className='arrow'>
             
               <img

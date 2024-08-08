@@ -25,6 +25,7 @@ import Profiless from "./Pages/Profiless";
 import Profilems from "./Pages/Profilems";
 import Profileview from "./Pages/ProfileView";
 import Privacy from "./Pages/PrivacyPolicy";
+import ImageGeneration from "./Pages/ImageGeneration";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           <Route path="/Pages/ProfileView/:id" element={<Profileview />} />
           <Route path="/Pages/privacy-policy" element={<Privacy />} />
           <Route path="/Components/ChatApp/App" element={<ChatApp/>}/>
+          <Route path="/Pages/ImageGeneration" element={<ImageGeneration/>} />
         </Routes>
         <ChatIcon />
       </Router>
