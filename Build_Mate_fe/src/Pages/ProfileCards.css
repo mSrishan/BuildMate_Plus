@@ -94,7 +94,7 @@
     flex-direction: column;
     border-radius: 30px;
     background-color: #ffffff;
-    border: 2px solid black;
+    border: 2px solid rgba(0, 0, 0, 0);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
     padding: 20px;
     width: 300px;
@@ -113,10 +113,10 @@
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
-.profile-info {
+.profile-info01 {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     margin-left: 10px;
 }
 
@@ -132,6 +132,7 @@
     margin: 0;
     line-height: 1.2em;
     font-weight: 400;
+    margin-left: 5%;
 }
 
 .pro-icon {
@@ -148,6 +149,9 @@
 
 .profile-content {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .profile-content p {
@@ -174,8 +178,9 @@
     font-family: 'Poppins', sans-serif;
     font-size: 0.7em;
     cursor: pointer;
-    padding: 5%;
+    padding: 3%;
     width: 40%;
+    margin-top: 5%;
 }
 
 .view-profile-button:hover{
@@ -185,17 +190,24 @@
 
 
 .search-bar2 {
-    position: fixed;
-    top: 95px;
+    position: absolute;
+    top: 15%;
     right: 5%; /* Adjust as needed for desired right margin */
-    z-index: 1000; /* Ensure it appears on top of other elements */
+    z-index: 1000; /*Ensure it appears on top of other elements*/
+  }
+
+  .search-bar3 {
+    position: absolute;
+    top: 12%;
+    right: 5%; /* Adjust as needed for desired right margin */
+    z-index: 1000; /*Ensure it appears on top of other elements*/
   }
   
   .search-input2 {
     width: 290px; /* Adjust width as needed */
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 15px;
     font-size: 14px;
   }
   

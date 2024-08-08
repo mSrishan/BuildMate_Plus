@@ -50,6 +50,7 @@ function Login() {
                     confirmButtonText: 'OK'
                 });
             }
+            sessionStorage.setItem('authToken',1234);
         } catch (error) {
             Swal.fire({
                 icon: 'error',

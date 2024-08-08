@@ -103,7 +103,7 @@ function Professional() {
                     text: 'Profile updated successfully',
                     confirmButtonText: 'OK',
                 }).then(() => {
-                    navigate(`/Pages/ProfProfile/${response.data._id}`);
+                    navigate(`/Pages/ProfileView/${response.data._id}`);
                 });
             } else {
                 Swal.fire({

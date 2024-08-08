@@ -17,13 +17,14 @@ import Architecture from "./Pages/Architecture";
 import Profile from "./Pages/Profile";
 import Suppliers from "./Pages/Supplier";
 import Chat from "./Pages/Chat"; 
+import ChatApp from "./Components/ChatApp/App"
 import ChatIcon from "./Pages/ChatIcon";
-import ProfProfile from "./Pages/ProfProfile";
 import ArchProfile from "./Pages/ArchProfile";
 import ProfileCards from "./Pages/ProfileCards";
 import Profiless from "./Pages/Profiless";
 import Profilems from "./Pages/Profilems";
-
+import Profileview from "./Pages/ProfileView";
+import Privacy from "./Pages/PrivacyPolicy";
 
 function App() {
   return (
@@ -46,11 +47,12 @@ function App() {
           <Route path="/Pages/profile/:id" element={<Profile />} />
           <Route path="/Pages/Supplier" element={<Suppliers/>}/>
           <Route path="/Pages/Chat" element={<Chat />} />
-          <Route path="/Pages/ArchProfile" element={<ArchProfile />} />
           <Route path="/Pages/profileCards" element={<ProfileCards />}/>
           <Route path="/Pages/profiless" element={<Profiless />}/>
           <Route path="/Pages/profilems" element={<Profilems />}/>
-          <Route path="/Pages/ProfProfile" element={<ProfProfile />} />
+          <Route path="/Pages/ProfileView/:id" element={<Profileview />} />
+          <Route path="/Pages/privacy-policy" element={<Privacy />} />
+          <Route path="/Components/ChatApp/App" element={<ChatApp/>}/>
         </Routes>
         <ChatIcon />
       </Router>

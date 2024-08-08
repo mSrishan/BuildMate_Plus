@@ -217,6 +217,7 @@
   width: 40px;
   filter:invert(100%);
   cursor: pointer;
+  filter: invert(10%);
 }
 
 .h2-img{
@@ -737,8 +738,3 @@
   100% {
     content: "Connect, Create, Construct";
   }}
-
-  
-
-
-  

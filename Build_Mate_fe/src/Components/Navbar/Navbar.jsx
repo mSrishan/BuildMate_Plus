@@ -26,6 +26,7 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem('userEmail');
     localStorage.removeItem('firstName');
+    sessionStorage.removeItem('authToken');
     setIsAuthenticated(false);
     setFirstName('');
     window.location.reload();

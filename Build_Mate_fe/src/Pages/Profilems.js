@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/footer';
 import leftArrow from '../Components/Assets/left-arrow.png';
+import { useNavigate } from 'react-router-dom';
 import linkedin from '../Components/Assets/linkedin.png';
 import gps from '../Components/Assets/gps.png';
 import web from '../Components/Assets/web.png';
@@ -14,11 +15,13 @@ const ProfileMs = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProfiles = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/serviceSuppliers');
+                const response = await axios.get('http://localhost:8000/api/materialSuppliers');
                 const data = response.data;
                 setProfiles(data);
                 categorizeProfiles(data);
@@ -35,11 +38,14 @@ const ProfileMs = () => {
 
     const categorizeProfiles = (profiles) => {
         const categories = profiles.reduce((acc, profile) => {
-            const { TypeOfMaterials } = profile;
-            if (!acc[TypeOfMaterials]) {
-                acc[TypeOfMaterials] = [];
+            if (profile.TypeOfMaterials) {
+                profile.TypeOfMaterials.forEach(material => {
+                    if (!acc[material]) {
+                        acc[material] = [];
+                    }
+                    acc[material].push(profile);
+                });
             }
-            acc[TypeOfMaterials].push(profile);
             return acc;
         }, {});
 
@@ -50,6 +56,26 @@ const ProfileMs = () => {
         setSelectedCategory(category);
     };
 
+    const handleSearchInputChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const handleViewProfile = (profile) => {
+        navigate(`/Pages/ProfileView/${profile._id}`, { state: { profile } });
+    };
+
+    const filteredProfiles = profiles.filter(profile => 
+        (profile.msdet && profile.msdet.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (profile.TypeOfMaterials && profile.TypeOfMaterials.some(material => material.toLowerCase().includes(searchQuery.toLowerCase())))
+    );
+
+    const displayedProfiles = selectedCategory === 'All'
+        ? filteredProfiles
+        : (categorizedProfiles[selectedCategory] || []).filter(profile => 
+            (profile.msdet && profile.msdet.toLowerCase().includes(searchQuery.toLowerCase())) ||
+            (profile.TypeOfMaterials && profile.TypeOfMaterials.some(material => material.toLowerCase().includes(searchQuery.toLowerCase())))
+          );
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -58,17 +84,23 @@ const ProfileMs = () => {
         return <div>{error}</div>;
     }
 
-    const displayedProfiles = selectedCategory === 'All'
-        ? profiles
-        : categorizedProfiles[selectedCategory] || [];
-
     return (
         <div className="main-container">
             <div className="navbar-container" style={{ backgroundColor: '#FF6B00' }}>
                 <Navbar />
             </div>
             <div className='pro-body01'>
-                <div className='pro-st1'>Material Suppliers</div>
+                <div className='pro-st1'>Material Suppliers
+                    <div className="search-bar3">
+                        <input
+                            type="text"
+                            className="search-input2"
+                            placeholder="Search by name or material 🔍"
+                            value={searchQuery}
+                            onChange={handleSearchInputChange}
+                        />
+                    </div>
+                </div>
                 <div className='pro-line'></div>
                 <div className='pro-tline'>{selectedCategory === 'All' ? 'All Material Suppliers' : selectedCategory}</div>
                 <div className='pro-line'></div>
@@ -102,9 +134,9 @@ const ProfileMs = () => {
                             {displayedProfiles.map((profile) => (
                                 <div key={profile._id} className="profile-card">
                                     <div className="profile-header">
-                                        <img src={`http://localhost:8000/${profile.profilePicture}`} alt={profile.name} className="profile-image" />
-                                        <div className="profile-info">
-                                            <h3 className="profile-name">{profile.name}</h3>
+                                        <img src={`http://localhost:8000/${profile.profilePicture}`} alt={profile.msdet} className="profile-image" />
+                                        <div className="profile-info01">
+                                            <h3 className="profile-name">{profile.msdet}</h3>
                                             <div className="profile-rating">
                                                 <img src={gps} alt='location' className='pro-icon' onClick={() => window.location.href = profile.workPlace} />
                                                 <img src={linkedin} alt='linkedin' className='pro-icon' onClick={() => window.location.href = profile.linkedin} />
@@ -115,10 +147,10 @@ const ProfileMs = () => {
                                     <div className="profile-content">
                                         <p>{profile.bio}</p>
                                         <p className="profile-email">{profile.email}</p>
-                                            <p className="profile-materials">{profile.TypeOfMaterials}</p>
+                                        <p className="profile-materials">{profile.TypeOfMaterials ? profile.TypeOfMaterials.join(', ') : ''}</p>
                                         <a href={`http://localhost:8000/${profile.previousJobFile}`} download>Download Portfolio</a>
                                         <button
-                                            onClick={() => window.location.href = `/materialSupplier/${profile._id}`}
+                                            onClick={() => handleViewProfile(profile)}
                                             className="view-profile-button"
                                         >
                                             View Profile

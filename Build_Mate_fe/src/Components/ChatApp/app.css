@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body{
+  background-image: url('bg.jpg');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: center;
+  border-radius: 15px;
+  height: 100vh;
+
+}
+.content{
+  width: 90vw;
+  height: 90vh;
+  background-color: rgba(34, 34, 34, 0.47);
+  backdrop-filter:blur(15px) saturate(150%);
+  border-radius: 15px;
+  display: flex;
+}
+
+.loading{
+  padding: 30px;
+  font-size: 35px;
+  border-radius: 10px;
+  background-color:rgba(54, 54, 54, 0.668) ;
+  background-image: url(./public/DExBhK.jpg);
+  font-weight: 600;
+  position: absolute;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -40,6 +40,22 @@ function Registration() {
         }
     }, []);
 
+    useEffect(() => {
+        const token = sessionStorage.getItem('authToken');
+        console.log(token !== '1234');
+    
+        if (token !== '1234') {
+            Swal.fire({
+              icon: 'warning',
+              title: 'Access denied',
+              
+              footer: "You have to log in first",
+              confirmButtonText: 'OK'
+          });
+            navigate('/Pages/home');
+          }
+        }, [navigate]);
+
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         setProfileInfo(prevState => ({

@@ -1,0 +1,80 @@
+.addUser{
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: max-content;
+    height: max-content;
+
+    .closeChat-icon{
+        filter: invert(100%);
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        margin: 2%;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    form{
+        display: flex;
+        gap: 20px;
+        
+        input{
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+
+        button{
+            padding: 10px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 255, 0.501);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    .User{
+        margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .Detail{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            img{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            span{
+                width: 60%;
+            }
+        }
+
+        button{
+            padding: 10px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 255, 0.501);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}
+

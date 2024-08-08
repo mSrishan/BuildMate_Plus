@@ -1,0 +1,280 @@
+
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-image input {
+    display: block;
+    margin-top: 10px;
+    font-size: 40px;
+}
+
+.mainTopic {
+    font-size: 90px;
+    color: #FF6B00;
+    text-align: left;
+    margin: auto 10%;
+}
+
+
+.profile-container01 {
+    background-color: #ffffff;
+    padding: 5%;
+    display: flex;
+    align-items: center;
+    width: 60%;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 40px;
+    margin-left: 20%;
+    margin-bottom: 5%;
+    flex-direction: column;
+}
+
+.profile-container02 {
+    padding: 5%;
+    margin: 0 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180%;
+    border-radius: 40px;
+}
+
+.pro-name {
+    font-size: 50px;
+    text-align: center;
+}
+
+.pro-profession {
+    font-size: 30px;
+    text-align: center;
+    line-height: 5%;
+    margin-bottom: 20%;
+}
+
+.pro-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 80%;
+    padding: 2% 5%;
+
+}
+
+.pro-links img {
+    width: 7%;
+    height: 50%;
+
+}
+
+.pro-links p {
+    margin: auto;
+    text-align: left;
+    width: 80%;
+}
+
+.pro-buttonVersion {
+    margin: 5% 0;
+    display: flex;
+    width: 80%;
+}
+
+.pro-bio {
+    margin: 5% 0;
+}
+
+.pro-bio p {
+
+    text-align: justify;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.profileBox01 {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 5% 2%;
+    width: 120%;
+    margin-bottom: 5%;
+}
+
+.profMiniBox {
+    display: flex;
+    background-color: #0D113E;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 3%;
+    margin: 0 5%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.profMiniBox h2,
+p {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profMiniBox p {
+    font-size: 10px;
+}
+
+.profMiniBox h2 {
+    font-size: 40px;
+}
+
+.profMiniBox3 {
+    display: flex;
+    background-color: #0D113E;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 3%;
+    margin: 0 5%;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.profMiniBox3 h2,
+p {
+
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profMiniBox3 h2 {
+    font-size: 40px;
+}
+
+.profMiniBox3 p {
+    font-size: 20px;
+}
+
+.profileBox02 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 5% 2%;
+    width: 120%;
+    margin-bottom: 5%;
+}
+
+.profileBox02 h2 {
+    margin: 0;
+}
+
+.profMiniBox1 {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 5%;
+    width: 100%;
+}
+
+.profMiniBox h4,
+p {
+    margin: 0;
+    text-align: center;
+}
+
+.profMiniBox h4 span {
+    font-size: 25px;
+}
+
+.profMiniBox h4 {
+    line-height: 140%;
+}
+
+.profMiniBox2 p {
+    text-align: right;
+    font-size: 10px;
+    font-weight: 500;
+    margin-right: 10%;
+}
+
+.profMiniBox2 h3 span {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.profMiniBox2 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* ProfProfile.css */
+
+.prof-image {
+    width: 150px;
+    /* Adjust as needed */
+    height: 150px;
+    /* Adjust as needed */
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.prof-imageUpload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.prof-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-icon {
+    width: 0px;
+    /* Adjust as needed */
+    height: 0px;
+    /* Adjust as needed */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.profMiniBox4 {
+    display: flex;
+}
+
+.profMiniBox4 img {
+    padding: 2%;
+    width: 25%;
+    display: flex;
+}
+
+.close-icon {
+    position: absolute;
+    right: 10px;
+    margin: 2%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    filter: invert(10%);
+    margin-top: 2%;
+}
+
+/* Additional styles as needed for the rest of your component */

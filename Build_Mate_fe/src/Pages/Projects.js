@@ -1,4 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import './Projects.css';
 import mimg1 from "../Components/Assets/login1.jpg";
 import pp1 from "../Components/Assets/pro-p1.jpg";
@@ -56,6 +58,24 @@ const Projects = () => {
     setActiveDetailButton(buttonIndex);
   };
 
+  const navigate = useNavigate();
+
+  
+  useEffect(() => {
+    const token = sessionStorage.getItem('authToken');
+    console.log(token !== '1234');
+
+    if (token !== '1234') {
+     Swal.fire({
+       icon: 'warning',
+       title: 'Access denied',
+       
+       footer: "You have to log in first",
+       confirmButtonText: 'OK'
+   });
+     navigate('/Pages/home');
+   }
+     }, [navigate]);
  
 
   return (

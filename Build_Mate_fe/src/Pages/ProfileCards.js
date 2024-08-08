@@ -89,7 +89,7 @@ const ProfileCards = () => {
       <div className='pro-body01'>
         <div className='pro-st1'>Professionals
         
-          <div className="search-bar2">
+          <div className="search-bar3">
             <input
               type="text"
               className="search-input2"

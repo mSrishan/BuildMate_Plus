@@ -74,19 +74,22 @@ router.get('/professionals/:id', async (req, res) => {
     }
 });
 
-// Search for professionals by name or profession
+/// @route   GET /api/users/search
+// @desc    Search users by name or email
+// @access  Public
 router.get('/search', async (req, res) => {
     try {
         const { query } = req.query;
-        const professionals = await ProfDet.find({
+        const users = await ProfDet.find({
             $or: [
                 { name: { $regex: query, $options: 'i' } },
-                { profession: { $regex: query, $options: 'i' } }
+                { email: { $regex: query, $options: 'i' } }
             ]
         });
-        res.json(professionals);
+        res.json(users);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error('Server error:', error);
+        res.status(500).json({ message: 'Server Error' });
     }
 });
 

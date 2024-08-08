@@ -1,0 +1,92 @@
+/* PrivacyPolicy.css */
+
+.privacy-policy {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.privacy-policy h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #FF6B00;
+  text-align: center;
+}
+
+.privacy-policy h2 {
+  font-size: 1.8em;
+  margin-top: 20px;
+  color: #FF6B00;
+  border-bottom: 2px solid #0D113E;
+  padding-bottom: 5px;
+}
+
+.privacy-policy h3 {
+  font-size: 1.5em;
+  margin-top: 15px;
+  color: #0D113E;
+}
+
+.privacy-policy p {
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+.privacy-policy ul {
+  padding: 0;
+  margin: 20px 0;
+  list-style: none; 
+}
+
+.privacy-policy ul li {
+  border: 1px solid black;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 2%;
+  border-radius: 10px;
+  position: relative;
+    padding-left: 30px; /* Space for the custom bullet */
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.privacy-policy a {
+  color: #FF6B00;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.privacy-policy a:hover {
+  color: #0D113E;
+}
+
+@media (max-width: 768px) {
+  .privacy-policy {
+      padding: 15px;
+  }
+
+  .privacy-policy h1 {
+      font-size: 2em;
+  }
+
+  .privacy-policy h2 {
+      font-size: 1.6em;
+  }
+
+  .privacy-policy h3 {
+      font-size: 1.3em;
+  }
+
+  .privacy-policy p {
+      font-size: 0.9em;
+  }
+}

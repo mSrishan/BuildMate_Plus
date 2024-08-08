@@ -46,6 +46,9 @@ function Signup() {
                     } else if (result.isDenied) {
                         Swal.fire("Changes are not saved", "", "info");
                     }
+                    
+
+
                 });
             } else if (response.data.message === "exist") {
                 showExistMessage("User already exists with this email.");

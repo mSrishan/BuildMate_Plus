@@ -82,6 +82,7 @@ function MaterialSup() {
         e.preventDefault();
     
         const formData = new FormData();
+        
         formData.append('msdet', profileInfo.msdet);
         formData.append('email', profileInfo.email);
         formData.append('TypeOfMaterials', JSON.stringify(profileInfo.TypeOfMaterials));
@@ -93,6 +94,7 @@ function MaterialSup() {
         formData.append('qualityOfMaterials', profileInfo.qualityOfMaterials);
         formData.append('profilePicture', profilePicture);
         formData.append('previousJobFile', previousJobFile);
+        console.log(formData)
     
         try {
             const response = await axios.post('http://localhost:8000/api/registerMaterialSupplierDetails', formData, {
@@ -103,25 +105,13 @@ function MaterialSup() {
     
             if (response.status === 201) {
                 Swal.fire({
-                    title: "Do you want to save the changes?",
-                    showDenyButton: true,
-                    showCancelButton: true,
-                    confirmButtonText: "Save",
-                    denyButtonText: `Don't save`
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            icon: "success",
-                            title: "Success",
-                            text: "Information saved successfully",
-                            confirmButtonText: "OK",
-                            footer: "You are now registered as a Material Supplier..."
-                        }).then(() => {
-                            navigate('../Pages/Profilems');
-                        });
-                    } else if (result.isDenied) {
-                        Swal.fire("Changes are not saved", "", "info");
-                    }
+                    icon: "success",
+                    title: "Success",
+                    text: response.data.message,
+                    confirmButtonText: "OK",
+                    footer: "Your profile has been updated successfully."
+                }).then(() => {
+                    navigate('../Pages/Profilems');
                 });
             } else {
                 Swal.fire({

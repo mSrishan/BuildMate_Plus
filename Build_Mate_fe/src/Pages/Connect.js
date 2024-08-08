@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Connect.css';
 
 import c1 from '../Components/Assets/Architecture-1.jpg';
 import Navbar from '../Components/Navbar/Navbar';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export default function Connect() {
   const navigate = useNavigate();
 
-  const handleFindProfessionalsClick = () => {
-    navigate('/pages/ProfileCards');
-  };
-  const handleFindSuppliersClick = () => {
-    navigate('/pages/Profile');
-  };
+  
+  useEffect(() => {
+    const token = sessionStorage.getItem('authToken');
+    console.log(token !== '1234');
+
+    if (token !== '1234') {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Access denied',
+        
+        footer: "You have to log in first",
+        confirmButtonText: 'OK'
+    });
+      navigate('/Pages/home');
+    }
+  }, [navigate]);
+    
+
+  
 
   return (
     <div>
@@ -37,10 +51,19 @@ export default function Connect() {
               <div className='sen1'>More Details</div>
             </div>
             <div className="orange-container1">
-              <div className='para1'>Find the Suppliers for Your Construction</div>
+              <div className='para1'>Find the Service Suppliers for Your Construction</div>
               <div className="connect-02">
                 <button className="con-button" onClick={() => window.location.href = '/Pages/Profiless'}>
-                Find Suppliers
+                Find Service Suppliers
+              </button>
+              </div>
+              <div className='sen1'>More Details</div>
+            </div>
+            <div className="orange-container1">
+              <div className='para1'>Find the Material Suppliers for Your Construction</div>
+              <div className="connect-02">
+                <button className="con-button" onClick={() => window.location.href = '/Pages/Profilems'}>
+                Find Material Suppliers
               </button>
               </div>
               <div className='sen1'>More Details</div>
