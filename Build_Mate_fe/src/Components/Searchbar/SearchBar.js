@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './SearchBar.css'; // Import the CSS file
 
 axios.defaults.baseURL = 'http://localhost:8000';
@@ -9,11 +10,28 @@ const SearchBar = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [results, setResults] = useState([]);
     const [showResults, setShowResults] = useState(false);
+    const navigate = useNavigate();
 
     const fetchResults = async () => {
         if (searchQuery.trim() !== '') {
             try {
-                const response = await axios.get(`/api/search?query=${searchQuery}&type=${searchType}`);
+                let endpoint = '';
+
+                switch (searchType) {
+                    case 'Expert':
+                        endpoint = `/api/search?query=${searchQuery}`;
+                        break;
+                    case 'Supplier':
+                        endpoint = `/api/serviceSuppliers/search?query=${searchQuery}`;
+                        break;
+                    case 'Material':
+                        endpoint = `/api/materialSuppliers/search?query=${searchQuery}`;
+                        break;
+                    default:
+                        return;
+                }
+
+                const response = await axios.get(endpoint);
                 setResults(response.data);
                 setShowResults(true);
             } catch (error) {
@@ -24,7 +42,6 @@ const SearchBar = () => {
             setShowResults(false);
         }
     };
-    
 
     useEffect(() => {
         const delayDebounceFn = setTimeout(() => {
@@ -48,11 +65,8 @@ const SearchBar = () => {
         fetchResults();
     };
 
-    const handleBlur = () => {
-        // Delay hiding results to allow click on result
-        setTimeout(() => {
-            setShowResults(false);
-        }, 200);
+    const handleViewProfile = (profile) => {
+        navigate(`/Pages/ProfileView/${profile._id}`, { state: { profile } });
     };
 
     return (
@@ -85,7 +99,7 @@ const SearchBar = () => {
                         placeholder={`Search ${searchType.toLowerCase()}`}
                         value={searchQuery}
                         onChange={handleSearchInputChange}
-                        onBlur={handleBlur}
+                        onBlur={() => setShowResults(false)}
                         onFocus={() => setShowResults(true)}
                     />
                     <button className="search-button" onClick={handleSearchClick}>
@@ -95,16 +109,26 @@ const SearchBar = () => {
             </div>
             {showResults && results.length > 0 && (
                 <div className="search-results-popup">
-                    {results.map((user) => (
-                        <div key={user._id} className="search-result-item">
-                            <h2>{user.name}</h2>
-                            <p>Email: {user.email}</p>
-                            <p>Profession: {user.profession}</p>
-                            <p>Experience: {user.experience} years</p>
-                            <img src={`http://localhost:8000/${user.profilePicture}`} alt="Profile" width="100" />
-                            <a href={`http://localhost:8000/${user.previousJobFile}`} download>
-                                Download Previous Job File
-                            </a>
+                    {results.map((profile) => (
+                        <div key={profile._id} className="search-result-item">
+                            <div className="left-section">
+                                <img 
+                                    src={`http://localhost:8000/${profile.profilePicture}`} 
+                                    alt={`${profile.name}'s Profile`} 
+                                    onError={(e) => e.target.src = 'default-image-url.png'} 
+                                    className="profile-image" 
+                                />
+                                <h2>{profile.name}</h2>
+                            </div>
+                            <div className="details">
+                                <p>{profile.profession || profile.TypeOfService || profile.TypeOfMaterials}</p>
+                            </div>
+                            <button
+                                onClick={() => handleViewProfile(profile)}
+                                className="view-profile-button"
+                            >
+                                View Profile
+                            </button>
                         </div>
                     ))}
                 </div>

@@ -1,5 +1,3 @@
-// backend/routes/ssRoutes.js
-
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
@@ -50,6 +48,8 @@ router.post('/registerServiceSupplierDetails', upload.fields([
         res.status(500).json({ message: 'Error registering service supplier', error: error.message });
     }
 });
+
+// Get all service suppliers
 router.get('/serviceSuppliers', async (req, res) => {
     try {
         const serviceSuppliers = await Ssdet.find({});
@@ -59,5 +59,22 @@ router.get('/serviceSuppliers', async (req, res) => {
     }
 });
 
+// Search service suppliers
+router.get('/serviceSuppliers/search', async (req, res) => {
+    try {
+        const { query } = req.query;
+        const users = await Ssdet.find({
+            $or: [
+                { name: { $regex: query, $options: 'i' } },
+                { email: { $regex: query, $options: 'i' } },
+                { TypeOfService: { $regex: query, $options: 'i' } }
+            ]
+        });
+        res.json(users);
+    } catch (error) {
+        console.error('Server error:', error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+});
 
 module.exports = router;

@@ -40,7 +40,6 @@ router.post('/registerMaterialSupplierDetails', upload.fields([
             previousJobFile
         });
 
-        // Save the document
         await newMsdet.save();
 
         res.status(201).json({ message: 'Material supplier details saved successfully' });
@@ -50,31 +49,31 @@ router.post('/registerMaterialSupplierDetails', upload.fields([
     }
 });
 
-
-
-
+// Get all material suppliers
 router.get('/materialSuppliers', async (req, res) => {
     try {
         const materialSuppliers = await Msdet.find({});
         res.status(200).json(materialSuppliers);
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching service suppliers', error: error.message });
+        res.status(500).json({ message: 'Error fetching material suppliers', error: error.message });
     }
 });
 
-// Search for materials by name or type
-router.get('/search', async (req, res) => {
+// Search material suppliers
+router.get('/materialSuppliers/search', async (req, res) => {
     try {
         const { query } = req.query;
-        const materials = await Msdet.find({
+        const users = await Msdet.find({
             $or: [
-                { msdet: { $regex: query, $options: 'i' } },
+                { name: { $regex: query, $options: 'i' } },
+                { email: { $regex: query, $options: 'i' } },
                 { TypeOfMaterials: { $regex: query, $options: 'i' } }
             ]
         });
-        res.json(materials);
+        res.json(users);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error('Server error:', error);
+        res.status(500).json({ message: 'Server Error' });
     }
 });
 

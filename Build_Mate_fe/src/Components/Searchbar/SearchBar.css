@@ -37,7 +37,11 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 2;
     box-shadow: #545353 0 0 20px 0;
-    margin-left: -3%;
+}
+
+.switch-button-su,
+.switch-button-ma {
+    margin-left: -1%;
 }
 
 .switch-button-ex.active,
@@ -86,54 +90,83 @@
 /* Styling for the popup results */
 .search-results-popup {
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
+    top: calc(85%); 
+    left: 50%; /* Center the popup horizontally */
+    transform: translateX(-50%); /* Ensure the popup is centered */
+    width: 60%; /* Maintain your desired width */
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 33px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     max-height: 300px;
     overflow-y: auto;
+    padding: 10px; /* Optional: Add some padding inside the popup */
+    
+
 }
 
+
 .search-result-item {
+    display: flex;
+    align-items: center;
     padding: 10px;
     border-bottom: 1px solid #eee;
     text-align: left;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
 }
 
-.search-result-item h2 {
-    margin: 5px 0;
-    font-size: 16px;
+.search-result-item:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.02);
 }
 
-.search-result-item p {
-    margin: 5px 0;
-    color: #555;
+.search-result-item .left-section {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
 }
 
 .search-result-item img {
-    max-width: 100%;
+    width: 80px;
+    height: 80px;
     border-radius: 4px;
-    margin-top: 10px;
+    margin-right: 15px;
+    object-fit: cover;
 }
 
-.search-result-item a {
-    display: inline-block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #007BFF;
-    border: 1px solid #007BFF;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+.search-result-item h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
 }
 
-.search-result-item a:hover {
+.search-result-item .details {
+    text-align: center;
+    font-size: 16px;
+    flex-grow: 0;
+}
+
+.search-result-item .details p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+}
+
+.view-profile-button {
     background-color: #007BFF;
-    color: #fff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: auto;
+}
+
+.view-profile-button:hover {
+    background-color: darkblue;
 }
 
 /* Hide the last border on the last item */

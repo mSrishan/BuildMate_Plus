@@ -83,7 +83,8 @@ router.get('/search', async (req, res) => {
         const users = await ProfDet.find({
             $or: [
                 { name: { $regex: query, $options: 'i' } },
-                { email: { $regex: query, $options: 'i' } }
+                { email: { $regex: query, $options: 'i' } },
+                { profession: { $regex: query, $options: 'i' } }
             ]
         });
         res.json(users);
