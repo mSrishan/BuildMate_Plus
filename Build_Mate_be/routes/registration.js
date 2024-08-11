@@ -123,4 +123,16 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.get('/professionals/:id', async (req, res) => {
+    try {
+        const prof = await Professional.findById(req.params.id);
+        if (!prof) {
+            return res.status(404).json({ message: 'Professional not found' });
+        }
+        res.json(prof);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 module.exports = router;

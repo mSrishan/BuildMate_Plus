@@ -73,9 +73,13 @@ const ProfileCards = () => {
         profile.profession.toLowerCase().includes(searchQuery.toLowerCase())
       );
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+      if (loading) {
+        return <div class="loader-container">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+    </div>;
+      }
 
   if (error) {
     return <div>{error}</div>;
