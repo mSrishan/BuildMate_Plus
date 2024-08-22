@@ -268,6 +268,7 @@
   flex-direction: row;
   border-radius: 65px;
   box-shadow: 0 0 40px rgba(67, 67, 67, 0.7);
+
 }
 .boxImg01{
   height: 300px;
@@ -319,6 +320,8 @@
   text-transform: capitalize;
   color: black;
   text-align: right;
+  font-size: 1.0 vw;
+  width: 95%;
   font-size: 1.0vw;
   line-height: 25px;
   
@@ -327,13 +330,13 @@
   text-transform: capitalize;
   color: black;
   text-align: left;
-  font-size: 1.5vw;
+  font-size: 1.0 vw;
   
 }
 .h1-button{
   border-radius: 50px;
   color: white;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   padding: 10px 30px;
   font-weight: 600;
   background-color:#0D113E;
@@ -341,11 +344,12 @@
   border-width: 100%;
   cursor: pointer;
   margin-top: 5%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .h1-button-Right{
   border-radius: 50px;
   color: white;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   padding: 10px 30px;
   font-weight: 600;
   background-color:#0D113E;
@@ -353,6 +357,42 @@
   border-width: 100%;
   cursor: pointer;
   margin-top: 5%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.dreamimg01:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.box1:hover .boxImg01 {
+  transform: scale(1.05);
+}
+
+.box1:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 60px rgba(67, 67, 67, 0.9);
+}
+
+/* Additional animations for box and images */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.box1, .dreamimg01 {
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+/* Add hover effect for the text */
+.h1-text:hover, .h1-text-Right:hover {
+  color: #ff6b00;
+  transition: color 0.3s ease-in-out;
 }
 .box2{
   display: flex;
@@ -363,7 +403,10 @@
   box-shadow: 0 0 40px rgba(67, 67, 67, 0.4);
 }
 
-
+.h1-button:hover, .h1-button-Right:hover {
+  background-color: #e55a00;
+  transform: translateY(-3px);
+}
 .details-content{
   border: none;
   display: flex;
@@ -1005,6 +1048,7 @@
   }
   
 }
+
   .loader-container {
     display: flex;
     justify-content: center;
@@ -1036,3 +1080,4 @@
         width: 100%;
     }
 }
+

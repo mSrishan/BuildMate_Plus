@@ -1,3 +1,9 @@
+/* Styles for the ImageGeneration component */
+
+  .image-generator {
+    text-align: center;font-family: 'Arial', sans-serif;
+    background-color: #0d113e;
+
 /* Styles for the CustomImageGen component */
 .image-generate {
     font-family: 'Arial', sans-serif;
@@ -10,6 +16,26 @@
   }
   
   .image-gen-wrapper {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 400px;
+  }
+  
+  .image-gen-wrapper h1 {
+    color: #0d113e;
+    margin-bottom: 10px;
+    
+    text-transform: uppercase;
+    font-size: 50px;
+  }
+  
+  .image-gen-wrapper h5 {
+    color: #ff6b00;
+    margin-bottom: 20px;
+    font-size: 16px;
+=======
     background-color: #ffffff;
     padding: 30px;
     border-radius: 15px;
@@ -20,6 +46,10 @@
   
   .prompt-input-field {
     width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 2px solid #0d113e;
+    border-radius: 8px;
     padding: 14px 22px;
     margin-bottom: 20px;
     border: 2px solid #d1d9e6;
@@ -33,6 +63,12 @@
     border-color: #ff6b00;
   }
   
+  .generate-btn {
+    background-color: #ff6b00;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
   generate-btn {
     background-color: #ff6b00;
     color: #fff;
@@ -45,6 +81,27 @@
     width: 100%;
   }
   
+  .generate-btn:hover {
+    background-color: #e55a00;
+  }
+  
+  .generated-image {
+    margin-top: 25px;
+    max-width: 100%;
+    border-radius: 8px;
+    border: 3px solid #0d113e;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .error-message {
+    color: #ff6b00;
+    font-size: 14px;
+    margin-top: 12px;
+  }
+  
+  .image-head{
+    text-transform: uppercase;
+    font-size: 150px;
   generate-btn:hover {
     background-color: #ff6b00;
   }
