@@ -268,10 +268,7 @@
   flex-direction: row;
   border-radius: 65px;
   box-shadow: 0 0 40px rgba(67, 67, 67, 0.7);
-  justify-content: center;
-  padding: 0 5%;
-  width: 90%;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
 }
 .boxImg01{
   height: 300px;
@@ -303,6 +300,7 @@
   align-items: flex-end;
   margin-bottom: 5%;
   width: 120%;
+  padding: 0 10% 0 0;
   color: #ffffff;
 }
 .box-Right {
@@ -311,6 +309,7 @@
   align-items: flex-start;
   margin-bottom: 5%;
   width: 120%;
+  padding: 0 0 0 10%;
   color: #ffffff;
 }
 .boxCollection1{
@@ -323,6 +322,8 @@
   text-align: right;
   font-size: 1.0 vw;
   width: 95%;
+  font-size: 1.0vw;
+  line-height: 25px;
   
 }
 .h1-text-Right{
@@ -1047,10 +1048,6 @@
   }
   
 }
-  
-
-
-  
 
   .loader-container {
     display: flex;

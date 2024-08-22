@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import './Contact.css';
 import Navbar from '../Components/Navbar/Navbar';
 import conta1 from '../Components/Assets/conta1.jpg';
@@ -19,6 +20,24 @@ export default function Contact() {
       setFormData(prevData => ({ ...prevData, email: userEmail }));
     }
   }, []);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = sessionStorage.getItem('authToken');
+    console.log(token !== '1234');
+
+    if (token !== '1234') {
+     Swal.fire({
+       icon: 'warning',
+       title: 'Access denied',
+       
+       footer: "You have to log in first",
+       confirmButtonText: 'OK'
+   });
+     navigate('/Pages/home');
+   }
+     }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

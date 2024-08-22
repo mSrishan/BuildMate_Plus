@@ -167,7 +167,8 @@ const Home = () => {
                                   <h3 className='h1-text'>
                                   Register to join the BuildMate+ community and start your construction journey
                                   </h3>
-                                  <Link to='/Pages/connect'>
+                                  <Link to='/Pages/Registration'>
+
                                       <button className='h1-button'>Be a BuildMate</button>
                                   </Link>
                               </div>
@@ -189,6 +190,7 @@ const Home = () => {
                           </div>
                         </div>
                         <div className='boxCollection1' style={{marginTop:'5%'}}>
+
                           <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
                             <div className='box1'>
                               <img src={boxImg02} className='boxImg01' alt=' '/>
@@ -196,13 +198,13 @@ const Home = () => {
                                   <h3 className='h1-text'>
                                   Explore ongoing industry projects and stay updated on the latest construction trends.
                                   </h3>
-                                  <Link to='/Pages/connect'>
+                                  <Link to='/Pages/Projects'>
                                       <button className='h1-button'>Project Explorer</button>
                                   </Link>
                               </div>
                               </div>
                           </div>
-                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
+                          <div className='animate_box1 animate_animated animate_fadeInLeft' ref={fadeInLeftRef}>
                             <div className='box1'>
                               
                               <div className='box-Right'>
@@ -220,7 +222,8 @@ const Home = () => {
                         
                     
                           
-                      </div> 
+                 </div> 
+
             <div className='det'>
               <div className='details-content'>
                 <div className='t1'>
