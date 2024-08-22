@@ -135,4 +135,25 @@ router.get('/professionals/:id', async (req, res) => {
     }
 });
 
+// Fetch user details by email
+router.get('/profile/:email', async (req, res) => {
+    console.log('Email received:', req.params.email);
+    try {
+        let user = await Professional.findOne({ email: req.params.email }) ||
+                   await ServiceSupplier.findOne({ email: req.params.email }) ||
+                   await MaterialSupplier.findOne({ email: req.params.email }) ||
+                   await Client.findOne({ email: req.params.email });
+
+        if (!user) {
+            console.log('User not found for email:', req.params.email);
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(user);
+    } catch (error) {
+        console.error('Server error:', error.message);
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+});
+
+
 module.exports = router;

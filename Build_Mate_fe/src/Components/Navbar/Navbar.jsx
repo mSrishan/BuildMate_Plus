@@ -5,6 +5,10 @@ import logo from '../Assets/Logo_version2.0.png';
 
 const Navbar = () => {
   const navigate = useNavigate();
+
+  function handlenavigate(){
+    navigate("../../Pages/ProfilePage")
+  }
   
   function handleHomeBack() {
     navigate("../../Pages/Home"); // Correct path for your route
@@ -48,7 +52,7 @@ const Navbar = () => {
 
           {isAuthenticated ? (
             <div className='navbtn'>
-              <li><span>Hi, {firstName} </span>
+              <li><span onClick={handlenavigate}>Hi, {firstName} </span>
                 <button className='signbtn' style={{ border: 'none' }} onClick={handleLogout}>Logout</button>
               </li>
             </div>

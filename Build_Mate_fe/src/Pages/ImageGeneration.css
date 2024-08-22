@@ -1,0 +1,63 @@
+/* Styles for the CustomImageGen component */
+.image-generate {
+    font-family: 'Arial', sans-serif;
+    background-color: #eef2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .image-gen-wrapper {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 420px;
+    text-align: center;
+  }
+  
+  .prompt-input-field {
+    width: 100%;
+    padding: 14px 22px;
+    margin-bottom: 20px;
+    border: 2px solid #d1d9e6;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .prompt-input-field:focus {
+    border-color: #ff6b00;
+  }
+  
+  generate-btn {
+    background-color: #ff6b00;
+    color: #fff;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  
+  generate-btn:hover {
+    background-color: #ff6b00;
+  }
+  
+  generated-image {
+    margin-top: 25px;
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  error-message {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 12px;
+  }
