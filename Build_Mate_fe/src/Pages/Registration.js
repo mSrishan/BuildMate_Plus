@@ -147,7 +147,7 @@ function Registration() {
             const errorMessage = error.response?.data?.message || "Error saving information";
             if (errorMessage === "User with this email already exists") {
                 Swal.fire({
-                    icon: "error",
+                    icon: "warning",
                     title: "User Exists",
                     text: "A user with this email already exists. Please log in or use a different email.",
                     confirmButtonText: "Or",

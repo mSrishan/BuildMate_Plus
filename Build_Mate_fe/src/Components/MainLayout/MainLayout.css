@@ -1,0 +1,16 @@
+.main-layout {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .content-area {
+    flex: 1;
+    padding-right: 320px; /* Ensure content doesn't overlap the sidebar */
+  }
+  
+  @media (max-width: 768px) {
+    .content-area {
+      padding-right: 0;
+    }
+  }
+  

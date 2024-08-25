@@ -22,6 +22,7 @@ import boxImg02 from "../Components/Assets/BoxImg02.png";
 import boxImg03 from "../Components/Assets/BoxImg03.png"
 import 'animate.css';
 import SearchBar from '../Components/Searchbar/SearchBar';
+import AdSidebar from '../Components/AdSidebar/AdSidebar';
 
 import ScrollTrigger from "react-scroll-trigger";
 import { Link } from 'react-router-dom';
@@ -137,6 +138,7 @@ const Home = () => {
     <>
       <div className='homepage'>
         <Navbar />
+        <AdSidebar />
         <img className='wall' src={homeimg} alt='Background' />
         <div className='head-content'>
           <img src={ic1} alt='icon one' className='ic1' />
