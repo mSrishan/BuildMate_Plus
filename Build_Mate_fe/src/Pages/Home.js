@@ -162,7 +162,7 @@ const Home = () => {
           <div className='h1'>
           <div className='firstbox'id='firstbox'>
                         <div className='boxCollection1'>
-                          <div className='animate_box1 animate_animated animate_fadeInLeft' ref={fadeInLeftRef}>
+                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
                             <div className='box1'>
                               <img src={boxImg01} className='boxImg01' alt=' '/>
                               <div className='box'>
@@ -170,12 +170,13 @@ const Home = () => {
                                   Register to join the BuildMate+ community and start your construction journey
                                   </h3>
                                   <Link to='/Pages/Registration'>
+
                                       <button className='h1-button'>Be a BuildMate</button>
                                   </Link>
                               </div>
                               </div>
                           </div>
-                          <div className='animate_box1 animate_animated animate_fadeInLeft' ref={fadeInLeftRef}>
+                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
                             <div className='box1'>
                               
                               <div className='box-Right'>
@@ -191,7 +192,8 @@ const Home = () => {
                           </div>
                         </div>
                         <div className='boxCollection1' style={{marginTop:'5%'}}>
-                          <div className='animate_box1 animate_animated animate_fadeInLeft' ref={fadeInLeftRef}>
+
+                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
                             <div className='box1'>
                               <img src={boxImg02} className='boxImg01' alt=' '/>
                               <div className='box'>
@@ -222,7 +224,8 @@ const Home = () => {
                         
                     
                           
-                      </div>
+                 </div> 
+
             <div className='det'>
               <div className='details-content'>
                 <div className='t1'>

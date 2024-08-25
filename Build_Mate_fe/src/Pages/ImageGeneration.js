@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import women from '../Components/Assets/Home-women.png';
 import './ImageGeneration.css';  // Import the CSS file
 import Swal from 'sweetalert2';
 
@@ -40,8 +41,12 @@ const ImageGeneration = () => {
   }, [navigate]);
 
   return (
-    <div className='image-generate'>
-      <div className="image-gen-wrapper">
+    <div className='image-generator'>
+      
+      <img src={women} alt='woman' className='woman-img' />
+    <div className="image-gen-wrapper">
+      <h1 className='image-head'>Image Generator</h1>
+      <h5>Unleash Your Imagination: Transform Words into Visual Art</h5>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -54,6 +59,7 @@ const ImageGeneration = () => {
       </form>
       {imageUrl && <img src={imageUrl} alt="Generated" className="generated-image" />}
       {error && <p className="error-message">{error}</p>}
+    </div>
     </div>
     </div>
     
