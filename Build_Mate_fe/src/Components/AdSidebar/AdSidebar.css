@@ -1,0 +1,39 @@
+.ad-sidebar {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    text-align: center;
+  }
+  
+  .hide-button {
+    position: absolute;
+    top: -30px;
+    right: 10px;
+    background: #ff5f5f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .hide-button:hover {
+    background: #ff3030;
+  }
+  
+  @media (max-width: 768px) {
+    .ad-sidebar {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .hide-button {
+      top: -20px;
+    }
+  }
+  

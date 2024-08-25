@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './ImageGeneration.css';  // Import the CSS file
+import Swal from 'sweetalert2';
 
 const ImageGeneration = () => {
   const [prompt, setPrompt] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +22,22 @@ const ImageGeneration = () => {
       setError('Error generating image. Please try again.');
     }
   };
+
+  useEffect(() => {
+    const token = sessionStorage.getItem('authToken');
+    console.log(token !== '1234');
+
+    if (token !== '1234') {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Access denied',
+        
+        footer: "You have to log in first",
+        confirmButtonText: 'OK'
+    });
+      navigate('/Pages/home');
+    }
+  }, [navigate]);
 
   return (
     <div className='image-generate'>
