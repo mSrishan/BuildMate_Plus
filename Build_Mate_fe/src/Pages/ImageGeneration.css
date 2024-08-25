@@ -35,7 +35,7 @@
     color: #ff6b00;
     margin-bottom: 20px;
     font-size: 16px;
-=======
+
     background-color: #ffffff;
     padding: 30px;
     border-radius: 15px;
@@ -69,7 +69,9 @@
     padding: 14px;
     border: none;
     border-radius: 8px;
-  generate-btn {
+  }
+
+  .generate-btn {
     background-color: #ff6b00;
     color: #fff;
     padding: 14px 22px;
@@ -102,19 +104,22 @@
   .image-head{
     text-transform: uppercase;
     font-size: 150px;
-  generate-btn:hover {
+  }
+
+  .generate-btn:hover {
     background-color: #ff6b00;
   }
   
-  generated-image {
+  .generated-image {
     margin-top: 25px;
     max-width: 100%;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
   
-  error-message {
+  .error-message {
     color: #d9534f;
     font-size: 14px;
     margin-top: 12px;
   }
+}
