@@ -33,7 +33,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/Pages/Home" element={<Home />} />
+          <Route path="/Pages/" element={<Home />} />
           <Route path="/Pages/Login" element={<Login />} />
           <Route path="/Pages/Signup" element={<Signup />} />
           <Route path="/Pages/About" element={<About />} />
